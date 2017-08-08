@@ -18,7 +18,7 @@ export function getMeta() {
 export function getInitState() {
 	return {
 		data: {
-			content: '前端学习'
+			content: '机器学习'
 		}
 	}
 }

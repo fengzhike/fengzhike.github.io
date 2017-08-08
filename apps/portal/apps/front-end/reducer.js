@@ -11,6 +11,7 @@ class reducer {
 
     init = (state, option) => {
         const initState = getInitState()
+        option && (initState.data.content = option.params)
         return this.metaReducer.init(state, initState)
     }
 

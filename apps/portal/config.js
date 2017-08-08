@@ -19,27 +19,28 @@ var _options = {
 		children: [{
 			key: '201',
 			name: 'js',
-			appName: 'mk-app-portal-app1'
+			appName: 'front-end?params=js',
 		}, {
 			key: '203',
 			name: 'css',
-			appName: 'mk-app-portal-app2'
+			appName: 'front-end?params=css',
+			appParams:{}
 		},{
 			key: '204',
 			name: 'less & sass',
-			appName: 'mk-app-portal-app2'
+			appName: 'front-end?params=less,sass'
 		},{
 			key: '205',
 			name: 'gulp',
-			appName: 'mk-app-portal-app2'
+			appName: 'front-end?params=gulp'
 		},{
 			key: '206',
 			name: 'webpack',
-			appName: 'mk-app-portal-app2'
+			appName: 'front-end?params=webpack'
 		},{
 			key: '207',
 			name: 'react',
-			appName: 'mk-app-portal-app2'
+			appName: 'front-end?params=react'
 		}]
 	}, {
 		key: '3',
@@ -48,11 +49,11 @@ var _options = {
 		children: [{
 			key: '301',
 			name: 'python语法',
-			appName: 'mk-app-portal-app1'
+			appName: 'python?params=python_gramar'
 		}, {
 			key: '302',
 			name: 'python类库',
-			appName: 'mk-app-portal-app2'
+			appName: 'python?params=pythons'
 		}]
 	}, {
 		key: '4',
@@ -61,11 +62,11 @@ var _options = {
 		children: [{
 			key: '401',
 			name: '机器学习概念',
-			appName: 'mk-app-portal-app1'
+			appName: 'mechine-learning?params=concept'
 		}, {
 			key: '402',
 			name: 'NN(神经网络)',
-			appName: 'mk-app-portal-app2'
+			appName: 'mechine-learning?params=NN'
 		}]
 	}],
 	profile

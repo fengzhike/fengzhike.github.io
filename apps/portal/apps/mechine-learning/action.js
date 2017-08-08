@@ -11,7 +11,11 @@ class action {
     onInit = ({ component, injections }) => {
         this.component = component
         this.injections = injections
-        injections.reduce('init')
+        injections.reduce('init',component.props.appParams)
+    }
+
+    btnClick = () => {
+        this.injections.reduce('modifyContent')
     }
 }
 

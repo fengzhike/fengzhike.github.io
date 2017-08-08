@@ -10,7 +10,14 @@ class reducer {
     }
 
     init = (state, option) => {
-        return this.metaReducer.init(state, getInitState())
+        const initState = getInitState()
+        option && (initState.data.content = option.params)
+        return this.metaReducer.init(state, initState)
+    }
+
+    modifyContent = (state) => {
+        const content = this.metaReducer.gf(state, 'data.content')
+        return this.metaReducer.sf(state, 'data.content', content + '!')
     }
 }
 

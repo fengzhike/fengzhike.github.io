@@ -4,14 +4,16 @@ import config from './config'
 
 class action {
     constructor(option) {
+
         this.metaAction = option.metaAction
         this.config = config.current
     }
 
     onInit = ({ component, injections }) => {
+
         this.component = component
         this.injections = injections
-        injections.reduce('init')
+        injections.reduce('init',component.props.appParams)
     }
 
     btnClick = () => {

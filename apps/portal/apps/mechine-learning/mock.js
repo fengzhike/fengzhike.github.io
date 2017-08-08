@@ -9,6 +9,6 @@ const mockData = fetch.mockData
 
 /*
 fetch.mock('/v1/person/query', (option) => {
-    return {resulet:true, value:[]}
+    return {result:true, value:{}}
 })
 */
