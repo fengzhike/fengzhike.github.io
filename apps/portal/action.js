@@ -23,7 +23,7 @@ class action {
             const menu = await this.webapi.getMenu()
             this.injections.reduce('load', {menu})
         }
-    } 
+    }
 
     getProfile = () => this.config.profile
 
@@ -56,10 +56,10 @@ class action {
                 }
                 break;
             case 'github':
-                window.open('https://www.github.com/ziaochina/mk-app-portal')
+                window.open('https://github.com/fengzhike/fengzhike.github.io')
                 break;
             case 'gitter':
-                window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
+                // window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
                 break;
         }
     }
