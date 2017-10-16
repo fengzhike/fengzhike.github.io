@@ -1,11 +1,13 @@
 var webpack = require("webpack");
 var path = require("path");
+const marked = require("marked")
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var env = process.env.NODE_ENV
 var compress = process.env.COMPRESS
 var plugins = []
-
+const renderer = new marked.Renderer()
 //node环境变量，生产环境：production，开发环境：development
 plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(env)
@@ -79,6 +81,17 @@ module.exports = {
                     name: '[name].[hash:8].[ext]',
                 }
             }
+        }, {
+            test: /\.md$/,
+            use: [{
+                loader: "html-loader"
+            }, {
+                loader: "highlight-loader"
+            }, {
+                loader: "markdown-loader",
+                options: { renderer }
+
+            }]
         }],
     },
     devServer: {

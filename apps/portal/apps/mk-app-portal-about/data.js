@@ -3,7 +3,11 @@ export function getMeta() {
 		name: 'root',
 		component: '::div',
 		className: 'mk-app-portal-about',
-		children: '关于'
+		children: [{
+			name:'about',
+			component:'::div',
+			children:'{{$getContent()}}'
+		}]
 	}
 }
 
