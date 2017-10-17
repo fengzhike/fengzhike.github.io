@@ -33,7 +33,7 @@ class action {
                 <p>本博客技术栈：react, redux, immutable,antd,nodejs,hapi,sequelize, node-zookeeper-dubbo</p>
                 <p>本博客基于<a href = "https://ziaochina.github.io/mk-docs/">mk-js</a>框架</p>
                 <div>
-                    <h3>简介</h3>
+                    <h3><strong>mk-js</strong>简介</h3>
                     <p>
                         mk = Monkey King = 齐天大圣 <br/>
                         mk系列是一套完整的前、后台解决方案 <br/>
