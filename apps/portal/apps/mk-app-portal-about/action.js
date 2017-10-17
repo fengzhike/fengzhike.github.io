@@ -13,7 +13,7 @@ class action {
         return (
             <div>
             <header style={{'marginBottom':'10px'}}>
-                <h2 style={{'textAlign':'center','margin':'10px 0'}}>范顺凯的网络日志</h2>
+                <h2 style={{'textAlign':'center','margin':'10px 0'}}>简言</h2>
                 <p>转眼间，从事开发也有几年了。在学习和开发中，时常会有偶得的喜悦，却没有及时记录下来，留下了不少惋惜。开始这篇日志算是亡羊补牢吧，愿从今记录下所经历的点滴</p>
                 <p style={{'margin':'10px 0'}}>苏轼的定风波镇楼，这是我最喜欢的一首词</p>
 

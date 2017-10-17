@@ -61,9 +61,20 @@ class action {
             case 'gitter':
                 // window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
                 break;
+            case 'toggleTabs':
+                this.metaAction.sf('data.isTabsStyle', !this.metaAction.gf('data.isTabsStyle'))
+                break;
         }
     }
-
+    
+    foldMenu = ()=>{
+        this.metaAction.sf('data.isShowMenu', !this.metaAction.gf('data.isShowMenu'))
+        setTimeout(function () {
+            var event = document.createEvent('HTMLEvents')
+            event.initEvent("resize", true, true)
+            window.dispatchEvent(event)
+        }, 0)
+    }
 
     menuClick = (e) => {
 

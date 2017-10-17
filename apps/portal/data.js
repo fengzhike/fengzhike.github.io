@@ -10,6 +10,7 @@ export function getMeta() {
 			children: [{
 				name: 'left',
 				component: 'Layout',
+				_visible: '{{data.isShowMenu}}',
 				className: 'mk-app-portal-header-left',
 				children: [{
 					name: 'logo',
@@ -19,21 +20,33 @@ export function getMeta() {
 				}, {
 					name: 'siteName',
 					component: '::h1',
-					children: '范顺凯的网络日志'
+					children: 'Shun-Kai'
 				}]
 			}, {
 				name: 'right',
 				component: 'Layout',
 				className: 'mk-app-portal-header-right',
 				children: [{
+					name: 'foldMenu',
+					component: 'Icon',
+					type: `{{data.isShowMenu ? 'menu-fold': 'menu-unfold'}}`,
+					title: `{{data.isShowMenu ? '收起菜单': '展开菜单'}}`,
+					showStyle: 'showy',
+					style: { fontSize: 20 },
+					onClick: '{{$foldMenu}}'
+				},{
+					name:'title',
+					component:'::h2',
+					children:'Shun-Kai的网络日志'
+				},{
 					name: 'topMenu',
 					component: 'Menu',
 					mode: 'horizontal',
-					theme: 'dark',
-					style: { backgroundColor: '#333' },
+					// theme: 'dark',
+					style: { backgroundColor: '#fff' },
 					onClick: '{{$topMenuClick}}',
 					selectedKeys: [],
-					children: [{
+					children: [/*{
 						name: 'gitter',
 						component: 'Menu.Item',
 						key: 'gitter',
@@ -42,7 +55,7 @@ export function getMeta() {
 							component: 'Icon',
 							type: 'smile-o'
 						}, '聊天']
-					}, {
+					},*/ {
 						name: 'github',
 						component: 'Menu.Item',
 						key: 'github',
@@ -62,6 +75,7 @@ export function getMeta() {
 				name: 'left',
 				component: 'Layout',
 				className: 'mk-app-portal-content-left',
+				_visible: '{{data.isShowMenu}}',
 				children: [{
 					name: 'menu',
 					component: 'Menu',
@@ -94,7 +108,7 @@ export function getInitState() {
 			menu: [],
 			menuDefaultSelectedKeys: [],
 			menuDefaultOpenKeys: [],
-			content: {}
+			isShowMenu: true
 		}
 	}
 }
