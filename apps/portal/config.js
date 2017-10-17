@@ -11,6 +11,8 @@ import mdSublimeRunJs from '../docs/sublime-run-js.md'
 import mdJsMechanism from '../docs/js-mechanism.md'
 import mdMachineLearning from '../docs/machine-learning.md'
 import mdNN from '../docs/NN.md'
+import mdProduct from '../docs/product.md'
+import mdHowToUseMarkDown from '../docs/HowToUseMarkDown.md'
 
 //元数据引擎注册markdown组件
 componentFactory.registerComponent('Markdown', Markdown)
@@ -76,6 +78,11 @@ var _options = {
 			appParams: { content: mdSublimeRunJs }
 		}]
 	} ,{
+		key:'4',
+		name:'如何使用markdown',
+		appName: 'markdown',
+		appParams: { content: mdHowToUseMarkDown }
+	},{
 		key: '8',
 		name: 'python',
 		isExpand:false,
@@ -102,6 +109,16 @@ var _options = {
 			name: 'NN(神经网络)',
 			appName: 'markdown',
 			appParams: { content: mdNN }
+		}]
+	},{
+		key: '10',
+		name: '示例',
+		isExpand:false,
+		children: [{
+			key: '1001',
+			name: 'demo列表',
+			appName: 'markdown',
+			appParams: { content: mdProduct }
 		}]
 	}],
 	profile
