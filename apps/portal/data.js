@@ -43,7 +43,6 @@ export function getMeta() {
 					component: 'Menu',
 					mode: 'horizontal',
 					// theme: 'dark',
-					style: { backgroundColor: '#fff' },
 					onClick: '{{$topMenuClick}}',
 					selectedKeys: [],
 					children: [/*{
