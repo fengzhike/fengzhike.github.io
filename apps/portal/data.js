@@ -51,8 +51,8 @@ export function getMeta() {
 						component:'::span',
 						className:'control-title',
 						children:`{{data.isShowMenu ? '收起菜单': '展开菜单'}}`
-					}*/]
-				},{
+					}]
+				},*/{
 					name:'title',
 					component:'::h2',
 					children:'Shun-Kai的网络日志'
