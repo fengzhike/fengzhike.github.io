@@ -9,9 +9,12 @@ class reducer {
         this.config = config.current
     }
 
-    init = (state, option) => {
-        state = this.metaReducer.init(state, getInitState())
+    init = (state, isPc) => {
+        let initState = getInitState()
 
+        initState.data.isShowMenu = isPc
+
+        state = this.metaReducer.init(state, initState)
         if (this.config.menu && !this.config.webapi.getMenu) {
             return this.load(state, { menu: this.config.menu })
         }

@@ -27,13 +27,22 @@ export function getMeta() {
 				component: 'Layout',
 				className: 'mk-app-portal-header-right',
 				children: [{
-					name: 'foldMenu',
-					component: 'Icon',
-					type: `{{data.isShowMenu ? 'menu-fold': 'menu-unfold'}}`,
-					title: `{{data.isShowMenu ? '收起菜单': '展开菜单'}}`,
-					showStyle: 'showy',
-					style: { fontSize: 20 },
-					onClick: '{{$foldMenu}}'
+					name:'meunControl',
+					component:'::div',
+					children:[{
+						name: 'foldMenu',
+						component: 'Icon',
+						type: `{{data.isShowMenu ? 'menu-fold': 'menu-unfold'}}`,
+						title: `{{data.isShowMenu ? '收起菜单': '展开菜单'}}`,
+						showStyle: 'showy',
+						style: { fontSize: 20 },
+						onClick: '{{$foldMenu}}'
+					},{
+						name:'control-title',
+						component:'::span',
+						className:'control-title',
+						children:`{{data.isShowMenu ? '收起菜单': '展开菜单'}}`
+					}]
 				},{
 					name:'title',
 					component:'::h2',
@@ -107,7 +116,7 @@ export function getInitState() {
 			menu: [],
 			menuDefaultSelectedKeys: [],
 			menuDefaultOpenKeys: [],
-			isShowMenu: true
+			isShowMenu: false
 		}
 	}
 }
