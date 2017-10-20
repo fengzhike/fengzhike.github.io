@@ -31,7 +31,7 @@ class action {
             <section>
                 <h3>关于本博客</h3>
                 <p>本博客技术栈：react, redux, immutable,antd,nodejs,hapi,sequelize, node-zookeeper-dubbo</p>
-                <p>本博客基于<a href = "https://ziaochina.github.io/mk-docs/"  target="_blank">mk-js</a>框架</p>
+                <p>本博客基于<strong>mk-js</strong>(<a href = "https://ziaochina.github.io/mk-docs/"  target="_blank">https://ziaochina.github.io/mk-docs/</a>)框架</p>
                 <div>
                     <h3><strong>mk-js</strong>简介</h3>
                     <p>
