@@ -124,7 +124,7 @@ var _options = {
 			appName: 'markdown?id=902',
 			appParams: { content: mdNN }
 		}]
-	},{
+	}/*,{
 		key: '10',
 		name: '示例',
 		isExpand:false,
@@ -133,8 +133,12 @@ var _options = {
 			name: 'demo列表',
 			appName: 'markdown?10',
 			appParams: { content: mdProduct }
+		},{
+			key:'1002',
+			name:'扫雷',
+			appName:'iframe?mine'
 		}]
-	}],
+	}*/],
 	profile
 }
 

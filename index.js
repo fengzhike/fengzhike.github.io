@@ -2,6 +2,7 @@ import { config, start, componentFactory } from 'mk-meta-engine'
 import * as mkComponents from 'mk-component'
 import myConfig  from './config'
 
+import iframe from './apps/iframe/index.js'
 import markdown from './apps/markdown/index.js'
 import front_end from './apps/portal/apps/front-end/index.js'
 import mechine_learning from './apps/portal/apps/mechine-learning/index.js'
@@ -11,6 +12,7 @@ import mk_app_portal from './apps/portal/index.js'
 
 const apps = {
 		
+	[iframe.name]: iframe,	
 	[markdown.name]: markdown,	
 	[front_end.name]: front_end,	
 	[mechine_learning.name]: mechine_learning,	
