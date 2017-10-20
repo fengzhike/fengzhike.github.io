@@ -15,6 +15,7 @@ import mdMachineLearning from '../docs/machine-learning.md'
 import mdNN from '../docs/NN.md'
 import mdProduct from '../docs/product.md'
 import mdHowToUseMarkDown from '../docs/HowToUseMarkDown.md'
+import mdDomainGitpage from '../docs/domain-gitpage.md'
 
 //元数据引擎注册markdown组件
 componentFactory.registerComponent('Markdown', Markdown)
@@ -82,9 +83,19 @@ var _options = {
 		}]
 	} ,{
 		key:'4',
-		name:'如何使用markdown',
-		appName: 'markdown?id=4',
-		appParams: { content: mdHowToUseMarkDown }
+		name:'其他',
+		children:[{
+			key:'401',
+			name:'如何使用Markendown',
+			appName: 'markdown?id=401',
+			appParams: { content: mdHowToUseMarkDown }
+		},{
+			key:'402',
+			name:'将域名解析到自己的git博客',
+			appName: 'markdown?id=402',
+			appParams: { content: mdDomainGitpage }
+		}]
+
 	},{
 		key: '8',
 		name: 'python',
