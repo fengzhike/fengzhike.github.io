@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack",
-    "start": "cross-env NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
