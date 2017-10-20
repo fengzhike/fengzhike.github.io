@@ -10,47 +10,54 @@
 		display:flex;
 		flex-direction: row;
 		align-items: center;
-		padding:0px;
+
 		flex:0 0 54px;
 		height:54px;
 		background-color: #333;
 		color:#fff;
 		overflow: visible;
+		z-index: 2;
 
 		&-left{
-			flex:0 0 auto;
+			height: 100%;
+			width:200px;
+			//padding-left:24px;
+			flex: 0 0 200px;
 			flex-direction: row;
 			align-items: center;
-			width:200px;
-			&-profile {
-				height: 54px;
+
+			&-logo {
+				width: 50px;
+				height: 50px;
+				margin-right: 10px;
 			}
 
 			h1{
-				padding-left: 20px;
 				color:#fff;
 			}
-
 		}
 		&-right{
+			height: 100%;
+			padding:0px 24px 0px 10px;
 			display:flex;
 			flex-direction:row;
 			align-items:center;
-			justify-content:space-between;
+			justify-content: space-between;
 			overflow: visible;
 			background: #fff0cd;
-			height: 100%;
-			box-sizing: border-box;
-			padding:0 10px;
+
 			&-my-title{
 				display: flex;
     			flex-direction: row;
-    			align-items: center;
+				align-items: center;
+				height: 46px;
 			}
-			.mk-menu{
-				border:none;
-				background-color: inherit;
+
+			.mk-menu {
+				 border-bottom: 0px !important;
+				background: #fff0cd;
 			}
+
 			.mk-menu > li{
 				display: flex;
 				flex-direction: row;
@@ -61,12 +68,6 @@
 				}
 
 			}
-			/*i{
-				font-size: 25px;
-				cursor:pointer;
-				margin-right: 30px;
-
-			}*/
 
 			&-photo {
 			    width: 30px;
@@ -74,25 +75,22 @@
     			border-radius: 30px;
     			margin-right: 10px;
 			}
-			.control-title{
-				color: #000;
-				display: inline-block;
-				font-size: 18px;
-				margin-left: 10px;
-				vertical-align: middle;
-			}
 		}
-
 	}
 
-
-
+	&-content-tabs{
+		flex: 0 0 37px;
+		.ant-tabs-bar{
+			margin-bottom: 0px;
+			padding: 5px 0px 0px 5px;
+			background: #e5e6e6;
+		}
+	}
 	&-content{
 		height:100%;
 		display:flex;
 		flex-direction: row;
 		flex: 1 1 auto;
-		overflow: auto;
 
 		&-left{
 			width:200px;
@@ -103,14 +101,16 @@
 
 		&-main{
 			flex: 1 1 auto;
-			background-color:#fff8e7;
-			padding:8px;
+			background-color: #fff8e7;
+    		padding: 10px;
 			overflow:auto;
 
-			& > div {
-				padding:10px;
-
-			}
+		}
+		.ant-tabs-tab-active{
+			background: #fff8e7 !important;
+		}
+		.mk-app-portal-content-tabs .ant-tabs-bar{
+			background: #f3f3f3 !important;
 		}
 	}
 }

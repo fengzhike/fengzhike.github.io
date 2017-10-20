@@ -1,7 +1,9 @@
+// import logo from './img/logo.png'
 import profile from './img/profile.jpg'
 import webapi from './webapi'
 import { componentFactory } from 'mk-meta-engine'
 import { fetch } from 'mk-utils'
+
 import Markdown from '../components/markdown'
 
 import mdFrontEnd from '../docs/front-end.md'
@@ -17,6 +19,7 @@ import mdHowToUseMarkDown from '../docs/HowToUseMarkDown.md'
 //元数据引擎注册markdown组件
 componentFactory.registerComponent('Markdown', Markdown)
 
+
 var _options = {
 	webapi,
 	goAfterLogout: {
@@ -25,7 +28,7 @@ var _options = {
 	},
 	menu: [{
 		key: '1',
-		name: '关于',
+		name: 'about',
 		appName: 'mk-app-portal-about',
 		isDefault: true
 	}, {
@@ -36,7 +39,7 @@ var _options = {
 			key: '201',
 			name: 'js运行机制',
 			// appName: 'front-end?params=js'
-			appName: 'markdown',
+			appName: 'markdown?id=201',
 			appParams: { content: mdJsMechanism }
 
 		}, {
@@ -59,7 +62,7 @@ var _options = {
 		},{
 			key: '207',
 			name: 'redux概念解读',
-			appName: 'markdown',
+			appName: 'markdown?207',
 			appParams: { content: mdRedux }
 		}]
 	},{
@@ -69,18 +72,18 @@ var _options = {
 		children:[{
 			key:'301',
 			name:'Sublime中预览markdown',
-			appName: 'markdown',
+			appName: 'markdown?id=301',
 			appParams: { content: mdSublimeMarkdown }
 		},{
 			key:'302',
 			name:'Sublime中运行js',
-			appName: 'markdown',
+			appName: 'markdown?id=302',
 			appParams: { content: mdSublimeRunJs }
 		}]
 	} ,{
 		key:'4',
 		name:'如何使用markdown',
-		appName: 'markdown',
+		appName: 'markdown?id=4',
 		appParams: { content: mdHowToUseMarkDown }
 	},{
 		key: '8',
@@ -102,12 +105,12 @@ var _options = {
 		children: [{
 			key: '901',
 			name: '机器学习概念',
-			appName: 'markdown',
+			appName: 'markdown?id=901',
 			appParams: { content: mdMachineLearning }
 		}, {
 			key: '902',
 			name: 'NN(神经网络)',
-			appName: 'markdown',
+			appName: 'markdown?id=902',
 			appParams: { content: mdNN }
 		}]
 	},{
@@ -117,7 +120,7 @@ var _options = {
 		children: [{
 			key: '1001',
 			name: 'demo列表',
-			appName: 'markdown',
+			appName: 'markdown?10',
 			appParams: { content: mdProduct }
 		}]
 	}],

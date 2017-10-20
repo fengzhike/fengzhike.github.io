@@ -8,9 +8,6 @@ import mechine_learning from './apps/portal/apps/mechine-learning/index.js'
 import mk_app_portal_about from './apps/portal/apps/mk-app-portal-about/index.js'
 import python from './apps/portal/apps/python/index.js'
 import mk_app_portal from './apps/portal/index.js'
-import mk_app_root_about from './apps/root/apps/mk-app-root-about/index.js'
-import mk_app_root_helloWorld from './apps/root/apps/mk-app-root-helloWorld/index.js'
-import mk_app_root from './apps/root/index.js'
 
 const apps = {
 		
@@ -19,10 +16,7 @@ const apps = {
 	[mechine_learning.name]: mechine_learning,	
 	[mk_app_portal_about.name]: mk_app_portal_about,	
 	[python.name]: python,	
-	[mk_app_portal.name]: mk_app_portal,	
-	[mk_app_root_about.name]: mk_app_root_about,	
-	[mk_app_root_helloWorld.name]: mk_app_root_helloWorld,	
-	[mk_app_root.name]: mk_app_root,
+	[mk_app_portal.name]: mk_app_portal,
 }
 
 apps.config = (options) => {

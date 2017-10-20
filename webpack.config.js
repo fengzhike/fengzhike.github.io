@@ -1,13 +1,14 @@
 var webpack = require("webpack");
 var path = require("path");
-const marked = require("marked")
-
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const marked = require("marked")
+const renderer = new marked.Renderer()
 
 var env = process.env.NODE_ENV
 var compress = process.env.COMPRESS
 var plugins = []
-const renderer = new marked.Renderer()
+
 //node环境变量，生产环境：production，开发环境：development
 plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(env)
@@ -29,7 +30,6 @@ plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
 plugins.push(new HtmlWebpackPlugin({
     filename: './index.html', //生成的html存放路径，相对于 path
     template: './index.html', //html模板路径
-    favicon : './assets/img/favicon.ico',
     inject: true, //允许插件修改哪些内容，包括head与body`
 }))
 
@@ -53,8 +53,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/,
-            exclude: /node_modules/,
-
+            //exclude: /node_modules/,
             use: [{
                 loader: 'style-loader'
             }, {
@@ -76,12 +75,13 @@ module.exports = {
         }, {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,
             use: {
-                loader: 'file-loader',
+                loader: 'url-loader',
                 options: {
                     name: '[name].[hash:8].[ext]',
+                    limit: 8192
                 }
             }
-        }, {
+        },{
             test: /\.md$/,
             use: [{
                 loader: "html-loader"

@@ -10,12 +10,12 @@ export function getMeta() {
 			children: [{
 				name: 'left',
 				component: 'Layout',
-				_visible: '{{data.isShowMenu}}',
 				className: 'mk-app-portal-header-left',
+				_visible: '{{data.isShowMenu}}',
 				children: [{
 					name: 'logo',
 					component: '::img',
-					className: 'mk-app-portal-header-left-profile',
+					className: 'mk-app-portal-header-left-logo',
 					src: '{{$getProfile()}}'
 				}, {
 					name: 'siteName',
@@ -34,36 +34,26 @@ export function getMeta() {
 					showStyle: 'showy',
 					style: { fontSize: 20 },
 					onClick: '{{$foldMenu}}'
-				},
-				/*{
-					name:'meunControl',
-					component:'::div',
-					children:[{
-						name: 'foldMenu',
-						component: 'Icon',
-						type: `{{data.isShowMenu ? 'menu-fold': 'menu-unfold'}}`,
-						title: `{{data.isShowMenu ? '收起菜单': '展开菜单'}}`,
-						showStyle: 'showy',
-						style: { fontSize: 20 },
-						onClick: '{{$foldMenu}}'
-					},{
-						name:'control-title',
-						component:'::span',
-						className:'control-title',
-						children:`{{data.isShowMenu ? '收起菜单': '展开菜单'}}`
-					}]
-				},*/{
-					name:'title',
-					component:'::h2',
-					children:'Shun-Kai的网络日志'
-				},{
+				}, {
 					name: 'topMenu',
 					component: 'Menu',
 					mode: 'horizontal',
-					// theme: 'dark',
+					//theme: 'dark',
+					//style: { backgroundColor: '#333' },
 					onClick: '{{$topMenuClick}}',
 					selectedKeys: [],
-					children: [/*{
+					children: [{
+						name: 'toggleTabs',
+						component: 'Menu.Item',
+						key: 'toggleTabs',
+						_visible:'{{data.isShowToggleTabs}}',
+						children: [{
+							name: 'icon',
+							component: 'Icon',
+							type: 'appstore-o'
+						},
+							"{{data.isTabsStyle ? '正常风格' : '多页签显示风格'}}"]
+					},/* {
 						name: 'gitter',
 						component: 'Menu.Item',
 						key: 'gitter',
@@ -98,22 +88,50 @@ export function getMeta() {
 					component: 'Menu',
 					mode: 'inline',
 					theme: 'dark',
-					defaultSelectedKeys: "{{data.menuDefaultSelectedKeys}}",
+					selectedKeys: "{{$getMenuSelectKeys()}}",
 					defaultOpenKeys: "{{data.menuDefaultOpenKeys}}",
 					onClick: '{{$menuClick}}',
 					children: '{{$getMenuChildren()}}'
 				}]
 			}, {
-				name: 'main',
+				name: 'container',
 				component: 'Layout',
-				className: 'mk-app-portal-content-main',
-				_visible: '{{!!data.content.appName}}',
-				children: {
-					name: 'app',
-					component: 'AppLoader',
-					appName: '{{data.content.appName}}',
-					'...': '{{data.content.appParams}}'
-				}
+				children: [{
+					name: 'tabs',
+					component: 'Tabs',
+					className: 'mk-app-portal-content-tabs',
+					type: 'card',
+					type: "editable-card",
+					hideAdd: true,
+					activeKey: '{{data.content && data.content.name}}',
+					onChange: '{{$tabChange}}',
+					onEdit: '{{$tabEdit}}',
+					_visible: '{{ data.isTabsStyle && data.openTabs && data.openTabs.length > 0}}',
+					children: [{
+						name: 'tab1',
+						component: 'Tabs.TabPane',
+						key: '{{data.openTabs[_rowIndex].name}}',
+						tab: '{{data.openTabs[_rowIndex].name}}',
+						_power: 'for in data.openTabs'
+					}]
+				}, {
+					name: 'main',
+					component: 'Layout',
+					className: 'mk-app-portal-content-main',
+					_visible: '{{!!(data.content && data.content.appName)}}',
+					children: {
+						name: 'app',
+						component: 'AppLoader',
+						appName: '{{ data.openTabs && data.openTabs.length > 0 && data.openTabs[_rowIndex].appName }}',
+						onPortalReload: '{{$load}}',
+						setPortalContent: '{{$setContent}}',
+						'...': '{{data.openTabs && data.openTabs.length > 0 && data.openTabs[_rowIndex].appProps}}',
+						isTabStyle: '{{data.isTabsStyle}}',
+						_notRender: '{{ !(data.content && data.content.name == data.openTabs[_rowIndex].name) }}',
+						_power: 'for in data.openTabs',
+
+					}
+				}]
 			}]
 		}]
 	}
@@ -123,9 +141,14 @@ export function getInitState() {
 	return {
 		data: {
 			menu: [],
-			menuDefaultSelectedKeys: [],
+			menuSelectedKeys: [],
 			menuDefaultOpenKeys: [],
-			isShowMenu: false
+			content: {},
+			openTabs: [],
+			isTabsStyle: false,
+			isShowMenu: true,
+			isShowToggleTabs:true,
+			other: {}
 		}
 	}
 }

@@ -25,11 +25,12 @@ function config(options) {
 
 	//对应用进行配置，key会被转换为'^<key>$'跟app名称正则匹配
 	_options.apps && _options.apps.config({
-		//'*': { webapi } //正式网站应该有一个完整webapi对象，提供所有web请求函数
+		//'*': {webapi} //正式网站应该有一个完整webapi对象，提供所有web请求函数
 	})
 
 	_options.targetDomId = 'app' //react render到目标dom
 	_options.startAppName = 'mk-app-portal' //启动app名，需要根据实际情况配置
+	// _options.startAppName = 'mk-app-root' //启动app名，需要根据实际情况配置
 
 	_options.toast = Toast //轻提示使用组件，mk-meta-engine使用
 	_options.notification = Notification //通知组件
