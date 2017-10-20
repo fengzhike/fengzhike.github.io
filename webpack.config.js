@@ -25,6 +25,8 @@ if (env === 'production' && compress) {
     )
 }
 
+
+
 plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
 
 plugins.push(new HtmlWebpackPlugin({
