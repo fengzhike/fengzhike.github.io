@@ -49,6 +49,13 @@ class action {
                 </div>
 
             </section>
+            <hr/>
+            <footer>
+                <p>本日志框架和内容为纯手打</p>
+                <p>作者：Shun-Kai</p>
+                <p>邮箱：269596458@qq.com</p>
+                <p>引用请注明作者和来源<a href = 'http://fanshunkai.com'>http://fanshunkai.com</a></p>
+            </footer>
 
         </div>
         )
