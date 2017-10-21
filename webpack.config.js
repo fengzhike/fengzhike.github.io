@@ -31,6 +31,7 @@ plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
 
 plugins.push(new HtmlWebpackPlugin({
     filename: './index.html', //生成的html存放路径，相对于 path
+    favicon: './assets/img/favicon.ico', //favicon路径
     template: './index.html', //html模板路径
     inject: true, //允许插件修改哪些内容，包括head与body`
 }))
