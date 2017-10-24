@@ -1,4 +1,4 @@
-# 函数式编程入门
+# 函数式编程入门 Javascript Fucntional Programming
 ## 一、范畴论
 函数式编程的起源是范畴论（Category Theory）。
 
