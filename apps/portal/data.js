@@ -35,6 +35,10 @@ export function getMeta() {
 					style: { fontSize: 20 },
 					onClick: '{{$foldMenu}}'
 				}, {
+					name:'title',
+					component:'::h1',
+					children:'Shun-Kai的网络日志'
+				},{
 					name: 'topMenu',
 					component: 'Menu',
 					mode: 'horizontal',

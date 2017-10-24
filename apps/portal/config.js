@@ -16,6 +16,7 @@ import mdNN from '../docs/NN.md'
 import mdProduct from '../docs/product.md'
 import mdHowToUseMarkDown from '../docs/HowToUseMarkDown.md'
 import mdDomainGitpage from '../docs/domain-gitpage.md'
+import mdFucntionalprogramming from '../docs/fucntionalprogramming.md'
 
 //元数据引擎注册markdown组件
 componentFactory.registerComponent('Markdown', Markdown)
@@ -42,8 +43,12 @@ var _options = {
 			// appName: 'front-end?params=js'
 			appName: 'markdown?id=201',
 			appParams: { content: mdJsMechanism }
-
 		}, {
+			key:'202',
+			name:'函数式编程',
+			appName: 'markdown?id=202',
+			appParams: { content: mdFucntionalprogramming }
+		},{
 			key: '203',
 			name: 'css',
 			appName: 'front-end?params=css',
