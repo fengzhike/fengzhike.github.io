@@ -7,13 +7,24 @@
 
 ## 块注释（blockquote）
 
+```
+>     通过在文字开头添加“>”表示块注释。（当>和文字之间添加五个blank时，块注释的文字会有变化。）
+```
+
 >   通过在文字开头添加“>”表示块注释。（当>和文字之间添加五个blank时，块注释的文字会有变化。）
 
 ## 斜体
 
->   将需要设置为斜体的文字两端使用1个“*”或者“_”夹起来
+*斜体* _斜体_
+
+>   将需要设置为斜体的文字两端使用1个“*斜体*”或者“_斜体_”夹起来
 
 ## 粗体
+```
+**斜体**  __斜体__
+
+```
+***斜体***  __斜体__
 
 >   将需要设置为粗体的文字两端使用2个“*”或者“_”夹起来
 
@@ -31,7 +42,7 @@
 
 内联方式：This is an [example link](http://example.com/).
 引用方式：
-I get 10 times more traffic from [Google][1] than from [Yahoo][2] or [MSN][3].
+I get 10 times more traffic from [baidu][1] than from [Yahoo][2] or [MSN][3].
 
 [1]: http://baidu.com/        "baidu"
 [2]: http://search.yahoo.com/  "Yahoo Search"
@@ -41,10 +52,15 @@ I get 10 times more traffic from [Google][1] than from [Yahoo][2] or [MSN][3].
 ## 图片（Images）
 
 >   图片的处理方式和链接的处理方式，非常的类似，比链接在开头处多加一个!。
-内联方式：![alt text](/path/to/img.jpg "Title")
-引用方式：![alt text][id]
+内联方式：
 
-[id]: /path/to/img.jpg "Title"
+![alt text](./img/img.jpg "Title")
+
+引用方式：
+
+![alt text][id]
+
+[id]: ./img/img.jpg "Title"
 
 ## 代码（HTML中所谓的Code）
 
@@ -58,13 +74,26 @@ I get 10 times more traffic from [Google][1] than from [Yahoo][2] or [MSN][3].
         <div v-else>{{vue}}</div>
 ```
 
-## 脚注（footnote）
+## 表格
+```
+|姓名 | 年龄 | 工作|
+| - | :-: | -: |
+|诸葛1 | 21 | 军师|
+|诸葛2 | 22 | 军师|
+|诸葛3 | 23 | 军师|
+|诸葛4 | 24 | 军师|
 
-实现方式如下：
 
-hello[^hello]
+```
 
-[^hello]: hi
+|姓名 | 年龄 | 工作|
+| - | :-: | -: |
+|诸葛1 | 21 | 军师|
+|诸葛2 | 22 | 军师|
+|诸葛3 | 23 | 军师|
+|诸葛4 | 24 | 军师|
+
+
 
 ## 下划线
 
