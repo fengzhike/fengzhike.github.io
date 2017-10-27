@@ -17,6 +17,7 @@ import mdProduct from '../docs/product.md'
 import mdHowToUseMarkDown from '../docs/HowToUseMarkDown.md'
 import mdDomainGitpage from '../docs/domain-gitpage.md'
 import mdFucntionalprogramming from '../docs/fucntionalprogramming.md'
+import mdGitRespository from '../docs/git-respository.md'
 
 //元数据引擎注册markdown组件
 componentFactory.registerComponent('Markdown', Markdown)
@@ -99,6 +100,11 @@ var _options = {
 			name:'将域名解析到自己的git博客',
 			appName: 'markdown?id=402',
 			appParams: { content: mdDomainGitpage }
+		},{
+			key:'403',
+			name:'搭建一个git仓库',
+			appName: 'markdown?id=403',
+			appParams: { content: mdGitRespository }
 		}]
 
 	},{
