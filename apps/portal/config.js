@@ -18,6 +18,8 @@ import mdHowToUseMarkDown from '../docs/HowToUseMarkDown.md'
 import mdDomainGitpage from '../docs/domain-gitpage.md'
 import mdFucntionalprogramming from '../docs/fucntionalprogramming.md'
 import mdGitRespository from '../docs/git-respository.md'
+import mdUbuntuApache2 from '../docs/ubuntu-apache2.md'
+
 
 //元数据引擎注册markdown组件
 componentFactory.registerComponent('Markdown', Markdown)
@@ -50,6 +52,16 @@ var _options = {
 			appName: 'markdown?id=202',
 			appParams: { content: mdFucntionalprogramming }
 		},{
+			key:'203',
+			name:'在服务器搭建一个git仓库',
+			appName: 'markdown?id=203',
+			appParams: { content: mdGitRespository }
+		},{
+			key:'204',
+			name:'ubuntu apache2配置',
+			appName: 'markdown?id=204',
+			appParams: { content: mdUbuntuApache2 }
+		},/*{
 			key: '203',
 			name: 'css',
 			appName: 'front-end?params=css',
@@ -66,7 +78,7 @@ var _options = {
 			key: '206',
 			name: 'webpack',
 			appName: 'front-end?params=webpack'
-		},{
+		},*/{
 			key: '207',
 			name: 'redux概念解读',
 			appName: 'markdown?207',
@@ -100,11 +112,6 @@ var _options = {
 			name:'将域名解析到自己的git博客',
 			appName: 'markdown?id=402',
 			appParams: { content: mdDomainGitpage }
-		},{
-			key:'403',
-			name:'搭建一个git仓库',
-			appName: 'markdown?id=403',
-			appParams: { content: mdGitRespository }
 		}]
 
 	},{
