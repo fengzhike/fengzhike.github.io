@@ -37,7 +37,9 @@ export function getMeta() {
 				}, {
 					name:'title',
 					component:'::h1',
-					children:'Shun-Kai的网络日志'
+					children:'Shun-Kai的网络日志',
+					_visible:'{{data.isShowToggleTabs}}',
+
 				},{
 					name: 'topMenu',
 					component: 'Menu',
