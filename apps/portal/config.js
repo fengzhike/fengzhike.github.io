@@ -19,6 +19,7 @@ import mdDomainGitpage from '../docs/domain-gitpage.md'
 import mdFucntionalprogramming from '../docs/fucntionalprogramming.md'
 import mdGitRespository from '../docs/git-respository.md'
 import mdUbuntuApache2 from '../docs/ubuntu-apache2.md'
+import mdLinuxWindows from '../docs/linux-windows.md'
 
 
 //元数据引擎注册markdown组件
@@ -84,6 +85,16 @@ var _options = {
 			appName: 'markdown?207',
 			appParams: { content: mdRedux }
 		}]
+	},{
+		key:'5',
+		name:'linux',
+		children:[{
+			key:'501',
+			name:'linux&windows常用命令',
+			appName:'markdown?501',
+			appParams:{content:mdLinuxWindows}
+		}]
+
 	},{
 		key:'3',
 		name:'常用工具',
