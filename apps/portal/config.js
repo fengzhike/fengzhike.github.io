@@ -46,7 +46,6 @@ var _options = {
 		children: [{
 			key: '201',
 			name: 'js运行机制',
-			// appName: 'front-end?params=js'
 			appName: 'markdown?id=201',
 			appParams: { content: mdJsMechanism }
 		}, {
@@ -64,12 +63,12 @@ var _options = {
 			name:'ubuntu apache2配置',
 			appName: 'markdown?id=204',
 			appParams: { content: mdUbuntuApache2 }
-		},/*{
+		},{
 			key:'205',
 			name:'karma-phantom自动化测试',
 			appName: 'markdown?id=205',
 			appParams: { content: mdKarmaPhantom }
-		},*/{
+		},{
 			key:'206',
 			name:'backstop自动化样式回归测试',
 			appName: 'markdown?id=206',
