@@ -20,6 +20,8 @@ import mdFucntionalprogramming from '../docs/fucntionalprogramming.md'
 import mdGitRespository from '../docs/git-respository.md'
 import mdUbuntuApache2 from '../docs/ubuntu-apache2.md'
 import mdLinuxWindows from '../docs/linux-windows.md'
+import mdKarmaPhantom from '../docs/karma-phantom.md'
+import mdBackstop from '../docs/backstop.md'
 
 
 //元数据引擎注册markdown组件
@@ -62,6 +64,16 @@ var _options = {
 			name:'ubuntu apache2配置',
 			appName: 'markdown?id=204',
 			appParams: { content: mdUbuntuApache2 }
+		},/*{
+			key:'205',
+			name:'karma-phantom自动化测试',
+			appName: 'markdown?id=205',
+			appParams: { content: mdKarmaPhantom }
+		},*/{
+			key:'206',
+			name:'backstop自动化样式回归测试',
+			appName: 'markdown?id=206',
+			appParams: { content: mdBackstop }
 		},/*{
 			key: '203',
 			name: 'css',
