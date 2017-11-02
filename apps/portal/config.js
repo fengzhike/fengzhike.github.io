@@ -22,6 +22,7 @@ import mdUbuntuApache2 from '../docs/ubuntu-apache2.md'
 import mdLinuxWindows from '../docs/linux-windows.md'
 import mdKarmaPhantom from '../docs/karma-phantom.md'
 import mdBackstop from '../docs/backstop.md'
+import mdKarmaSystemGulp from '../docs/karma-system-gulp.md'
 
 
 //元数据引擎注册markdown组件
@@ -64,10 +65,15 @@ var _options = {
 			appName: 'markdown?id=204',
 			appParams: { content: mdUbuntuApache2 }
 		},{
-			key:'205',
+			key:'208',
 			name:'karma-phantom自动化测试',
-			appName: 'markdown?id=205',
+			appName: 'markdown?id=208',
 			appParams: { content: mdKarmaPhantom }
+		},{
+			key:'205',
+			name:'karma-system-gulp自动化测试工程',
+			appName: 'markdown?id=205',
+			appParams: { content: mdKarmaSystemGulp }
 		},{
 			key:'206',
 			name:'backstop自动化样式回归测试',
