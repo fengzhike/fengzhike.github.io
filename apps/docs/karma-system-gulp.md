@@ -70,11 +70,14 @@ gulp.task('default',['css','es6','watch','server'],function(){
 
 ## 引入systemjs
 * 在index.html中引入systemjs
+
 ```
 <script src="./libs/system.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 ```
+
 * 使用systemjs加载编译后的js,并且把写的Thumb插件扩展到jq上
+
 ```
 <script >
 
@@ -88,6 +91,7 @@ gulp.task('default',['css','es6','watch','server'],function(){
 
 	})
 </script>
+
 ```
 
 ## 功能实现
