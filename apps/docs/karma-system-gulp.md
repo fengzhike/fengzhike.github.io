@@ -208,6 +208,7 @@ $ npm run test
 ```
 $ git clone https://github.com/fengzhike/thumb.git
 $ cd thumb
+$ npm install
 $ gulp 或者 npm start  //启动项目
 $ gulp test   //单元测试
 ```
