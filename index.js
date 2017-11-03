@@ -1,6 +1,7 @@
 import { config, start, componentFactory } from 'mk-meta-engine'
 import * as mkComponents from 'mk-component'
 import myConfig  from './config'
+import 'babel-polyfill'
 
 import iframe from './apps/iframe/index.js'
 import markdown from './apps/markdown/index.js'
@@ -11,13 +12,13 @@ import python from './apps/portal/apps/python/index.js'
 import mk_app_portal from './apps/portal/index.js'
 
 const apps = {
-		
-	[iframe.name]: iframe,	
-	[markdown.name]: markdown,	
-	[front_end.name]: front_end,	
-	[mechine_learning.name]: mechine_learning,	
-	[mk_app_portal_about.name]: mk_app_portal_about,	
-	[python.name]: python,	
+
+	[iframe.name]: iframe,
+	[markdown.name]: markdown,
+	[front_end.name]: front_end,
+	[mechine_learning.name]: mechine_learning,
+	[mk_app_portal_about.name]: mk_app_portal_about,
+	[python.name]: python,
 	[mk_app_portal.name]: mk_app_portal,
 }
 
@@ -41,5 +42,5 @@ config(myConfig({ apps }))
 Object.keys(mkComponents).forEach(key=>{
 	componentFactory.registerComponent(key, mkComponents[key])
 })
-	
+
 start()
