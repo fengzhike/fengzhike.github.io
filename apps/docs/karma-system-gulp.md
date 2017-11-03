@@ -7,26 +7,29 @@
 使用gulp实现起服务，自动编译less和ES6
 * 1.安装gulp
 
-    ```
-    $ npm install gulp -g
-    ```
+```
+$ npm install gulp -g
+```
 
-    运行 gulp -v 检查是否安装成功
+运行 gulp -v 检查是否安装成功
 
-    ```
-    $ gulp -v
-    ```
+```
+$ gulp -v
+```
     如果出现版本号，安装成功
 * 2.在项目目录安装connect,less和babel
-    ```
-    $ npm init -y  //npm初始化
-    $ npm install gulp gulp-connect gulp-less gulp-babel babel-core babel-preset-es2015 --save-dev
-    ```
+
+```
+$ npm init -y  //npm初始化
+$ npm install gulp gulp-connect gulp-less gulp-babel babel-core babel-preset-es2015 --save-dev
+```
+
 * 3.创建gulpfile.js
 创建gulpfile.js并编写gulp task
 
 
 ```
+
 var gulp = require('gulp'),
 connect = require('gulp-connect'),
 less = require('gulp-less'),
@@ -57,13 +60,15 @@ gulp.task('watch',function(){
 gulp.task('default',['css','es6','watch','server'],function(){
 	console.log('success')
 })
+
 ```
 
 运行gulp,自动编译es6和less
 
-    ```
-    $ gulp
-    ```
+```
+$ gulp
+```
+
 如果出现下面的画面，gulp配置成功
 
 <img src = './img/gulp1.png' width=400/>
@@ -96,6 +101,7 @@ gulp.task('default',['css','es6','watch','server'],function(){
 
 ## 功能实现
 index.js
+
 ```
 import './add.js'
 
@@ -125,12 +131,15 @@ export class Thumb{
 	}
 }
 ```
+
 add.js是要测试的纯函数
+
 ```
 window.add = function(num){
 	return ++num;
 }
 ```
+
 功能实现完毕，下面配置karma，进行单元测试
 ## 配置karma
 * 安装karma
@@ -141,6 +150,7 @@ $ npm install karma karma-jasmine jasmine-core karma-phantomjs-launcher --save-d
 
 * 配置scripts
 在package.json中配置相关scripts命令
+
 ```
 "scripts": {
    "test": "karma start",
@@ -148,16 +158,20 @@ $ npm install karma karma-jasmine jasmine-core karma-phantomjs-launcher --save-d
    "start": "gulp"
  },
 ```
+
 * 初始化karma
+
 ```
 $ npm run karmainit
 ```
+
 选择 jasmine phantomjs 其余默认
 
 生成karma.conf.js文件
 
 * 配置karma.conf.js
 files中配置目标测试文件和测试用例,singleRun设为true
+
 ```
 files: [
       './dest/add.js',
@@ -165,6 +179,7 @@ files: [
   ],...
 singleRun:true
 ```
+
 * 写测试用例
 在./test/add.spec.js文件中写用例
 
@@ -175,11 +190,13 @@ describe('测试加法函数',function(){
 	})
 })
 ```
+
 * 运行karma进行单元测试
 
 ```
 $ npm run test
 ```
+
 出现下面画面
 
 <img src = './img/gulp-karma1.png' width=400/>
@@ -193,7 +210,9 @@ describe('测试加法函数',function(){
 	})
 })
 ```
+
 再运行karma
+
 ```
 $ npm run test
 ```
@@ -205,6 +224,7 @@ $ npm run test
 ## 完成
 到此，我们已经完成了一个点赞的插件，扩展在了jq对象上，支持单元测试，还有事件稀释哦
 * 运行项目
+
 ```
 $ git clone https://github.com/fengzhike/thumb.git
 $ cd thumb
