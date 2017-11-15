@@ -9,7 +9,7 @@
     ```
     $ sudo useradd -m git //-m 在username的主目录
     $ sudo passwd git //为该账户添加密码
-    $ usermod -a -C sudo git //添加该账户到sudo群组，允许该用户安装软件，-a ：添加  -G 一个或多个群组
+    $ usermod -a -G sudo git //添加该账户到sudo群组，允许该用户安装软件，-a ：添加  -G 一个或多个群组
     $ sudo chsh -s /bin/bash git //将该账户的默认外壳设为bash
     ```
 
