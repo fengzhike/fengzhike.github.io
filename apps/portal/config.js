@@ -23,6 +23,7 @@ import mdLinuxWindows from '../docs/linux-windows.md'
 import mdKarmaPhantom from '../docs/karma-phantom.md'
 import mdBackstop from '../docs/backstop.md'
 import mdKarmaSystemGulp from '../docs/karma-system-gulp.md'
+import mdFrontEndJiCheng from '../docs/front-end-chixujicheng.md'
 
 
 //元数据引擎注册markdown组件
@@ -65,42 +66,30 @@ var _options = {
 			appName: 'markdown?id=204',
 			appParams: { content: mdUbuntuApache2 }
 		},{
-			key:'208',
+			key:'205',
 			name:'karma-phantom自动化测试',
-			appName: 'markdown?id=208',
+			appName: 'markdown?id=205',
 			appParams: { content: mdKarmaPhantom }
 		},{
-			key:'205',
+			key:'206',
 			name:'karma-system-gulp自动化测试工程',
-			appName: 'markdown?id=205',
+			appName: 'markdown?id=206',
 			appParams: { content: mdKarmaSystemGulp }
 		},{
-			key:'206',
+			key:'207',
 			name:'backstop自动化样式回归测试',
-			appName: 'markdown?id=206',
+			appName: 'markdown?id=207',
 			appParams: { content: mdBackstop }
-		},/*{
-			key: '203',
-			name: 'css',
-			appName: 'front-end?params=css',
-			appParams:{}
 		},{
-			key: '204',
-			name: 'less & sass',
-			appName: 'front-end?params=less,sass'
-		},{
-			key: '205',
-			name: 'gulp',
-			appName: 'front-end?params=gulp'
-		},{
-			key: '206',
-			name: 'webpack',
-			appName: 'front-end?params=webpack'
-		},*/{
-			key: '207',
+			key: '208',
 			name: 'redux概念解读',
-			appName: 'markdown?207',
+			appName: 'markdown?208',
 			appParams: { content: mdRedux }
+		},{
+			key: '209',
+			name: '前端持续集成',
+			appName: 'markdown?209',
+			appParams: { content: mdFrontEndJiCheng }
 		}]
 	},{
 		key:'5',
