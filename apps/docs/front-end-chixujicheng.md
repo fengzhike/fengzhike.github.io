@@ -123,64 +123,65 @@
 ## Web Component
 1. Custom Elements
 
-```
-class ButtonHelloElement extends HTMLButtonElement {
-	constructor() {
-		super()
-		this.addEventListener('click', () => {
-			alert('hello world')
-		})
-    	 }
-}
-customElements.define('button-hello', ButtonHelloElement, { extends: 'button' })
-
- <button is="button-hello">hello world</button>
-```
-2. HTML Imports
-HTML Imports 是一种在 HTMLs 中引用以及复用其他的 HTML 文档的方式。这个 Import 很漂亮，可以简单理解为我们 常见的模板中的 include 之类的作用。
-
-```
-<link rel="import" href=“/components/header.html"> const link = document.querySelector('link[rel=import]') const header = link.import;
-const pulse = header.querySelector(‘div.logo');
-const d = document.currentScript.owerDocument                                                                
-```
-3. HTML Templates
-用过 handlebars 的人都知道有这么一个东西:
-<script id="template" type="text/x-handlebars-template">
-</script>那么 HTML Templates 便是把这个东西官方标准化，
-提供了一个 template 标签来存放以后需要但是暂时不渲染
-的 HTML 代码。
-```
-<template id="template"><p>Smile!</p></template>
- <script>
-	let num = 3;
-	const fragment = document.getElementById('template').content.cloneNode(true);
-	while (num-- > 1) {
-		fragment.firstChild.before(fragment.firstChild.cloneNode(true));
-		 fragment.firstChild.textContent += fragment.lastChild.textContent;
+	```
+	class ButtonHelloElement extends HTMLButtonElement {
+		constructor() {
+			super()
+			this.addEventListener('click', () => {
+				alert('hello world')
+			})
+	    	 }
 	}
-	document.body.appendChild(fragment);
-</script>
-```
+	customElements.define('button-hello', ButtonHelloElement, { extends: 'button' })
+
+	 <button is="button-hello">hello world</button>
+	```
+2. HTML Imports
+	HTML Imports 是一种在 HTMLs 中引用以及复用其他的 HTML 文档的方式。这个 Import 很漂亮，可以简单理解为我们 常见的模板中的 include 之类的作用。
+
+	```
+	<link rel="import" href=“/components/header.html"> const link = document.querySelector('link[rel=import]') const header = link.import;
+	const pulse = header.querySelector(‘div.logo');
+	const d = document.currentScript.owerDocument                                                                
+	```
+3. HTML Templates
+	用过 handlebars 的人都知道有这么一个东西:
+	<script id="template" type="text/x-handlebars-template">
+	</script>那么 HTML Templates 便是把这个东西官方标准化，
+	提供了一个 template 标签来存放以后需要但是暂时不渲染
+	的 HTML 代码。
+	```
+	<template id="template"><p>Smile!</p></template>
+	 <script>
+		let num = 3;
+		const fragment = document.getElementById('template').content.cloneNode(true);
+		while (num-- > 1) {
+			fragment.firstChild.before(fragment.firstChild.cloneNode(true));
+			 fragment.firstChild.textContent += fragment.lastChild.textContent;
+		}
+		document.body.appendChild(fragment);
+	</script>
+	```
 4. Shadow DOM
-Shadow DOM 最本质的需求是需要一个隔离组件代码作用域的东 西，例如我组件代码的 CSS 不能影响其他组件之类的，而 iframe 又太重并且可能有各种奇怪问题。旨在提供一种更好地 组织页面元素的方式，来为日趋复杂的页面应用提供强大支持， 避免代码间的相互影响。
+	Shadow DOM 最本质的需求是需要一个隔离组件代码作用域的东 西，例如我组件代码的 CSS 不能影响其他组件之类的，而 iframe 又太重并且可能有各种奇怪问题。旨在提供一种更好地 组织页面元素的方式，来为日趋复杂的页面应用提供强大支持， 避免代码间的相互影响。
 
-```
-const div = document.getElementById('id') const shadowRoot = div.createShadowRoot() const span = document.createElement('span')
-span.textContent = 'hello world' shadowRoot.appendChild(span)
+	```
+	const div = document.getElementById('id')
+	const shadowRoot = div.createShadowRoot()
+	const span = document.createElement('span')
+	span.textContent = 'hello world' shadowRoot.appendChild(span)
+	<x-foo>
+		<"shadow tree">
+			<div>
+				<span id="not-top">...</span>
+			</div>
+		<span id="top">...</span> </>
+	</x-foo>
 
-
-<x-foo>
-	<"shadow tree">
-		<div>
-			<span id="not-top">...</span>
-		</div>
-	<span id="top">...</span> </>
-</x-foo>
-```
-x-foo::shadow >span 可以匹配到#top元素
-x-foo/deep/span 可以匹配到#not-top和#top元素
-:host(.foo)匹配<x-foo>元素
+	```
+	x-foo::shadow >span 可以匹配到#top元素
+	x-foo/deep/span 可以匹配到#not-top和#top元素
+	:host(.foo)匹配<x-foo>元素
 
 
 ## 自动化部署
