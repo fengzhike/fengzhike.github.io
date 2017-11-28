@@ -171,17 +171,6 @@ import用于在一个模块中加载另一个含有export接口的模块。
 
 
 
-define(function(require, exports, module) {   var a = require('./a')   a.doSomething()   // 此处略去 100 行   var b = require('./b') // 依赖可以就近书写   b.doSomething()   // ... })
-
-作者：玉伯
-链接：https://www.zhihu.com/question/20351507/answer/14859415
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
-
-
-
 
 
 
