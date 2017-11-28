@@ -24,6 +24,8 @@ import mdKarmaPhantom from '../docs/karma-phantom.md'
 import mdBackstop from '../docs/backstop.md'
 import mdKarmaSystemGulp from '../docs/karma-system-gulp.md'
 import mdFrontEndJiCheng from '../docs/front-end-chixujicheng.md'
+import mdModule from '../docs/module-description.md'
+import mdWebpack from '../docs/webpack.md'
 
 
 //元数据引擎注册markdown组件
@@ -90,6 +92,16 @@ var _options = {
 			name: '前端持续集成',
 			appName: 'markdown?209',
 			appParams: { content: mdFrontEndJiCheng }
+		},{
+			key: '210',
+			name: '模块化简述',
+			appName: 'markdown?210',
+			appParams: { content: mdModule }
+		},{
+			key: '211',
+			name: 'webpack从入门到放弃',
+			appName: 'markdown?211',
+			appParams: { content: mdWebpack }
 		}]
 	},{
 		key:'5',

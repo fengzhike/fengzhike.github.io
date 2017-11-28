@@ -17,9 +17,9 @@ plugins.push(new webpack.DefinePlugin({
 //代码丑化
 if (env === 'production' && compress) {
     plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
+        new webpack.optimize.UglifyJsPlugin({		
             compressor: {
-                warnings: false
+                warnings: false	
             }
         })
     )
