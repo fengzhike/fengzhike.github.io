@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack",
+    "release": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack --config webpack.config.prd.js",
     "start": "cross-env NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 9999 --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,7 +33,9 @@
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.0",
     "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
+    "happypack": "^4.0.0",
     "highlight-loader": "^0.7.2",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",

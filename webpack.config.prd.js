@@ -2,6 +2,7 @@ var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HappyPack = require('happypack')
 
 const marked = require("marked")
 const renderer = new marked.Renderer()
@@ -16,23 +17,22 @@ plugins.push(new webpack.DefinePlugin({
 }))
 
 //代码丑化
-if (env === 'production' && compress) {
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        })
-    )
-}
+
+plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+        minimize: true,
+        sourceMap:false,
+        compressor: {
+            warnings: false
+        },
+        output: {
+            comments: false,
+        },
+    })
+)
 
 
-
-plugins.push(new webpack.optimize.CommonsChunkPlugin({
-    names: ['mk', 'vendor'],
-    filename:'[name].[hash:8].bundle.js',
-    minChunks: Infinity
-}))
+plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor'))
 
 plugins.push(new HtmlWebpackPlugin({
     filename: './index.html', //生成的html存放路径，相对于 path
@@ -41,17 +41,18 @@ plugins.push(new HtmlWebpackPlugin({
     inject: true, //允许插件修改哪些内容，包括head与body`
 }))
 
-const extractCSS = new ExtractTextPlugin('[name]-one-[hash:8].css');
-const extractLESS = new ExtractTextPlugin('[name]-two-[hash:8].css');
 
-plugins.push(extractCSS)
-plugins.push(extractLESS)
+plugins.push(
+    new HappyPack({
+        loaders: ['babel-loader']
+    })
+)
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'false',
     entry: {
         bundle: ["./index.js", "./assets/styles/index.less"],
-        vendor: ["react", "react-dom", "moment"],
-         mk: ["mk-meta-engine", "mk-component", "mk-utils"]
+        react: ["react", 'react-dom', 'moment'],
+        mks:['mk-meta-engine', 'mk-component', 'mk-utils']
     },
 
     output: {
@@ -68,20 +69,29 @@ module.exports = {
         rules: [{
             test: /\.css$/,
             //exclude: /node_modules/,
-            use: extractCSS.extract({
-               fallback: "style-loader",
-               use: ['css-loader']
-           })
+            use: [{
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader'
+            }]
         }, {
             test: /\.less$/,
-            use: extractLESS.extract({
-               fallback: "style-loader",
-               use: ['css-loader', 'less-loader']
-           })
+            use: [{
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader'
+            }, {
+                loader: 'less-loader'
+            }]
         }, {
             test: /\.js?$/,
             exclude: /node_modules/,
-            use: 'babel-loader'
+            use: 'happypack/loader',
+            exclude: function (path) {
+                // 路径中含有 node_modules 的就不去解析。
+                var isNpmModule = !!path.match(/node_modules/);
+                return isNpmModule;
+            },
         }, {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,
             use: {
