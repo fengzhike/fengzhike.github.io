@@ -171,7 +171,12 @@ import用于在一个模块中加载另一个含有export接口的模块。
 
 
 
+define(function(require, exports, module) {   var a = require('./a')   a.doSomething()   // 此处略去 100 行   var b = require('./b') // 依赖可以就近书写   b.doSomething()   // ... })
 
+作者：玉伯
+链接：https://www.zhihu.com/question/20351507/answer/14859415
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 
@@ -193,4 +198,8 @@ import用于在一个模块中加载另一个含有export接口的模块。
 
 
 - - -
+引用：
+1. JavaScript 模块化历程(http://web.jobbole.com/83761/)
+2. AMD 和 CMD 的区别有哪些？-- 知乎答主：玉伯 (https://www.zhihu.com/question/20351507/answer/14859415)
+
 2017.11.28
