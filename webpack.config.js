@@ -31,7 +31,7 @@ if (env === 'production' && compress) {
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
     names: [ 'react1','react2','mk1','mk2','mk3'],
     filename:'[name].[hash:8].bundle.js',
-    minChunks: Infinity
+    minChunks: 5
 }))
 
 plugins.push(new HtmlWebpackPlugin({
