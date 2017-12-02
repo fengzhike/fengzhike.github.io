@@ -6,8 +6,7 @@
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack",
     "release": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack --config webpack.config.prd.js",
-    "start": "cross-env NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 9999 --host 0.0.0.0",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 9999 --host 0.0.0.0"
   },
   "keywords": [],
   "author": "",
