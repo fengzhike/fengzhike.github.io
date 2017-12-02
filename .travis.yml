@@ -1,0 +1,6 @@
+deploy:
+  provider: master
+  skip_cleanup: true
+  github_token: 104cf77da91fe2a3e581e74c3c0eebcfd22ae085 # Set in travis-ci.org dashboard
+  on:
+    branch: master
