@@ -126,7 +126,7 @@ $ sudo apt-get install mysql-server
 
 * 查看MySQL是否已经启动
 ```
-$ ps -ef}grep mysqld
+$ ps -ef|grep mysqld
 ```
 
 如果出现mysqld，说明MySQL已经启动
