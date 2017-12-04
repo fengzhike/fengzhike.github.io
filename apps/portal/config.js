@@ -26,6 +26,7 @@ import mdKarmaSystemGulp from '../docs/karma-system-gulp.md'
 import mdFrontEndJiCheng from '../docs/front-end-chixujicheng.md'
 import mdModule from '../docs/module-description.md'
 import mdWebpack from '../docs/webpack.md'
+import mdMySQL from '../docs/mySql安装与基础操作.md'
 
 
 //元数据引擎注册markdown组件
@@ -85,22 +86,22 @@ var _options = {
 		},{
 			key: '208',
 			name: 'redux概念解读',
-			appName: 'markdown?208',
+			appName: 'markdown?id=208',
 			appParams: { content: mdRedux }
 		},{
 			key: '209',
 			name: '前端持续集成',
-			appName: 'markdown?209',
+			appName: 'markdown?id=209',
 			appParams: { content: mdFrontEndJiCheng }
 		},{
 			key: '210',
 			name: '模块化简述',
-			appName: 'markdown?210',
+			appName: 'markdown?id=210',
 			appParams: { content: mdModule }
 		},{
 			key: '211',
 			name: 'webpack从入门到放弃',
-			appName: 'markdown?211',
+			appName: 'markdown?id=211',
 			appParams: { content: mdWebpack }
 		}]
 	},{
@@ -109,10 +110,20 @@ var _options = {
 		children:[{
 			key:'501',
 			name:'linux&windows常用命令',
-			appName:'markdown?501',
+			appName:'markdown?id=501',
 			appParams:{content:mdLinuxWindows}
 		}]
 
+	},{
+		key:'6',
+		name:'MySQL',
+		isExpand:false,
+		children:[{
+			key:'601',
+			name:'mySql安装与基础操作',
+			appName: 'markdown?id=601',
+			appParams: { content: mdMySQL }
+		}]
 	},{
 		key:'3',
 		name:'常用工具',

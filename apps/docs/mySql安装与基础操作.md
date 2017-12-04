@@ -6,22 +6,29 @@
 * LNMP或LAMP或XAMPP是流行的互联网架构，其中M指的是MySQL
 ## 在Mac上安装MySQL
 * 访问mysql.com并下载社区版，选择第一个就好了，下载后把下载的包文件拷贝到/usr/local目录下
->  $ cp mysql-5.6.22-osx10.9-x86_64.tar.gz /usr/local
-
+```
+$ cp mysql-5.6.22-osx10.9-x86_64.tar.gz /usr/local
+```
 * 进入/usr/local，并解压mysql
->  $ cd /usr/local
->  $ tar zxvf mysql-5.6.22-osx10.9-x86_64.tar.gz
+```
+$ cd /usr/local
+$ tar zxvf mysql-5.6.22-osx10.9-x86_64.tar.gz
+```
 
 * 重命名MySQL
->  $ mv mysql-5.6.22-osx10.9-x86_64 mysql
+```
+$ mv mysql-5.6.22-osx10.9-x86_64 mysql
+```
 
 * 进入MySQL
->  $ cd mysql
->  $ ls -al
+```
+$ cd mysql
+$ ls -al
+```
 
 * MySQL目录结构介绍
 
-![](./img/mysql.jpg)
+<img src = "./img/mysql.jpg" width = 500 />
 
 |目录|作用|
 |:-|:-:|
@@ -35,19 +42,26 @@
 |share|错误文件和信息|
 
 * 初始化MySQL
->   $ ./scripts/mysql_install_db
->   $ ./bin/mysqld
+
+```
+$ ./scripts/mysql_install_db
+$ ./bin/mysqld
+```
+
 
 mysql已经启动了
 * 链接MySQL
 新打开一个终端窗口
-> $ mysql -u root
+```
+$ mysql -u root
+```
 
 使用root用户登录 -u username -p passwd
 输入密码进入mysql界面
 
 * MySQL常用命令
 所有命令必须以";"结尾
+
 ```
 //查看所有数据库
 mysql> show databases;
@@ -62,12 +76,14 @@ mysql> show tables;
 mysql> quit;
 mysql> exit;
 mysql> \q;
-
 ```
+
 * 关闭MySQL
-    1. 通过杀死进程关闭
-    >  $ ps -ef |grep mysql
-    >  $ kill $pid
+通过杀死进程关闭
+```
+$ ps -ef |grep mysql
+$ kill $pid
+```
 
 推荐xampp
 
@@ -77,8 +93,10 @@ mysql> \q;
 * 设置root密码，和随系统启动
 * 目录结构与mac相似
 * cmd进入bin目录
-> mysql -u root -p
-
+```
+$ mysql -u root -p
+```
+]
 输入密码，进入mysql的管理界面，同mac，暴力关闭可以用任务管理器杀死进程
 
 ## ubuntu上安装MySQL
@@ -87,6 +105,7 @@ mysql> \q;
     - 软件包管理器，能下载二进制的软件包
 * apt-get [选项] 命令
 * 选项说明
+
 |选项|作用|
 |:-|:-:|
 |update|获取软件包列表|
@@ -97,19 +116,27 @@ mysql> \q;
 |upgrade|升级指定的软件包|
 |source|下载指定包的源码|
 |check|检测依赖是否有损坏|
+
 * 安装MySQL
-> $ sudo apt-get install mysql-server
+```
+$ sudo apt-get install mysql-server
+```
 
 根据提示输入root用户密码
 
 * 查看MySQL是否已经启动
-> ps -ef}grep mysqld
+```
+$ ps -ef}grep mysqld
+```
 
 如果出现mysqld，说明MySQL已经启动
 * 访问MySQL数据库
 访问，查看同mac
 * 移除MySQL
-> $ sudo apt-get autoremove --purge mysql-server
+```
+$ sudo apt-get autoremove --purge mysql-server
+```
+
 
 
 
