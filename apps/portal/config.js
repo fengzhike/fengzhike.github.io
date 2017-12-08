@@ -27,6 +27,7 @@ import mdFrontEndJiCheng from '../docs/front-end-chixujicheng.md'
 import mdModule from '../docs/module-description.md'
 import mdWebpack from '../docs/webpack.md'
 import mdMySQL from '../docs/mySql安装与基础操作.md'
+import mdYahoo from '../docs/yahooRegulations.md'
 
 
 //元数据引擎注册markdown组件
@@ -123,6 +124,16 @@ var _options = {
 			name:'mySql安装与基础操作',
 			appName: 'markdown?id=601',
 			appParams: { content: mdMySQL }
+		}]
+	},{
+		key:'7',
+		name:'性能优化',
+		isExpand:false,
+		children:[{
+			key:'701',
+			name:'雅虎军规',
+			appName:'markdown?id=701',
+			appParams:{content:mdYahoo}
 		}]
 	},{
 		key:'3',

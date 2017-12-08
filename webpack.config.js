@@ -29,7 +29,7 @@ if (env === 'production' && compress) {
 
 
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
-    names: [ 'react1','react2','mk1','mk2','mk3'],
+    names: [ 'reactbundle','mkbundle'],
     filename:'[name].[hash:8].bundle.js',
     minChunks: 5
 }))
@@ -50,11 +50,8 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         bundle: ["./index.js", "./assets/styles/index.less"],
-        react1:['react'],
-        react2:["react-dom", "moment"],
-        mk1:["mk-meta-engine"],
-        mk2:["mk-component"],
-        mk3:["mk-utils"]
+        reactbundle:['react',"react-dom", "moment"],
+        mkbundle:["mk-meta-engine","mk-component","mk-utils"],
         // vendor: ["react", "react-dom", "moment"],
         //  mk: ["mk-meta-engine", "mk-component", "mk-utils"]
     },
