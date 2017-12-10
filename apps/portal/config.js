@@ -28,6 +28,7 @@ import mdModule from '../docs/module-description.md'
 import mdWebpack from '../docs/webpack.md'
 import mdMySQL from '../docs/mySql安装与基础操作.md'
 import mdYahoo from '../docs/yahooRegulations.md'
+import mdParcel from '../docs/parceljs.md'
 
 
 //元数据引擎注册markdown组件
@@ -134,6 +135,11 @@ var _options = {
 			name:'雅虎军规',
 			appName:'markdown?id=701',
 			appParams:{content:mdYahoo}
+		},{
+			key:'702',
+			name:'Parceljs初探',
+			appName:'markdown?id=702',
+			appParams:{content:mdParcel}
 		}]
 	},{
 		key:'3',
