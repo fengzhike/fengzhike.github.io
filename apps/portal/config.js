@@ -29,6 +29,7 @@ import mdWebpack from '../docs/webpack.md'
 import mdMySQL from '../docs/mySql安装与基础操作.md'
 import mdYahoo from '../docs/yahooRegulations.md'
 import mdParcel from '../docs/parceljs.md'
+import mdDataStructure from '../docs/data-structure.md'
 
 
 //元数据引擎注册markdown组件
@@ -114,6 +115,21 @@ var _options = {
 			name:'linux&windows常用命令',
 			appName:'markdown?id=501',
 			appParams:{content:mdLinuxWindows}
+		}]
+
+	},{
+		key:'10',
+		name:'数据结构和算法',
+		children:[{
+			key:'1001',
+			name:'数据结构简介',
+			appName: 'markdown?id=1001',
+			appParams: { content: mdDataStructure }
+		},{
+			key:'1002',
+			name:'算法初识',
+			appName: 'markdown?id=1002',
+			appParams: { content: mdDataStructure }
 		}]
 
 	},{
