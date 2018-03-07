@@ -91,3 +91,5 @@ console.log(student instanceof Student) //true
 console.log(student instanceof Person) //true
 ```
 这样通过寄生载体方式，实现类的继承，避免了两次调用父类的构造函数的缺点，推荐这种方式
+- - -
+2018.3.8
