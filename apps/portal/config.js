@@ -30,6 +30,8 @@ import mdMySQL from '../docs/mySql安装与基础操作.md'
 import mdYahoo from '../docs/yahooRegulations.md'
 import mdParcel from '../docs/parceljs.md'
 import mdDataStructure from '../docs/data-structure.md'
+import mdSort from '../docs/sort.md'
+import mdInhert from '../docs/inhert.md'
 
 
 //元数据引擎注册markdown组件
@@ -52,6 +54,11 @@ var _options = {
 		name: '前端学习',
 		isExpand:true,
 		children: [{
+			key: '200',
+			name: 'js继承',
+			appName: 'markdown?id=200',
+			appParams: { content: mdInhert }
+		},{
 			key: '201',
 			name: 'js运行机制',
 			appName: 'markdown?id=201',
@@ -127,9 +134,9 @@ var _options = {
 			appParams: { content: mdDataStructure }
 		},{
 			key:'1002',
-			name:'算法初识',
-			appName: 'markdown?id=1002',
-			appParams: { content: mdDataStructure }
+			name:'排序算法',
+			appName:'markdown?id=1002',
+			appParams:{content:mdSort}
 		}]
 
 	},{
