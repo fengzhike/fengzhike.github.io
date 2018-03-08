@@ -26,11 +26,11 @@ if (env === 'production' && compress) {
         })
     )
 }
-plugins.push(new CopyWebpackPlugin({
+plugins.push(new CopyWebpackPlugin([{
     context: './public',
     from: '**/*',
     to: 'public'
-}))
+}]))
 
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
     names: [ 'reactbundle','mkbundle'],
