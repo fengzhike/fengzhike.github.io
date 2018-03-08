@@ -30,7 +30,7 @@ if (env === 'production' && compress) {
 
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
     names: [ 'vendor','mks'],
-    filename:'[name].[hash:8].bundle.js',
+    filename:'[name].bundle.js',
     minChunks: Infinity
 }))
 
@@ -41,8 +41,8 @@ plugins.push(new HtmlWebpackPlugin({
     inject: true, //允许插件修改哪些内容，包括head与body`
 }))
 
-const extractCSS = new ExtractTextPlugin('[name]-one-[hash:8].css');
-const extractLESS = new ExtractTextPlugin('[name]-two-[hash:8].css');
+const extractCSS = new ExtractTextPlugin('[name]-one-[contenthash:8].css');
+const extractLESS = new ExtractTextPlugin('[name]-two-[contenthash:8].css');
 
 plugins.push(extractCSS)
 plugins.push(extractLESS)
@@ -58,8 +58,8 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, "/dist/"),
-        filename: '[name].[hash:8].bundle.js',
-        chunkFilename: '[name].[hash:8].chunk.js'
+        filename: '[name].[chunkhash:8].bundle.js',
+        chunkFilename: '[name].[chunkhash:8].chunk.js'
     },
 
     resolve: {
