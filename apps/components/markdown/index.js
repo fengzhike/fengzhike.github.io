@@ -11,6 +11,7 @@ export default function Markdown(props) {
 				<p>邮箱：<strong>269596458@qq.com</strong></p>
 				<p>转载请注明：转自<a href = 'http://fanshunkai.com'>http://fanshunkai.com</a></p>
 			</footer>
+			<div id="SOHUCS" sid={location.hash.split('=')[1]} ></div>
 		</div>
 
 	)
