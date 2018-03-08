@@ -2,6 +2,7 @@ var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const marked = require("marked")
 const renderer = new marked.Renderer()
@@ -25,8 +26,11 @@ if (env === 'production' && compress) {
         })
     )
 }
-
-
+plugins.push(new CopyWebpackPlugin({
+    context: './public',
+    from: '**/*',
+    to: 'public'
+}))
 
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
     names: [ 'reactbundle','mkbundle'],

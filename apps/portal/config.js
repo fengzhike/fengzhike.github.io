@@ -27,6 +27,7 @@ import mdFrontEndJiCheng from '../docs/front-end-chixujicheng.md'
 import mdModule from '../docs/module-description.md'
 import mdWebpack from '../docs/webpack.md'
 import mdMySQL from '../docs/mySql安装与基础操作.md'
+import mdMySQLVisite from '../docs/mySqlVisiteSetting.md'
 import mdYahoo from '../docs/yahooRegulations.md'
 import mdParcel from '../docs/parceljs.md'
 import mdDataStructure from '../docs/data-structure.md'
@@ -148,6 +149,11 @@ var _options = {
 			name:'mySql安装与基础操作',
 			appName: 'markdown?id=601',
 			appParams: { content: mdMySQL }
+		},{
+			key:'602',
+			name:'mySql访问设置',
+			appName: 'markdown?id=602',
+			appParams: { content: mdMySQLVisite }
 		}]
 	},{
 		key:'7',
