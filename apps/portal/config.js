@@ -33,6 +33,8 @@ import mdParcel from '../docs/parceljs.md'
 import mdDataStructure from '../docs/data-structure.md'
 import mdSort from '../docs/sort.md'
 import mdInhert from '../docs/inhert.md'
+import mdStackingContext from '../docs/stacking-context.md'
+import mdLolcat from '../docs/lolcat.md'
 
 
 //元数据引擎注册markdown组件
@@ -64,6 +66,11 @@ var _options = {
 			name: 'js运行机制',
 			appName: 'markdown?id=201',
 			appParams: { content: mdJsMechanism }
+		},{
+			key: '212',
+			name: '堆叠上下文',
+			appName: 'markdown?id=212',
+			appParams: { content: mdStackingContext }
 		}, {
 			key:'202',
 			name:'函数式编程',
@@ -123,6 +130,11 @@ var _options = {
 			name:'linux&windows常用命令',
 			appName:'markdown?id=501',
 			appParams:{content:mdLinuxWindows}
+		},{
+			key:'502',
+			name:'lolcat让你的终端更美好',
+			appName:'markdown?id=502',
+			appParams:{content:mdLolcat}
 		}]
 
 	},{
