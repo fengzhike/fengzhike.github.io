@@ -10,6 +10,7 @@ import mdFrontEnd from '../docs/front-end.md'
 import mdRedux from '../docs/redux.md'
 import mdSublimeMarkdown from '../docs/sublime-markdown.md'
 import mdSublimeRunJs from '../docs/sublime-run-js.md'
+import mdAtom from '../docs/atom.md'
 import mdJsMechanism from '../docs/js-mechanism.md'
 import mdMachineLearning from '../docs/machine-learning.md'
 import mdNN from '../docs/NN.md'
@@ -196,6 +197,11 @@ var _options = {
 			name:'Sublime中运行js',
 			appName: 'markdown?id=302',
 			appParams: { content: mdSublimeRunJs }
+		},{
+			key:'303',
+			name:'Atom闪退问题',
+			appName: 'markdown?id=303',
+			appParams: { content: mdAtom }
 		}]
 	} ,{
 		key:'4',
