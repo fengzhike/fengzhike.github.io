@@ -99,7 +99,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="redux概念解读">
 <meta property="og:url" content="http://www.fanshunkai.com/2016/02/24/redux/index.html">
-<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:site_name" content="ShunKai">
 <meta property="og:description" content="redux概念解读一.什么是ReduxRedux是Flux的一种演变，子集，或者是一种具体实现在Flux中：Action –&amp;gt; Dispather —&amp;gt; Store存储 —&amp;gt;视图 Flux利用Dispather把产生的action发送到数据存储中，是广播类型，store中关心此action的处理函数来改变对应的state并更新视图Store对外只暴露getter，不允许提供set">
 <meta property="og:locale" content="ch">
 <meta property="og:updated_time" content="2019-05-31T09:28:25.215Z">
@@ -140,7 +140,7 @@
 
 
 
-  <title>redux概念解读 | Shun-Kai</title>
+  <title>redux概念解读 | ShunKai</title>
   
 
 
@@ -176,12 +176,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Shun-Kai</span>
+        <span class="site-title">ShunKai</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生！</p>
       
   </div>
 
@@ -282,7 +282,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="name" content="ShunKai">
     </span>
 
     
@@ -357,12 +357,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
       
       
-
       
-        <h1 id="redux概念解读"><a href="#redux概念解读" class="headerlink" title="redux概念解读"></a>redux概念解读</h1><h2 id="一-什么是Redux"><a href="#一-什么是Redux" class="headerlink" title="一.什么是Redux"></a>一.什么是Redux</h2><h3 id="Redux是Flux的一种演变，子集，或者是一种具体实现"><a href="#Redux是Flux的一种演变，子集，或者是一种具体实现" class="headerlink" title="Redux是Flux的一种演变，子集，或者是一种具体实现"></a>Redux是Flux的一种演变，子集，或者是一种具体实现</h3><p>在Flux中：Action –&gt; Dispather —&gt; Store存储 —&gt;视图</p>
+       <h1 id="redux概念解读"><a href="#redux概念解读" class="headerlink" title="redux概念解读"></a>redux概念解读</h1><h2 id="一-什么是Redux"><a href="#一-什么是Redux" class="headerlink" title="一.什么是Redux"></a>一.什么是Redux</h2><h3 id="Redux是Flux的一种演变，子集，或者是一种具体实现"><a href="#Redux是Flux的一种演变，子集，或者是一种具体实现" class="headerlink" title="Redux是Flux的一种演变，子集，或者是一种具体实现"></a>Redux是Flux的一种演变，子集，或者是一种具体实现</h3><p>在Flux中：Action –&gt; Dispather —&gt; Store存储 —&gt;视图</p>
 <p>Flux利用Dispather把产生的action发送到数据存储中，是广播类型，store中关心此action的处理函数来改变对应的state并更新视图<br>Store对外只暴露getter，不允许提供setter！！禁止在任何地方直接操作Store。  只能由Dispather分发action，在state中更改</p>
 <p>Redux中没有Dispather，当每次Action被激活需要dispatch时，使用一个函数称为reducer来返回新的应用状态。</p>
 <h3 id="Redux工作原理"><a href="#Redux工作原理" class="headerlink" title="Redux工作原理"></a>Redux工作原理</h3><p>它使用一个函数为reducer (这个名词是来自于Javasctip的 reduce 方法) ，只需要两个参数：一个动作action和下一个状态</p>
@@ -608,6 +606,44 @@ render(
 
     <div class="post-spread">
       
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
     </div>
   </div>
 
@@ -787,6 +823,8 @@ render(
   
 
 
+  
+
 
 
 
@@ -814,6 +852,9 @@ render(
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   

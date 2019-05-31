@@ -99,7 +99,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="在服务端搭建一个git仓库">
 <meta property="og:url" content="http://www.fanshunkai.com/2017/10/27/git-respository/index.html">
-<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:site_name" content="ShunKai">
 <meta property="og:description" content="如何在服务端搭建一个git仓库自己搭过几次，每次都是各种度娘，这次有需求，发现又有些地方卡住了，索性记录下来，方便下次查阅以Ubuntu为例，介绍搭建步骤 服务端 创建一个git用户  1234$ sudo useradd -m git //-m 在username的主目录$ sudo passwd git //为该账户添加密码$ usermod -a -G sudo git //添加该账户到su">
 <meta property="og:locale" content="ch">
 <meta property="og:updated_time" content="2019-05-31T09:12:08.505Z">
@@ -140,7 +140,7 @@
 
 
 
-  <title>在服务端搭建一个git仓库 | Shun-Kai</title>
+  <title>在服务端搭建一个git仓库 | ShunKai</title>
   
 
 
@@ -176,12 +176,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Shun-Kai</span>
+        <span class="site-title">ShunKai</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生！</p>
       
   </div>
 
@@ -282,7 +282,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="name" content="ShunKai">
     </span>
 
     
@@ -357,12 +357,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
       
       
-
       
-        <h1 id="如何在服务端搭建一个git仓库"><a href="#如何在服务端搭建一个git仓库" class="headerlink" title="如何在服务端搭建一个git仓库"></a>如何在服务端搭建一个git仓库</h1><p>自己搭过几次，每次都是各种度娘，这次有需求，发现又有些地方卡住了，索性记录下来，方便下次查阅<br>以Ubuntu为例，介绍搭建步骤</p>
+       <h1 id="如何在服务端搭建一个git仓库"><a href="#如何在服务端搭建一个git仓库" class="headerlink" title="如何在服务端搭建一个git仓库"></a>如何在服务端搭建一个git仓库</h1><p>自己搭过几次，每次都是各种度娘，这次有需求，发现又有些地方卡住了，索性记录下来，方便下次查阅<br>以Ubuntu为例，介绍搭建步骤</p>
 <h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><ol>
 <li><p>创建一个git用户</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo useradd -m git //-m 在username的主目录</span><br><span class="line">$ sudo passwd git //为该账户添加密码</span><br><span class="line">$ usermod -a -G sudo git //添加该账户到sudo群组，允许该用户安装软件，-a ：添加  -G 一个或多个群组</span><br><span class="line">$ sudo chsh -s /bin/bash git //将该账户的默认外壳设为bash</span><br></pre></td></tr></table></figure>
@@ -464,6 +462,44 @@
 
 
     <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
       
     </div>
   </div>
@@ -644,6 +680,8 @@
   
 
 
+  
+
 
 
 
@@ -671,6 +709,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
