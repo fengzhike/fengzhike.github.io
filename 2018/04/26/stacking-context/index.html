@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,css,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Stacking Context,层叠上下文—-你可能不知道的z-index和transform 一、概念1.1 Stacking Context 层叠上下文MDN中对 Stacking Context的描述  Stacking context is the three-dimensional conceptualization of HTMLelements along an imaginary">
+<meta name="keywords" content="前端,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="层叠上下文">
+<meta property="og:url" content="http://www.fanshunkai.com/2018/04/26/stacking-context/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="Stacking Context,层叠上下文—-你可能不知道的z-index和transform 一、概念1.1 Stacking Context 层叠上下文MDN中对 Stacking Context的描述  Stacking context is the three-dimensional conceptualization of HTMLelements along an imaginary">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/2018/04/26/stacking-context/img/stacking-order.png">
+<meta property="og:updated_time" content="2019-05-31T09:29:00.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="层叠上下文">
+<meta name="twitter:description" content="Stacking Context,层叠上下文—-你可能不知道的z-index和transform 一、概念1.1 Stacking Context 层叠上下文MDN中对 Stacking Context的描述  Stacking context is the three-dimensional conceptualization of HTMLelements along an imaginary">
+<meta name="twitter:image" content="http://www.fanshunkai.com/2018/04/26/stacking-context/img/stacking-order.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2018/04/26/stacking-context/">
+
+
+
+
+
+  <title>层叠上下文 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2018/04/26/stacking-context/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">层叠上下文</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-26T00:00:00+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Stacking-Context-层叠上下文"><a href="#Stacking-Context-层叠上下文" class="headerlink" title="Stacking Context,层叠上下文"></a>Stacking Context,层叠上下文</h1><p>—-你可能不知道的z-index和transform</p>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h3 id="1-1-Stacking-Context-层叠上下文"><a href="#1-1-Stacking-Context-层叠上下文" class="headerlink" title="1.1 Stacking Context 层叠上下文"></a>1.1 Stacking Context 层叠上下文</h3><p>MDN中对 Stacking Context的描述</p>
+<blockquote>
+<p>Stacking context is the three-dimensional conceptualization of HTML<br>elements along an imaginary z-axis relative to the user who is assumed<br>to be facing the viewport or the webpage.HTML elements occupy this<br>space in priority order based on element attributes.</p>
+</blockquote>
+<p>层叠上下文是HTML元素的三维概念，这些HTML元素在一条假想的相对于面向（电脑屏幕的）视窗或者网页的用户的 z 轴上延伸，HTML 元素依据其自身属性按照优先级顺序占用层叠上下文的空间。<br>z轴即用户与屏幕间看不见的垂直线。</p>
+<h3 id="1-2-Stacking-Level-层叠水平"><a href="#1-2-Stacking-Level-层叠水平" class="headerlink" title="1.2 Stacking Level 层叠水平"></a>1.2 Stacking Level 层叠水平</h3><p>层叠水平决定了同一个层叠上下文中元素在Z轴上的显示顺序</p>
+<h3 id="1-3-Stacking-Order"><a href="#1-3-Stacking-Order" class="headerlink" title="1.3 Stacking Order"></a>1.3 Stacking Order</h3><p>w3c官方规定了7层层叠水平,如下图所示</p>
+<img src="img/stacking-order.png" alt>
+
+<ul>
+<li>形成层叠上下文环境的元素的背景与边框</li>
+<li>拥有负 z-index 的子堆叠上下文元素 （负的越高越堆叠层级越低）</li>
+<li>正常流式布局，非 inline-block，无 position 定位（static除外）的子元素</li>
+<li>无 position 定位（static除外）的 float 浮动元素</li>
+<li>拥有 z-index:0 的子堆叠上下文元素</li>
+<li>拥有正 z-index: 的子堆叠上下文元素（正的越低越堆叠层级越低）</li>
+</ul>
+<h2 id="二、触发层叠上下文"><a href="#二、触发层叠上下文" class="headerlink" title="二、触发层叠上下文"></a>二、触发层叠上下文</h2><p>根据，MDN上的描述，一下方法会触发元素的层叠上下文</p>
+<ul>
+<li>根元素 (HTML)</li>
+<li>z-index 值不为 “auto”的 绝对/相对定位</li>
+<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex。（需满足两个条件才能触发：1是父级需要是display:flex或者display:inline-flex水平，2是子元素的z-index不是auto，必须是数值。则这个子元素为层叠上下文元素）</li>
+<li>opacity 属性值小于 1 的元素（参考 the specification for opacity）</li>
+<li>transform 属性值不为 “none”的元素</li>
+<li>mix-blend-mode 属性值不为 “normal”的元素</li>
+<li>filter值不为“none”的元素</li>
+<li>perspective值不为“none”的元素</li>
+<li>isolation 属性被设置为 “isolate”的元素</li>
+<li>position: 不为static</li>
+<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
+<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>所以为什么定位元素会层叠在普通元素的上面？其根本原因就在于，元素一旦成为定位元素，其z-index就会自动生效，此时其z-index就是默认的auto，也就是0级别，根据上面的层叠顺序表，就会覆盖inline或block或float元素。</p>
+<p><strong>层叠上下文可以嵌套，内部层叠上下文及其所有子元素均受制于外部的层叠上下文。</strong></p>
+<h3 id="比较两元素的上下关系"><a href="#比较两元素的上下关系" class="headerlink" title="比较两元素的上下关系"></a>比较两元素的上下关系</h3><ul>
+<li>在同一个层叠上下文中，则根据7阶层叠水平比较。若两元素在同一层叠水平，则后来居上即在DOM流中处于后面的元素会覆盖前面的元素。</li>
+<li>在不同的层叠上下文中，则直接比较父元素的层叠水平：<ul>
+<li>若父元素的z-index不同，则z-index数值越大，越在上面。</li>
+<li>若父元素的z-index相同，则在DOM流中处于后面的元素会覆盖前面的元素。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>比较时，先看两个元素是不是在同一个父元素之下，若不是，则一层层往上找，直到找到其祖先元素在同一级时停止。然后，再依次往下寻找各自的子元素，找到第一个是层叠上下文元素的子元素后进行比较。</p>
+</blockquote>
+<blockquote>
+<p>子元素的 z-index 值只在父级层叠上下文中有意义。即父元素的 z-index 低于父元素另一个同级元素，子元素 z-index再高也没用。</p>
+</blockquote>
+<h2 id="当transform遇上了z-index"><a href="#当transform遇上了z-index" class="headerlink" title="当transform遇上了z-index"></a>当transform遇上了z-index</h2><p>从上面知道，当transform不为none的时候，会触发元素的层叠上下文，正常情况下，按照z-index作比较就好了，但是如果开启了3d空间的transform，比如，translate3d，scale3d，rotate3d等，元素可能在z轴方向上发生变化，位移的变化要大于层级的变化，造成z-index失效的效果（safari）</p>
+<p><strong>当transform的3d在safari下使z-index失效怎么解决</strong>，<a href="https://www.cnblogs.com/reaf/p/5788781.html" target="_blank" rel="noopener">@张鑫旭老师</a>有篇文章给出了答案</p>
+<ul>
+<li>父级，任意父级，非body级别，设置overflow:hidden可恢复和其他浏览器一样的渲染</li>
+<li>以毒攻毒。也可以使用3D transform变换</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/inhert/" rel="next" title="js继承">
+                <i class="fa fa-chevron-left"></i> js继承
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/23/atom/" rel="prev" title="Atom闪退问题解决办法">
+                Atom闪退问题解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stacking-Context-层叠上下文"><span class="nav-number">1.</span> <span class="nav-text">Stacking Context,层叠上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、概念"><span class="nav-number">1.1.</span> <span class="nav-text">一、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Stacking-Context-层叠上下文"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Stacking Context 层叠上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Stacking-Level-层叠水平"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Stacking Level 层叠水平</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Stacking-Order"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Stacking Order</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、触发层叠上下文"><span class="nav-number">1.2.</span> <span class="nav-text">二、触发层叠上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比较两元素的上下关系"><span class="nav-number">1.3.1.</span> <span class="nav-text">比较两元素的上下关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当transform遇上了z-index"><span class="nav-number">1.4.</span> <span class="nav-text">当transform遇上了z-index</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

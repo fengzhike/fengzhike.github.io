@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,性能优化,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Yahoo军规在互联网盛行到的今天，各种网站给我们带来了很大的便利，不论是网站的使用者还是开发者，都希望网页尽快的呈现到人们的面前。在这方面，互联网的先行者 Yahoo 进行了探索并总结了34条规律，后来又补充一条，这就是开发者口中的35条Yahoo军规。下面我们分条介绍： 内容部分  一、尽量减少HTTP请求数量从请求到页面呈现，80%的事件都花在了静态资源的请求上，图片、样式表、脚本文件、音频">
+<meta name="keywords" content="前端,性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yahoo军规">
+<meta property="og:url" content="http://www.fanshunkai.com/2017/12/08/yahooRegulations/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="Yahoo军规在互联网盛行到的今天，各种网站给我们带来了很大的便利，不论是网站的使用者还是开发者，都希望网页尽快的呈现到人们的面前。在这方面，互联网的先行者 Yahoo 进行了探索并总结了34条规律，后来又补充一条，这就是开发者口中的35条Yahoo军规。下面我们分条介绍： 内容部分  一、尽量减少HTTP请求数量从请求到页面呈现，80%的事件都花在了静态资源的请求上，图片、样式表、脚本文件、音频">
+<meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-05-31T09:37:01.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yahoo军规">
+<meta name="twitter:description" content="Yahoo军规在互联网盛行到的今天，各种网站给我们带来了很大的便利，不论是网站的使用者还是开发者，都希望网页尽快的呈现到人们的面前。在这方面，互联网的先行者 Yahoo 进行了探索并总结了34条规律，后来又补充一条，这就是开发者口中的35条Yahoo军规。下面我们分条介绍： 内容部分  一、尽量减少HTTP请求数量从请求到页面呈现，80%的事件都花在了静态资源的请求上，图片、样式表、脚本文件、音频">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2017/12/08/yahooRegulations/">
+
+
+
+
+
+  <title>Yahoo军规 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/12/08/yahooRegulations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Yahoo军规</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-08T00:00:00+08:00">
+                2017-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Yahoo军规"><a href="#Yahoo军规" class="headerlink" title="Yahoo军规"></a>Yahoo军规</h1><p>在互联网盛行到的今天，各种网站给我们带来了很大的便利，不论是网站的使用者还是开发者，都希望网页尽快的呈现到人们的面前。在这方面，互联网的先行者 <strong><em>Yahoo</em></strong> 进行了探索并总结了34条规律，后来又补充一条，这就是开发者口中的<strong>35条Yahoo军规</strong>。下面我们分条介绍：</p>
+<p><strong>内容部分</strong></p>
+<hr>
+<h2 id="一、尽量减少HTTP请求数量"><a href="#一、尽量减少HTTP请求数量" class="headerlink" title="一、尽量减少HTTP请求数量"></a>一、尽量减少HTTP请求数量</h2><p>从请求到页面呈现，80%的事件都花在了静态资源的请求上，图片、样式表、脚本文件、音频/视频、Flash等，都需要通过http请求从服务器上获取。我们知道，http的开销是很惊人的，减少http请求数量就很有必要了。</p>
+<ul>
+<li><strong>文件合并</strong>，把相同类型文件比如js和css进行合并，可以减少http请求数量。也不宜过大，每个文件小于25k为佳。</li>
+<li><strong>CSS Sprites</strong>，使用CSS Sprites把多张图片合成一张大图，然后结合background-image和background-position属性来定位要显示的部分。</li>
+<li><strong>图像映射</strong>，把多张图片合并成单张图片，总大小一样，但是减少了http请求并加速了页面加载，不过适应场景比较苛刻，需要图片在页面中连续显示，比如导航条。不建议使用</li>
+<li><strong>行内图片（base64编码）</strong>，用data:URL模式来吧图片嵌入页面。</li>
+</ul>
+<h2 id="二、减少DNS查找"><a href="#二、减少DNS查找" class="headerlink" title="二、减少DNS查找"></a>二、减少DNS查找</h2><p>域名系统建立了主机名和IP地址间的映射，就像电话簿上人名和号码的映射一样。当你在浏览器输入<a href="http://www.yahoo.com的时候，浏览器就会联系DNS解析器返回服务器的IP地址。DNS是有成本的，它需要20到120毫秒去查找给定主机名的IP地址。在DNS查找完成之前，浏览器无法从主机名下载任何东西。" target="_blank" rel="noopener">www.yahoo.com的时候，浏览器就会联系DNS解析器返回服务器的IP地址。DNS是有成本的，它需要20到120毫秒去查找给定主机名的IP地址。在DNS查找完成之前，浏览器无法从主机名下载任何东西。</a></p>
+<p>可以用dns预解析方式，避免dns每次都花时间解析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content = &quot;on&quot; /&gt;</span><br><span class="line">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://bdimg.share.baidu.com&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、避免重定向"><a href="#三、避免重定向" class="headerlink" title="三、避免重定向"></a>三、避免重定向</h2><p>重定向用301和302状态码，下面是一个301状态码的HTTP头：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">      Location: http://example.com/newuri</span><br><span class="line">      Content-Type: text/html</span><br></pre></td></tr></table></figure>
+
+<p>重定向的时候，浏览器跳转到指明的URL，这个过程会在HTTP请求头携带所有的信息。这种重定向显然是浪费资源的。</p>
+<p><strong>url尾部省略’/‘也是要重定向的</strong>，开发人员要引起注意，链接地址最好完善</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.example.com  ---&gt; www.example.com/</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、让Ajax可缓存"><a href="#四、让Ajax可缓存" class="headerlink" title="四、让Ajax可缓存"></a>四、让Ajax可缓存</h2><p>Ajax可以从服务器异步获取信息，有着比较好的体验，给Ajax配置可缓存能够提高性能。做好代码压缩，配置ETags等也能提高Ajax性能</p>
+<h2 id="五、延迟加载"><a href="#五、延迟加载" class="headerlink" title="五、延迟加载"></a>五、延迟加载</h2><p>可以做lazyload</p>
+<h2 id="六、预加载"><a href="#六、预加载" class="headerlink" title="六、预加载"></a>六、预加载</h2><p>可以通过预加载的方式减少加载时的耗时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://bdimg.share.baidu.com&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>预加载有无条件加载、 有条件加载、 有预期加载三种情况，按需配置就好</p>
+<h2 id="七、减少DOM的数量"><a href="#七、减少DOM的数量" class="headerlink" title="七、减少DOM的数量"></a>七、减少DOM的数量</h2><p>DOM的读写也是很耗性能的，能用css解决的尽量不用HTML解决，不要用无意义的div包裹。尽量使用语义化标签</p>
+<h2 id="八、跨域划分内容"><a href="#八、跨域划分内容" class="headerlink" title="八、跨域划分内容"></a>八、跨域划分内容</h2><p>把页面所需要的资源按域名划分为若干部分，最大限度地实现平行下载。例如html放在<a href="http://www.example.com，样式表放在static1.example.com,图片放在static2.example.com上。。。" target="_blank" rel="noopener">www.example.com，样式表放在static1.example.com,图片放在static2.example.com上。。。</a></p>
+<h2 id="九、尽量少使用frame"><a href="#九、尽量少使用frame" class="headerlink" title="九、尽量少使用frame"></a>九、尽量少使用frame</h2><p>即使是空白的iframe，也需要比较长的时间加载，并且是阻塞性加载</p>
+<h2 id="十、杜绝404"><a href="#十、杜绝404" class="headerlink" title="十、杜绝404"></a>十、杜绝404</h2><p>HTTP请求的开销比较大，不要请求无用的响应</p>
+<p>** css部分**</p>
+<hr>
+<h2 id="十一、避免使用css表达式"><a href="#十一、避免使用css表达式" class="headerlink" title="十一、避免使用css表达式"></a>十一、避免使用css表达式</h2><p>用css表达式动态设置css属性，虽然能实现一些好的效果，但是容易被攻击，对性能也有影响，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-color: expression( (new Date()).getHours()%2 ? &quot;#B8D4FF&quot; : &quot;#F08A00&quot; );</span><br></pre></td></tr></table></figure>
+
+<h2 id="十二、选择-lt-link-gt-舍弃-import"><a href="#十二、选择-lt-link-gt-舍弃-import" class="headerlink" title="十二、选择&lt;link&gt;舍弃@import"></a>十二、选择&lt;link&gt;舍弃@import</h2><p>为实现逐步渲染，css放在顶部更好，而在IE中用@import与在底部用<link>效果一样，所以最好不要用它。</p>
+<h2 id="十三、避免使用滤镜"><a href="#十三、避免使用滤镜" class="headerlink" title="十三、避免使用滤镜"></a>十三、避免使用滤镜</h2><p>IE专有的AlphaImageLoader滤镜可以用来修复IE7之前的版本中半透明PNG图片的问题。在图片加载过程中，这个滤镜会阻塞渲染，卡住浏览器，还会增加内存消耗而且是被应用到每个元素的，而不是每个图片，所以会存在一大堆问题。</p>
+<p>最i好的方法是干脆不要用AlphaImageLoader，而优雅地降级到用在IE中支持性很好的PNG8图片来代替。如果非要用AlphaImageLoader，应该用下划线hack_filter来避免影响IE7及更高版本的用户。</p>
+<h2 id="十四、把样式表放在顶部"><a href="#十四、把样式表放在顶部" class="headerlink" title="十四、把样式表放在顶部"></a>十四、把样式表放在顶部</h2><p>把样式表放到文档的HEAD部分能让页面逐步渲染，看起来加载更快。</p>
+<p><strong>js部分</strong></p>
+<hr>
+<h2 id="十五、去除重复脚本"><a href="#十五、去除重复脚本" class="headerlink" title="十五、去除重复脚本"></a>十五、去除重复脚本</h2><p>每个脚本文件，都要发一次http请求，重复脚本是浪费资源而且没有用的，要坚决杜绝</p>
+<h2 id="十六、尽量减少DOM访问"><a href="#十六、尽量减少DOM访问" class="headerlink" title="十六、尽量减少DOM访问"></a>十六、尽量减少DOM访问</h2><p>js访问DOM的过程是很慢的，为了让页面反应更加迅速，应该：<br>    - 缓存已访问过的元素的索引<br>    - 先”离线”更新节点，再把他们添加到DOM树<br>    - 尽量避免用js修复布局问题</p>
+<h2 id="十七、用智能的事件处理器"><a href="#十七、用智能的事件处理器" class="headerlink" title="十七、用智能的事件处理器"></a>十七、用智能的事件处理器</h2><p>过多的频繁的事件处理器添加到了DOM树的不同元素上，会有页面反应不够灵敏。用类似事件委托的方法效果会更好</p>
+<h2 id="十八、把脚本放在底部"><a href="#十八、把脚本放在底部" class="headerlink" title="十八、把脚本放在底部"></a>十八、把脚本放在底部</h2><p>script标签的方式加载脚本是同步的，放在底部可以不用阻塞页面的渲染</p>
+<h2 id="十九、js和css放外边"><a href="#十九、js和css放外边" class="headerlink" title="十九、js和css放外边"></a>十九、js和css放外边</h2><p>用外部文件的方式加载js和css，下次渲染的时候，浏览器可以读取缓存，可以减少请求量，HTML文档也变小了</p>
+<h2 id="二十、压缩js和css"><a href="#二十、压缩js和css" class="headerlink" title="二十、压缩js和css"></a>二十、压缩js和css</h2><p>在压缩过程中，js和css文件中不必要的字符会被除去，是文件变小，从而提升加载速度。</p>
+<h2 id="二十一、优化图片"><a href="#二十一、优化图片" class="headerlink" title="二十一、优化图片"></a>二十一、优化图片</h2><p>尝试把GIF格式转换成PNG格式，看看是否节省空间。在所有的PNG图片上运行pngcrush（或者其它PNG优化工具）</p>
+<h2 id="二十二、优化CSS-Sprite"><a href="#二十二、优化CSS-Sprite" class="headerlink" title="二十二、优化CSS Sprite"></a>二十二、优化CSS Sprite</h2><ul>
+<li>在Sprite图片中横向排列一般都比纵向排列的最终文件小</li>
+<li>组合Sprite图片中的相似颜色可以保持低色数，最理想的是256色以下PNG8格式</li>
+<li>“对移动端友好”，不要在Sprite图片中留下太大的空隙。虽然不会在很大程度上影响图片文件的大小，但这样做可以节省用户代理把图片解压成像素映射时消耗的内存。100×100的图片是1万个像素，而1000×1000的图片就是100万个像素了。</li>
+</ul>
+<h2 id="二十三、不要用HTML缩放图片"><a href="#二十三、不要用HTML缩放图片" class="headerlink" title="二十三、不要用HTML缩放图片"></a>二十三、不要用HTML缩放图片</h2><p>img元素大小应该和图片大小一致，不要去缩放图片大小</p>
+<h2 id="二十四、用小的可缓存的favicon-ico"><a href="#二十四、用小的可缓存的favicon-ico" class="headerlink" title="二十四、用小的可缓存的favicon.ico"></a>二十四、用小的可缓存的favicon.ico</h2><p>favicon.ico是放在服务器根目录的图片，浏览器会自动请求他，每次请求带上cookie不说，还会干扰下载顺序。所以要确保favicon.ico足够小，可缓存</p>
+<h2 id="二十五、减小cookie"><a href="#二十五、减小cookie" class="headerlink" title="二十五、减小cookie"></a>二十五、减小cookie</h2><p>浏览器向服务器发送的所有http请求，cookie都会一起发送，cookie大的话比较浪费资源。</p>
+<h2 id="二十六、静态资源放在不含cookie的域"><a href="#二十六、静态资源放在不含cookie的域" class="headerlink" title="二十六、静态资源放在不含cookie的域"></a>二十六、静态资源放在不含cookie的域</h2><p>把静态资源放在其他域下，这个域专门存放静态资源，可以不设cookie或者cookie设置成最小</p>
+<p><strong>移动端</strong></p>
+<hr>
+<h2 id="二十七、单个文件小于25k"><a href="#二十七、单个文件小于25k" class="headerlink" title="二十七、单个文件小于25k"></a>二十七、单个文件小于25k</h2><p>　这个限制是因为iPhone不能缓存大于25K的组件，注意这里指的是未压缩的大小。这就是为什么缩减内容本身也很重要，因为单纯的gzip可能不够。</p>
+<h2 id="二十八、将组件打包到一个复合文档里"><a href="#二十八、将组件打包到一个复合文档里" class="headerlink" title="二十八、将组件打包到一个复合文档里"></a>二十八、将组件打包到一个复合文档里</h2><p>把文件打包到一个复合文档里，可以用一个HTTP请求获取多个组件（iphone不支持）</p>
+<p><strong>服务器</strong></p>
+<hr>
+<h2 id="二十九、Gzip组件"><a href="#二十九、Gzip组件" class="headerlink" title="二十九、Gzip组件"></a>二十九、Gzip组件</h2><p>前端工程师可以想办法明显地缩短通过网络传输HTTP请求和响应的时间。毫无疑问，终端用户的带宽速度，网络服务商，对等交换点的距离等等，都是开发团队所无法控制的。但还有别的能够影响响应时间的因素，压缩可以通过减少HTTP响应的大小来缩短响应时间。</p>
+<p>从HTTP/1.1开始，web客户端就有了支持压缩的Accept-Encoding HTTP请求头。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept-Encoding: gzip, deflate</span><br></pre></td></tr></table></figure>
+
+<p>　如果web服务器看到这个请求头，它就会用客户端列出的一种方式来压缩响应。web服务器通过Content-Encoding相应头来通知客户端。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Encoding: gzip</span><br></pre></td></tr></table></figure>
+
+<p>尽可能多地用gzip压缩能够给页面减肥，这也是提升用户体验最简单的方法。</p>
+<h2 id="三十、避免图片src属性为空"><a href="#三十、避免图片src属性为空" class="headerlink" title="三十、避免图片src属性为空"></a>三十、避免图片src属性为空</h2><p>如果scr的值为空，浏览器会向服务器发送请求，以下两种都要避免</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//straight HTML</span><br><span class="line">&lt;img src=””&gt;</span><br><span class="line">//JavaScript</span><br><span class="line">var img = new Image();</span><br><span class="line">img.src = “”;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三十一、配置ETags"><a href="#三十一、配置ETags" class="headerlink" title="三十一、配置ETags"></a>三十一、配置ETags</h2><p>实体标签（ETags），是服务器和浏览器用来决定浏览器中组件与源服务器中组件是否匹配的一种机制，添加ETags可以提供一种实体验证机制比最后修改日期更加灵活。一个ETag是一个字符串，作为一个组件某一具体版本的唯一标识符。唯一的格式约束是字符串必须用引号括起来，源服务器用相应头中的ETag来指定组件的ETag：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">      Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT</span><br><span class="line">      ETag: &quot;10c24bc-4ab-457e1c1f&quot;</span><br><span class="line">      Content-Length: 12195</span><br></pre></td></tr></table></figure>
+
+<p>然后，如果浏览器必须验证一个组件，它用If-None-Match请求头来把ETag传回源服务器。如果ETags匹配成功，会返回一个304状态码，这样就减少了12195个字节的响应体。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /i/yahoo.gif HTTP/1.1</span><br><span class="line">      Host: us.yimg.com</span><br><span class="line">      If-Modified-Since: Tue, 12 Dec 2006 03:03:59 GMT</span><br><span class="line">      If-None-Match: &quot;10c24bc-4ab-457e1c1f&quot;</span><br><span class="line">      HTTP/1.1 304 Not Modified</span><br></pre></td></tr></table></figure>
+
+<h2 id="三十二、对Ajax用GET请求"><a href="#三十二、对Ajax用GET请求" class="headerlink" title="三十二、对Ajax用GET请求"></a>三十二、对Ajax用GET请求</h2><p>浏览器使用XMLHttpRequest发送POST请求时，通过一个两步的过程实现的：先发送HTTP头，再发送数据。而GET请求只需要发送一个TCP报文（除非cookie特别多）。</p>
+<h2 id="三十三、尽早清空缓冲区"><a href="#三十三、尽早清空缓冲区" class="headerlink" title="三十三、尽早清空缓冲区"></a>三十三、尽早清空缓冲区</h2><p>当用户请求一个页面时，服务器需要用大约200到500毫秒来组装HTML页面，在这期间，浏览器闲等着数据到达。PHP中有一个flush()函数，允许给浏览器发送一部分已经准备完毕的HTML响应，以便浏览器可以在后台准备剩余部分的同时开始获取组件，好处主要体现在很忙的后台或者很“轻”的前端页面上（P.S. 也就是说，响应时耗主要在后台方面时最能体现优势）。</p>
+<p>　　较理想的清空缓冲区的位置是HEAD后面，因为HTML的HEAD部分通常更容易生成，并且允许引入任何CSS和JavaScript文件，这样就可以让浏览器在后台还在处理的时候就开始并行获取组件。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">... &lt;!-- css, js --&gt;</span><br><span class="line">   &lt;/head&gt;</span><br><span class="line">   &lt;?php flush(); ?&gt;</span><br><span class="line">   &lt;body&gt;</span><br><span class="line">     ... &lt;!-- content --&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三十四、使用CDN（内容分发网络）"><a href="#三十四、使用CDN（内容分发网络）" class="headerlink" title="三十四、使用CDN（内容分发网络）"></a>三十四、使用CDN（内容分发网络）</h2><p>CDN是一组分散在不同地理位置的web服务器，用来给用户更高效地发送内容，总是给用户选择hop最小或者响应最快的服务器</p>
+<h2 id="三十五、添上Expires或者Cache-Control-HTTP头"><a href="#三十五、添上Expires或者Cache-Control-HTTP头" class="headerlink" title="三十五、添上Expires或者Cache-Control HTTP头"></a>三十五、添上Expires或者Cache-Control HTTP头</h2><p>这条规则有两个方面：<br>    - 对于静态组件：通过设置一个遥远的将来时间作为Expires来实现永不失效<br>    - 多余动态组件：用合适的Cache-ControlHTTP头来让浏览器进行条件性的请求</p>
+<p>浏览器（和代理）用缓存来减少HTTP请求的数目和大小，让页面能够更快加载。web服务器通过有效期HTTP响应头来告诉客户端，页面的各个组件应该被缓存多久。用一个遥远的将来时间做有效期，告诉浏览器这个响应在20120年1月1日前不会改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expires: Wen, 1 Jan 2010 20:00:00 GMT</span><br></pre></td></tr></table></figure>
+
+<p>如果你用的是Apache服务器，用ExpiresDefault指令来设置相对于当前日期的有效期。下面的例子设置了从请求时间起10年的有效期：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExpiresDefault &quot;access plus 10 years&quot;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/03/mySql安装与基础操作/" rel="next" title="MySQL的安装与基础操作">
+                <i class="fa fa-chevron-left"></i> MySQL的安装与基础操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/10/webpack/" rel="prev" title="webpack从入门到放弃">
+                webpack从入门到放弃 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Yahoo军规"><span class="nav-number">1.</span> <span class="nav-text">Yahoo军规</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、尽量减少HTTP请求数量"><span class="nav-number">1.1.</span> <span class="nav-text">一、尽量减少HTTP请求数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、减少DNS查找"><span class="nav-number">1.2.</span> <span class="nav-text">二、减少DNS查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、避免重定向"><span class="nav-number">1.3.</span> <span class="nav-text">三、避免重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、让Ajax可缓存"><span class="nav-number">1.4.</span> <span class="nav-text">四、让Ajax可缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、延迟加载"><span class="nav-number">1.5.</span> <span class="nav-text">五、延迟加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、预加载"><span class="nav-number">1.6.</span> <span class="nav-text">六、预加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、减少DOM的数量"><span class="nav-number">1.7.</span> <span class="nav-text">七、减少DOM的数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、跨域划分内容"><span class="nav-number">1.8.</span> <span class="nav-text">八、跨域划分内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、尽量少使用frame"><span class="nav-number">1.9.</span> <span class="nav-text">九、尽量少使用frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、杜绝404"><span class="nav-number">1.10.</span> <span class="nav-text">十、杜绝404</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、避免使用css表达式"><span class="nav-number">1.11.</span> <span class="nav-text">十一、避免使用css表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十二、选择-lt-link-gt-舍弃-import"><span class="nav-number">1.12.</span> <span class="nav-text">十二、选择&lt;link&gt;舍弃@import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十三、避免使用滤镜"><span class="nav-number">1.13.</span> <span class="nav-text">十三、避免使用滤镜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十四、把样式表放在顶部"><span class="nav-number">1.14.</span> <span class="nav-text">十四、把样式表放在顶部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十五、去除重复脚本"><span class="nav-number">1.15.</span> <span class="nav-text">十五、去除重复脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十六、尽量减少DOM访问"><span class="nav-number">1.16.</span> <span class="nav-text">十六、尽量减少DOM访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十七、用智能的事件处理器"><span class="nav-number">1.17.</span> <span class="nav-text">十七、用智能的事件处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十八、把脚本放在底部"><span class="nav-number">1.18.</span> <span class="nav-text">十八、把脚本放在底部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十九、js和css放外边"><span class="nav-number">1.19.</span> <span class="nav-text">十九、js和css放外边</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十、压缩js和css"><span class="nav-number">1.20.</span> <span class="nav-text">二十、压缩js和css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十一、优化图片"><span class="nav-number">1.21.</span> <span class="nav-text">二十一、优化图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十二、优化CSS-Sprite"><span class="nav-number">1.22.</span> <span class="nav-text">二十二、优化CSS Sprite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十三、不要用HTML缩放图片"><span class="nav-number">1.23.</span> <span class="nav-text">二十三、不要用HTML缩放图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十四、用小的可缓存的favicon-ico"><span class="nav-number">1.24.</span> <span class="nav-text">二十四、用小的可缓存的favicon.ico</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十五、减小cookie"><span class="nav-number">1.25.</span> <span class="nav-text">二十五、减小cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十六、静态资源放在不含cookie的域"><span class="nav-number">1.26.</span> <span class="nav-text">二十六、静态资源放在不含cookie的域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十七、单个文件小于25k"><span class="nav-number">1.27.</span> <span class="nav-text">二十七、单个文件小于25k</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十八、将组件打包到一个复合文档里"><span class="nav-number">1.28.</span> <span class="nav-text">二十八、将组件打包到一个复合文档里</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二十九、Gzip组件"><span class="nav-number">1.29.</span> <span class="nav-text">二十九、Gzip组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十、避免图片src属性为空"><span class="nav-number">1.30.</span> <span class="nav-text">三十、避免图片src属性为空</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十一、配置ETags"><span class="nav-number">1.31.</span> <span class="nav-text">三十一、配置ETags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十二、对Ajax用GET请求"><span class="nav-number">1.32.</span> <span class="nav-text">三十二、对Ajax用GET请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十三、尽早清空缓冲区"><span class="nav-number">1.33.</span> <span class="nav-text">三十三、尽早清空缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十四、使用CDN（内容分发网络）"><span class="nav-number">1.34.</span> <span class="nav-text">三十四、使用CDN（内容分发网络）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十五、添上Expires或者Cache-Control-HTTP头"><span class="nav-number">1.35.</span> <span class="nav-text">三十五、添上Expires或者Cache-Control HTTP头</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

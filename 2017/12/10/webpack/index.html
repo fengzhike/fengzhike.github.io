@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,性能优化,构建工具,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="webpack从入门到放弃什么是webpackwebpack 是前端模块化打包工具 为什么用webpack 随着web应用越来越丰富，为了简化开发的复杂度，我们要使用模块化组织代码。具体请看《模块化简述》(http://fanshunkai.com/#/mk-app-portal/markdown?210) webpack认为一切皆模块，最终把一切资源打包输出为可用的静态资源 Webpack的处理">
+<meta name="keywords" content="前端,性能优化,构建工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack从入门到放弃">
+<meta property="og:url" content="http://www.fanshunkai.com/2017/12/10/webpack/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="webpack从入门到放弃什么是webpackwebpack 是前端模块化打包工具 为什么用webpack 随着web应用越来越丰富，为了简化开发的复杂度，我们要使用模块化组织代码。具体请看《模块化简述》(http://fanshunkai.com/#/mk-app-portal/markdown?210) webpack认为一切皆模块，最终把一切资源打包输出为可用的静态资源 Webpack的处理">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/webpack.jpg">
+<meta property="og:updated_time" content="2019-05-31T09:36:18.796Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack从入门到放弃">
+<meta name="twitter:description" content="webpack从入门到放弃什么是webpackwebpack 是前端模块化打包工具 为什么用webpack 随着web应用越来越丰富，为了简化开发的复杂度，我们要使用模块化组织代码。具体请看《模块化简述》(http://fanshunkai.com/#/mk-app-portal/markdown?210) webpack认为一切皆模块，最终把一切资源打包输出为可用的静态资源 Webpack的处理">
+<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/webpack.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2017/12/10/webpack/">
+
+
+
+
+
+  <title>webpack从入门到放弃 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/12/10/webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">webpack从入门到放弃</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-10T00:00:00+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="webpack从入门到放弃"><a href="#webpack从入门到放弃" class="headerlink" title="webpack从入门到放弃"></a>webpack从入门到放弃</h1><h2 id="什么是webpack"><a href="#什么是webpack" class="headerlink" title="什么是webpack"></a>什么是webpack</h2><p><strong>webpack</strong> 是前端模块化打包工具</p>
+<h2 id="为什么用webpack"><a href="#为什么用webpack" class="headerlink" title="为什么用webpack"></a>为什么用webpack</h2><ul>
+<li>随着web应用越来越丰富，为了简化开发的复杂度，我们要使用模块化组织代码。具体请看《模块化简述》(<a href="http://fanshunkai.com/#/mk-app-portal/markdown?210" target="_blank" rel="noopener">http://fanshunkai.com/#/mk-app-portal/markdown?210</a>)</li>
+<li>webpack认为一切皆模块，最终把一切资源打包输出为可用的静态资源</li>
+<li>Webpack的处理速度更快更直接，能打包更多不同类型的文件。</li>
+</ul>
+<h2 id="webpack的使用"><a href="#webpack的使用" class="headerlink" title="webpack的使用"></a>webpack的使用</h2><p>本文以node环境下webpack的运用为例，请自行安装node和npm</p>
+<ol>
+<li><p>全局安装webpack</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>项目中安装<br> 初始化npm项目,创建package.json</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init -y</span><br></pre></td></tr></table></figure>
+
+<p> 项目中安装webpack</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev webpack</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建相应的文件或文件夹,index.html,src–开发目录,src/js,src/js/main.js,src/js/hello.js<br> 项目结构如下：</p>
+ <img src="/static/img/webpack.jpg">
+
+<p> 在<strong>index.html</strong>中写入html基础代码，引入打包后的chunk文件，命名为bundle.js</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//index.html</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;webpack-test&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id = &quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;script src=&quot;./build/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p> main.js是主入口文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//main.js</span><br><span class="line">var Hello = require(&apos;./hello.js&apos;);</span><br><span class="line">document.querySelector(&apos;#app&apos;).appendChild(Hello)</span><br></pre></td></tr></table></figure>
+
+<p> hello.js是业务代码</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//hello.js</span><br><span class="line">var Hello = document.createElement(&apos;div&apos;);</span><br><span class="line">Hello.textContent = &quot;Hello Word&quot;;</span><br><span class="line">module.exports = Hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用webpack打包<br> webpack有两个参数 webpack 入口文件  输出文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack ./src/js/main.js ./build/bundle.js</span><br></pre></td></tr></table></figure>
+
+<p> 如果没有全局安装，需要制定在本项目中的node_modules中的webpack</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./node_modules/.bin/webpack ./src/js/main.js ./build/bundle.js</span><br></pre></td></tr></table></figure>
+
+<p> 打包完毕，浏览器打开index.html，出现”Hello Word”。webpack使用完毕</p>
+</li>
+<li><p>配置文件webpack.config.js<br> 正常项目中，文件比较多，自然不能以这种方式一一打包，我们可以通过配置webpack.config.js文件实现webpack的自动化打包</p>
+<ul>
+<li><p>config文件的参数解读</p>
+<ul>
+<li>-entry： 入口文件</li>
+<li>-output：输出文件</li>
+<li>-module：模块，各种loader</li>
+<li>-plugins：插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">当运行webpack时，默认寻找根目录下的webpack.config.js</span><br><span class="line">//webpack.config.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        bundle:&apos;./src/js/main.js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:&apos;./build/[name].js&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行命令webpack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack</span><br></pre></td></tr></table></figure>
+
+<p>打开index.html 浏览器显示”Hello Word”，跟之前手动打包一样</p>
+</li>
+</ul>
+</li>
+<li><p>用webpack起服务</p>
+<ul>
+<li><p>安装webpack-dev-server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i --save-dev webpack-dev-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在package.json中配置webpack-dev-server的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;:&quot;webpack-dev-server --content-base ./ --port 3000 --host 0.0.0.0 --hot --inline&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>运行webpack-dev-server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run start</span><br></pre></td></tr></table></figure>
+
+<p>访问<a href="http://127.0.0.1:3000/" target="_blank" rel="noopener">http://127.0.0.1:3000/</a> ,你将看到之前的”hello word”,并且在hello.js中在”hello word”后面加几个感叹号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//hello.js</span><br><span class="line">var Hello = document.createElement(&apos;div&apos;);</span><br><span class="line">Hello.textContent = &quot;Hello Word!!!&quot;;</span><br><span class="line">module.exports = Hello</span><br></pre></td></tr></table></figure>
+
+<p>咦，浏览器竟然刷新了，对了，我们可以在webpack-dev-server后面通过 “–” 传入参数 ，–hot –inline就是热更新的“元凶”，加上”–color –compress试试呗”</p>
+</li>
+</ul>
+</li>
+<li><p>loaders</p>
+<ul>
+<li>loaders<br>webpack可以打包各种资源文件，但是需要不同的loaders来处理，以webpack2为例，(2和3的写法类似)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        //exclude: /node_modules/,</span><br><span class="line">        use: [&#123;</span><br><span class="line">            loader: &apos;style-loader&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            loader: &apos;css-loader&apos;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        test: /\.less$/,</span><br><span class="line">        use: [&#123;</span><br><span class="line">            loader: &apos;style-loader&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            loader: &apos;css-loader&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            loader: &apos;less-loader&apos;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        test: /\.js?$/,</span><br><span class="line">        exclude: /node_modules/,</span><br><span class="line">        use: &apos;babel-loader&apos;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,</span><br><span class="line">        use: &#123;</span><br><span class="line">            loader: &apos;url-loader&apos;,</span><br><span class="line">            options: &#123;</span><br><span class="line">                name: &apos;[name].[hash:8].[ext]&apos;,</span><br><span class="line">                limit: 8192</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        test: /\.md$/,</span><br><span class="line">        use: [&#123;</span><br><span class="line">            loader: &quot;html-loader&quot;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            loader: &quot;highlight-loader&quot;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            loader: &quot;markdown-loader&quot;,</span><br><span class="line">            options: &#123; renderer &#125;</span><br><span class="line"></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;],</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>插件</p>
+<p> loaders的功能有限，在性能和其他方面，可能需要一些插件来实现，比如生成一个html就需要HtmlWebpackPlugin</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//webpack.config.js</span><br><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); //installed via npm</span><br><span class="line">const webpack = require(&apos;webpack&apos;); //to access built-in plugins</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        bundle:&apos;./src/js/main.js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:&apos;./build/[name].js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123; test: /\.txt$/, use: &apos;raw-loader&apos; &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.optimize.UglifyJsPlugin(),</span><br><span class="line">        new HtmlWebpackPlugin(&#123;template: &apos;./src/index.html&apos;&#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 如此，一个webpack的配置就完成了，loader和plugin根据实际情况按需配置吧，这些loader和plugin都是独立的安装包，使用前请安装到本地的node_modules，具体使用方法请去webpack官网查阅</p>
+</li>
+</ol>
+<hr>
+<p>2017.11.28</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
+            <a href="/tags/构建工具/" rel="tag"># 构建工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/08/yahooRegulations/" rel="next" title="Yahoo军规">
+                <i class="fa fa-chevron-left"></i> Yahoo军规
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/10/parceljs/" rel="prev" title="Parceljs初探">
+                Parceljs初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack从入门到放弃"><span class="nav-number">1.</span> <span class="nav-text">webpack从入门到放弃</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是webpack"><span class="nav-number">1.1.</span> <span class="nav-text">什么是webpack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用webpack"><span class="nav-number">1.2.</span> <span class="nav-text">为什么用webpack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack的使用"><span class="nav-number">1.3.</span> <span class="nav-text">webpack的使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

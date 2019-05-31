@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="模块化简述模块化的概念模块化 是将系统分离成独立功能部分的方法，各模块分别反映其内部特性，模块间投过接口通信 随着web应用越来越复杂，简单的代码组织方式已经无法满足业务和框架的需求，需要通过模块化来组织代码 模块化的价值建立模块化的标准，能够管理模块之间的依赖，提高可维护性的复用性。高内聚 低耦合  _ 软件工程 模块化的历史至今为止，模块化发展了三个阶段：无模块时代，萌芽时代，现代模块时代 无">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见数据结构">
+<meta property="og:url" content="http://www.fanshunkai.com/2017/11/28/module-description/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="模块化简述模块化的概念模块化 是将系统分离成独立功能部分的方法，各模块分别反映其内部特性，模块间投过接口通信 随着web应用越来越复杂，简单的代码组织方式已经无法满足业务和框架的需求，需要通过模块化来组织代码 模块化的价值建立模块化的标准，能够管理模块之间的依赖，提高可维护性的复用性。高内聚 低耦合  _ 软件工程 模块化的历史至今为止，模块化发展了三个阶段：无模块时代，萌芽时代，现代模块时代 无">
+<meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-05-31T09:35:21.223Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见数据结构">
+<meta name="twitter:description" content="模块化简述模块化的概念模块化 是将系统分离成独立功能部分的方法，各模块分别反映其内部特性，模块间投过接口通信 随着web应用越来越复杂，简单的代码组织方式已经无法满足业务和框架的需求，需要通过模块化来组织代码 模块化的价值建立模块化的标准，能够管理模块之间的依赖，提高可维护性的复用性。高内聚 低耦合  _ 软件工程 模块化的历史至今为止，模块化发展了三个阶段：无模块时代，萌芽时代，现代模块时代 无">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2017/11/28/module-description/">
+
+
+
+
+
+  <title>常见数据结构 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/11/28/module-description/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常见数据结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="模块化简述"><a href="#模块化简述" class="headerlink" title="模块化简述"></a>模块化简述</h1><h2 id="模块化的概念"><a href="#模块化的概念" class="headerlink" title="模块化的概念"></a>模块化的概念</h2><p><strong>模块化</strong> 是将系统分离成独立功能部分的方法，各模块分别反映其内部特性，模块间投过接口通信</p>
+<p>随着web应用越来越复杂，简单的代码组织方式已经无法满足业务和框架的需求，需要通过<strong>模块化</strong>来组织代码</p>
+<h2 id="模块化的价值"><a href="#模块化的价值" class="headerlink" title="模块化的价值"></a>模块化的价值</h2><p>建立模块化的标准，能够管理模块之间的依赖，提高可维护性的复用性。高内聚 低耦合  _ 软件工程</p>
+<h2 id="模块化的历史"><a href="#模块化的历史" class="headerlink" title="模块化的历史"></a>模块化的历史</h2><p>至今为止，模块化发展了三个阶段：无模块时代，萌芽时代，现代模块时代</p>
+<h3 id="无模块时代"><a href="#无模块时代" class="headerlink" title="无模块时代"></a>无模块时代</h3><p>无模块时代的代码，依靠全局变量引用，会有全局变量泛滥、命名冲突的问题，而且依赖关系不好管理如下面所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//a.js</span><br><span class="line">var a = &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">//b.js</span><br><span class="line">var b = &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">//index.html</span><br><span class="line">&lt;script src = &quot;a.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src = &quot;b.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>a和b是全局变量，如果冲突不好处理，若a和b有依赖关系，引用时换个位置就会报错，这种代码组织方式，虽然一定程度上使代码整洁，但是仍然不够成熟</p>
+<h3 id="模块化萌芽时代"><a href="#模块化萌芽时代" class="headerlink" title="模块化萌芽时代"></a>模块化萌芽时代</h3><p>为了解决全局变量冲突和依赖关系的问题，采用了立即执行函数(IIFE)的方式保护变量，此时的模块化主要是以立即执行函数的方式实现的，jq也是典型的立即执行函数的实现方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var moduleA = (function()&#123;</span><br><span class="line">        var _abc = 1;</span><br><span class="line">        var a = &#123;&#125;;</span><br><span class="line">        var b = function()&#123;&#125;;</span><br><span class="line">        return &#123;</span><br><span class="line">            a:a,</span><br><span class="line">            b:b</span><br><span class="line">        &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">//jq风格</span><br><span class="line">(function(window)&#123;</span><br><span class="line">    window.jQuery = window.$ = jQuery</span><br><span class="line">&#125;)(window)</span><br></pre></td></tr></table></figure>
+
+<p>这样的方式，Function内部的变量对全局隐藏了，但是moduleA还是要保留给全局，全局变量还是越来越多，仍然有缺陷</p>
+<h3 id="现代模块化时代"><a href="#现代模块化时代" class="headerlink" title="现代模块化时代"></a>现代模块化时代</h3><h4 id="commonjs"><a href="#commonjs" class="headerlink" title="commonjs"></a>commonjs</h4><p>2009年，nodejs的出世，给js开发带来了革命性的发展，js可以用来写服务端代码了。CommonJs社区制定了Modules/1.0（<a href="http://wiki.commonjs.org/wiki/Modules/1.0）" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Modules/1.0）</a> 规范，首次定义了一个模块应该长啥样。Modules/1.0规范包含以下内容：</p>
+<blockquote>
+<ol>
+<li>模块的标识应遵循的规则（书写规范）</li>
+<li>定义全局函数require，通过传入模块标识来引入其他模块，执行的结果即为别的模块暴漏出来的API</li>
+<li>如果被require函数引入的模块中也包含依赖，那么依次加载这些依赖</li>
+<li>如果引入模块失败，那么require函数应该报一个异常</li>
+<li>模块通过变量exports来向往暴漏API，exports只能是一个对象，暴漏的API须作为此对象的属性。</li>
+</ol>
+</blockquote>
+<p>此规范在nodejs中使用并推广了，实现代码如下（官方例子）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//math.js</span><br><span class="line">exports.add = function()&#123;</span><br><span class="line">    var sum = 0,i=0.args=arguments, l=args.length;</span><br><span class="line">    while (i&lt;l)&#123;</span><br><span class="line">        sum += args[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;;</span><br><span class="line">//increment.js</span><br><span class="line">var add = reuqire(&apos;math&apos;).add;</span><br><span class="line">exports.increment = function(val)&#123;</span><br><span class="line">    return add(val,1);</span><br><span class="line">&#125;;</span><br><span class="line">//program.js</span><br><span class="line">var inc = require(&apos;increment&apos;).increment;</span><br><span class="line">var a = 1;</span><br><span class="line">inc(a);//2</span><br></pre></td></tr></table></figure>
+
+<p>modules/1.0规范起源于服务端，无法直接用于浏览器前端，具体表现为：</p>
+<blockquote>
+<ol>
+<li>外层没有function包裹，变量暴露在全局。例如上面increment.js的add；</li>
+<li>资源加载方式不同。服务端require一个模块，直接就从硬盘或内存中读取了，消耗的时间可以忽略。而浏览器需要先从服务端下载下来，再运行代码才能获取api，需要花费一个http请求，也就是说require后的面代码需要资源请求完成才能执行。由于浏览器端是以插入&lt;script&gt;标签的形式来加载资源的（ajax方式不行，有跨域问题），没办法让代码同步执行，所以像commonjs那样的写法会直接报错。所以，社区意识到，要想在浏览器环境中也能模块化，需要对规范进行升级。顺便说一句，CommonJs原来是叫ServerJs，从名字可以看出是专攻服务端的，为了统一前后端而改名CommonJs。（论起名的重要性~）而就在社区讨论制定下一版规范的时候，内部发生了比较大的分歧，分裂出了三个主张，渐渐的形成三个不同的派别：<strong>Modules/1.x</strong> 派、<strong>Modules/Async</strong> 派、<strong>Modules/2.0</strong>派</li>
+</ol>
+</blockquote>
+<p>commonjs三大派别</p>
+<ul>
+<li><p><strong>Modules/1.x</strong> 派</p>
+<p>  这波人认为可以在此基础上做修改，以满足浏览器端的需要，既然浏览器端需要function的包装，需要异步加载，那就新增一个方案，把现有模块转化为适合浏览器端的就行了，有点像”保皇派”。基于这个主张，制定了Modules/Transport（<a href="http://wiki.commonjs.org/wiki/Modules/Transport）" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Modules/Transport）</a> 规范，提出了先通过工具把现有模块转化为复合浏览器上使用的模块，然后再使用的方案。</p>
+<p>  browserify就是这样一个工具，可以把nodejs的模块编译成浏览器可用的模块。</p>
+</li>
+<li><p><strong>Modules/Async</strong> 派<br>  这一波人有点像“革新派”，他们认为浏览器与服务器环境差别太大，不能沿用旧的模块标准。既然浏览器必须异步加载代码，那么模块在定义的时候就必须指明所依赖的模块，然后把本模块的代码写在回调函数里。模块的加载也是通过下载-回调这样的过程来进行，这个思想就是AMD的基础，由于“革新派”与“保皇派”的思想无法达成一致，最终从CommonJs中分裂了出去，独立制定了浏览器端的js模块化规范AMD</p>
+</li>
+<li><p><strong>Modules/2.0</strong> 派<br>  这一波人有点像“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（<a href="http://wiki.commonjs.org/wiki/Modules/Wrappings）" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Modules/Wrappings）</a> 规范，此规范指出了一个模块应该如何“包装”，包含以下内容：</p>
+<blockquote>
+<ol>
+<li>全局有一个module变量，用来定义模块</li>
+<li>通过module。declare方法来定义一个模块</li>
+<li>module.declare方法只接收一个参数，那就是模块的factory，次factory可以是函数也可以是对象，如果是对象，那么模块输出就是此对象。</li>
+<li>模块的factory函数传入三个参数：require,exports,module，用来引入其他依赖和导出本模块API</li>
+<li>如果factory函数最后明确写有return数据（js函数中不写return默认返回undefined），那么return的内容即为模块的输出。</li>
+</ol>
+</blockquote>
+<p>  使用该规范的例子看起来像这样：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//使用exports来对外暴露API</span><br><span class="line">module.declare(function(require,exports,module)&#123;</span><br><span class="line">    exports.foo = &quot;bar&quot;</span><br><span class="line">&#125;)</span><br><span class="line">//也可以直接return来对外暴露数据</span><br><span class="line">module.declare(function()&#123;</span><br><span class="line">    return &#123;foo:&apos;bar&apos;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="AMD-Asynchronous-Module-Definition"><a href="#AMD-Asynchronous-Module-Definition" class="headerlink" title="AMD (Asynchronous Module Definition)"></a><strong>AMD</strong> (Asynchronous Module Definition)</h4><p>AMD规范：(<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">https://github.com/amdjs/amdjs-api/wiki/AMD</a>)</p>
+<p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。</p>
+<p>所需资源预先下载执行，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//AMD</span><br><span class="line">define([&apos;./a&apos;, &apos;./b&apos;], function(a, b) &#123;  // 依赖必须一开始就写好</span><br><span class="line">    a.doSomething()</span><br><span class="line">    // 此处略去 100 行</span><br><span class="line">    b.doSomething()</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="CMD-Common-Module-Definition"><a href="#CMD-Common-Module-Definition" class="headerlink" title="CMD (Common Module Definition)"></a><strong>CMD</strong> (Common Module Definition)</h4><p>CMD规范：(<a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">https://github.com/seajs/seajs/issues/242</a>)</p>
+<p>CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。</p>
+<p>延迟执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//CMD</span><br><span class="line">define(function(require, exports, module) &#123;   </span><br><span class="line">    var a = require(&apos;./a&apos;)   </span><br><span class="line">    a.doSomething()   </span><br><span class="line">    // 此处略去 100 行   </span><br><span class="line">    var b = require(&apos;./b&apos;)</span><br><span class="line">    // 依赖可以就近书写   </span><br><span class="line">    b.doSomething()   </span><br><span class="line">    // ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="ES6-import-export"><a href="#ES6-import-export" class="headerlink" title="ES6 import/export"></a><strong>ES6</strong> import/export</h4><p>es6在语言规格层面上，实现了模块功能，大有取代commonjs和AMD规范，成为浏览器和服务器通用的模块解决方案的势头</p>
+<p>es6模块主要有两个功能：export和import</p>
+<p>export用于对外输出本模块（一个文件可以理解为一个模块）变量的接口</p>
+<p>import用于在一个模块中加载另一个含有export接口的模块。</p>
+<p>也就是说使用export命令定义了模块的对外接口以后，其他JS文件就可以通过import命令加载这个模块</p>
+<hr>
+<p>引用：</p>
+<ol>
+<li>JavaScript 模块化历程(<a href="http://web.jobbole.com/83761/" target="_blank" rel="noopener">http://web.jobbole.com/83761/</a>)</li>
+<li>AMD 和 CMD 的区别有哪些？– 知乎答主：玉伯 (<a href="https://www.zhihu.com/question/20351507/answer/14859415" target="_blank" rel="noopener">https://www.zhihu.com/question/20351507/answer/14859415</a>)</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/25/fucntionalprogramming/" rel="next" title="函数式编程入门">
+                <i class="fa fa-chevron-left"></i> 函数式编程入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/03/mySqlVisiteSetting/" rel="prev" title="MySQL访问设置">
+                MySQL访问设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模块化简述"><span class="nav-number">1.</span> <span class="nav-text">模块化简述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化的概念"><span class="nav-number">1.1.</span> <span class="nav-text">模块化的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化的价值"><span class="nav-number">1.2.</span> <span class="nav-text">模块化的价值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化的历史"><span class="nav-number">1.3.</span> <span class="nav-text">模块化的历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无模块时代"><span class="nav-number">1.3.1.</span> <span class="nav-text">无模块时代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化萌芽时代"><span class="nav-number">1.3.2.</span> <span class="nav-text">模块化萌芽时代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现代模块化时代"><span class="nav-number">1.3.3.</span> <span class="nav-text">现代模块化时代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#commonjs"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">commonjs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD-Asynchronous-Module-Definition"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">AMD (Asynchronous Module Definition)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD-Common-Module-Definition"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">CMD (Common Module Definition)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6-import-export"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">ES6 import/export</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

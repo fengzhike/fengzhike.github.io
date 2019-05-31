@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,javascript,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="javascript 运行机制0、概念ECMAScriptECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer Manufacturers Association）通过ECMA-262标准化的脚本程序设计语言。 ECMAScript和javascript关系1996年11月，JavaScript 的创造者 Netscape 公司，决定将">
+<meta name="keywords" content="前端,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 运行机制">
+<meta property="og:url" content="http://www.fanshunkai.com/2017/01/24/js-mechanism/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="javascript 运行机制0、概念ECMAScriptECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer Manufacturers Association）通过ECMA-262标准化的脚本程序设计语言。 ECMAScript和javascript关系1996年11月，JavaScript 的创造者 Netscape 公司，决定将">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/01.png">
+<meta property="og:updated_time" content="2019-05-31T09:36:19.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 运行机制">
+<meta name="twitter:description" content="javascript 运行机制0、概念ECMAScriptECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer Manufacturers Association）通过ECMA-262标准化的脚本程序设计语言。 ECMAScript和javascript关系1996年11月，JavaScript 的创造者 Netscape 公司，决定将">
+<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2017/01/24/js-mechanism/">
+
+
+
+
+
+  <title>javascript 运行机制 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/01/24/js-mechanism/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javascript 运行机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-24T00:00:00+08:00">
+                2017-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="javascript-运行机制"><a href="#javascript-运行机制" class="headerlink" title="javascript 运行机制"></a>javascript 运行机制</h1><h2 id="0、概念"><a href="#0、概念" class="headerlink" title="0、概念"></a>0、概念</h2><h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><p>ECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer Manufacturers Association）通过ECMA-262标准化的脚本程序设计语言。</p>
+<h3 id="ECMAScript和javascript关系"><a href="#ECMAScript和javascript关系" class="headerlink" title="ECMAScript和javascript关系"></a>ECMAScript和javascript关系</h3><p>1996年11月，JavaScript 的创造者 Netscape 公司，决定将 JavaScript 提交给国际标准化组织ECMA，希望这种语言能够成为国际标准。次年，ECMA 发布262号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为 ECMAScript，这个版本就是1.0版。</p>
+<p>该标准从一开始就是针对 JavaScript 语言制定的，但是之所以不叫 JavaScript，有两个原因。一是商标，Java 是 Sun 公司的商标，根据授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 本身也已经被 Netscape 公司注册为商标。二是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。</p>
+<p>因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 ActionScript）。日常场合，这两个词是可以互换的。</p>
+<h2 id="一、单线程？"><a href="#一、单线程？" class="headerlink" title="一、单线程？"></a>一、单线程？</h2><h3 id="浏览器其实是多线程的"><a href="#浏览器其实是多线程的" class="headerlink" title="浏览器其实是多线程的"></a>浏览器其实是多线程的</h3><ul>
+<li>js线程</li>
+<li>GUI渲染线程</li>
+<li>Http请求的线程</li>
+<li>事件触发线程</li>
+<li>定时器线程</li>
+<li>…</li>
+</ul>
+<h3 id="所谓单线程？"><a href="#所谓单线程？" class="headerlink" title="所谓单线程？"></a>所谓单线程？</h3><p>指的是js线程(主线程)，基于事件驱动，js引擎一直轮询任务队列，执行队列中的任务</p>
+<p>html5主线程是可以开辟多线程的，Web Worker</p>
+<h2 id="二、同步和异步？"><a href="#二、同步和异步？" class="headerlink" title="二、同步和异步？"></a>二、同步和异步？</h2><h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p>假设存在一个函数A：</p>
+<p>A(args…);</p>
+<p>如果在函数A返回的时候，调用者就能够得到预期结果(即拿到了预期的返回值或者看到了预期的效果)，那么这个函数就是同步的。</p>
+<ul>
+<li>同步例子1：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">主线程：“你好，AJAX线程。请你帮我发个HTTP请求吧，我把请求地址和参数都给你了。”</span><br><span class="line">AJAX线程：“......”</span><br><span class="line">主线程：：“喂，AJAX线程，你怎么不说话？”</span><br><span class="line">AJAX线程：“......”</span><br><span class="line">主线程：：“喂！喂喂喂！”</span><br><span class="line">AJAX线程：“......”</span><br><span class="line">(一炷香的时间后)</span><br><span class="line">主线程：：“喂！求你说句话吧！”</span><br><span class="line">AJAX线程：“主线程，不好意思，我在工作的时候不能说话。你的请求已经发完了，拿到响应数据了，给你。”</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>同步例子2：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sqrt(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hi'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>如果在函数A返回的时候，调用者还不能够得到预期结果，而是需要在将来通过一定的手段得到，那么这个函数就是异步的。</p>
+<ul>
+<li>异步例子1：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主线程：“你好，AJAX线程。请你帮我发个HTTP请求吧，我把请求地址和参数都给你了。”</span><br><span class="line">AJAX线程：“好的，主线程。我马上去发，但可能要花点儿时间呢，你可以先去忙别的。”</span><br><span class="line">主线程：：“谢谢，你拿到响应后告诉我一声啊。”</span><br><span class="line">(接着，主线程做其他事情去了。一顿饭的时间后，它收到了响应到达的通知。)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>异步例子2：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'foo.txt'</span>, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、异步过程？"><a href="#三、异步过程？" class="headerlink" title="三、异步过程？"></a>三、异步过程？</h2><p>异步过程定义为整个异步操作所有工作的过程.</p>
+<h3 id="过程描述"><a href="#过程描述" class="headerlink" title="过程描述"></a>过程描述</h3><ol>
+<li>主线程发起一个异步请求</li>
+<li>相应的工作线程接收请求并告知主线程已收到(异步函数返回)</li>
+<li>主线程可以继续执行后面的代码，同时工作线程执行异步任务；</li>
+<li>工作线程完成工作后，通知主线程；(加入任务队列)</li>
+<li>主线程收到通知后（任务队列循环），执行一定的动作(调用回调函数)。</li>
+</ol>
+<h3 id="函数形式"><a href="#函数形式" class="headerlink" title="函数形式"></a>函数形式</h3><p>异步函数通常具有以下的形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A(args..., callbackFn)</span><br></pre></td></tr></table></figure>
+
+<p>它可以叫做异步过程的发起函数，或者叫做异步任务注册函数。args是这个函数需要的参数。callbackFn也是这个函数的参数，但是它比较特殊所以单独列出来。</p>
+<h3 id="要素"><a href="#要素" class="headerlink" title="要素"></a>要素</h3><p>从主线程的角度看，一个异步过程包括下面两个要素：</p>
+<ul>
+<li>发起函数(注册函数) A</li>
+<li>回调函数 callbackFn</li>
+</ul>
+<p>它们都是在主线程上调用的，其中注册函数用来发起异步过程，回调函数用来处理结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(fn, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>其中的setTimeout就是异步过程的发起函数，fn是回调函数。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>前面说的形式A(args…, callbackFn)只是一种抽象的表示，并不代表回调函数一定要作为发起函数的参数，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.onreadystatechange = xxx; <span class="comment">// 添加回调函数</span></span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url);</span><br><span class="line">xhr.send(); <span class="comment">// 发起函数</span></span><br></pre></td></tr></table></figure>
+
+<p>发起函数和回调函数就是分离的。</p>
+<h2 id="四、任务队列和事件循环"><a href="#四、任务队列和事件循环" class="headerlink" title="四、任务队列和事件循环"></a>四、任务队列和事件循环</h2><p>异步过程中，工作线程在异步操作完成后需要通知主线程。那么这个通知机制是怎样实现的呢？</p>
+<p>答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">利用任务队列和事件循环.</span><br><span class="line">工作线程将消息放到任务队列，主线程通过事件循环过程去取消息.</span><br></pre></td></tr></table></figure>
+
+<h3 id="任务队列-Task-Queue"><a href="#任务队列-Task-Queue" class="headerlink" title="任务队列(Task Queue)"></a>任务队列(Task Queue)</h3><p>任务队列是一个先进先出的队列，它里面存放着各种任务消息</p>
+<h3 id="事件循环-Event-Loop"><a href="#事件循环-Event-Loop" class="headerlink" title="事件循环(Event Loop)"></a>事件循环(Event Loop)</h3><p>事件循环是指主线程重复从任务队列中取任务、执行的过程</p>
+<p>主线程只会做一件事情，就是从任务队列里面取任务、执行任务，再取任务、再执行。当任务队列为空时，就会等待直到任务队列变成非空。而且主线程只有在将当前的任务执行完成后，才会去取下一个任务。这种机制就叫做事件循环机制，取一个消息并执行的过程叫做一次循环。</p>
+<p>事件循环用代码表示大概是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> message = queue.get();</span><br><span class="line">    execute(message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h3><p>消息就是注册异步任务时添加的回调函数。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<p>先发起异步AJAX</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(<span class="string">'http://aa.com'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我是响应：'</span>, resp);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>主线程在发起AJAX请求后，会继续执行其他代码。AJAX线程负责请求aa.com，拿到响应后，它会把响应封装成一个JavaScript对象，然后构造一条消息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 任务队列中的任务就长这个样子</span></span><br><span class="line"><span class="keyword">var</span> message = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    callbackFn(response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的callbackFn就是前面代码中得到成功响应时的回调函数。</p>
+<h3 id="图表示"><a href="#图表示" class="headerlink" title="图表示"></a>图表示</h3><p><img src="/static/img/01.png" alt></p>
+<p>主线程在执行完当前循环中的所有代码后，就会到任务队列取出这条消息(也就是message函数)，并执行它。到此为止，就完成了工作线程对主线程的通知，回调函数也就得到了执行。如果一开始主线程就没有提供回调函数，AJAX线程在收到HTTP响应后，也就没必要通知主线程，从而也没必要往任务队列放消息。</p>
+<h2 id="五、DOM事件"><a href="#五、DOM事件" class="headerlink" title="五、DOM事件"></a>五、DOM事件</h2><p>DOM事件就是一个异步过程</p>
+<ul>
+<li>例子</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElement(<span class="string">'#btn'</span>);</span><br><span class="line"><span class="comment">//addEventListener异步函数</span></span><br><span class="line">button.addEventListener(<span class="string">'click'</span>,</span><br><span class="line">	<span class="comment">//回调函数</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log();</span><br><span class="line">	&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、定时器"><a href="#六、定时器" class="headerlink" title="六、定时器"></a>六、定时器</h2><h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><p>1秒后将控制台输出的回调函数加入任务队列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval"></a>setInterval</h3><p>跟setTimeout一样，每隔几秒将回调函数加入任务队列</p>
+<h2 id="七、生产者与消费者"><a href="#七、生产者与消费者" class="headerlink" title="七、生产者与消费者"></a>七、生产者与消费者</h2><p>工作线程是生产者，主线程是消费者(只有一个消费者)。工作线程执行异步任务，执行完成后把对应的回调函数封装成一条任务放到任务队列中；主线程不断地从任务队列中取任务并执行，当任务队列空时主线程阻塞，直到任务队列再次非空。</p>
+<h2 id="web-worker"><a href="#web-worker" class="headerlink" title="web worker"></a>web worker</h2><p>所有主流浏览器均支持 web worker，除了 Internet Explorer</p>
+<p>例子：./test1</p>
+<h2 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h2><p>最后再用一个生活中的例子总结一下同步和异步：在公路上，汽车一辆接一辆，有条不紊的运行。这时，有一辆车坏掉了。假如它停在原地进行修理，那么后面的车就会被堵住没法行驶，交通就乱套了。幸好旁边有应急车道，可以把故障车辆推到应急车道修理，而正常的车流不会受到任何影响。等车修好了，再从应急车道回到正常车道即可。唯一的影响就是，应急车道用多了，原来的车辆之间的顺序会有点乱。</p>
+<p>这就是同步和异步的区别。同步可以保证顺序一致，但是容易导致阻塞；异步可以解决阻塞问题，但是会改变顺序性。改变顺序性其实也没有什么大不了的，只不过让程序变得稍微难理解了一些 :)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/23/sublime-markdown/" rel="next" title="sublime内预览markdown">
+                <i class="fa fa-chevron-left"></i> sublime内预览markdown
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/26/lolcat/" rel="prev" title="lolcat终端美化">
+                lolcat终端美化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-运行机制"><span class="nav-number">1.</span> <span class="nav-text">javascript 运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0、概念"><span class="nav-number">1.1.</span> <span class="nav-text">0、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript"><span class="nav-number">1.1.1.</span> <span class="nav-text">ECMAScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript和javascript关系"><span class="nav-number">1.1.2.</span> <span class="nav-text">ECMAScript和javascript关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、单线程？"><span class="nav-number">1.2.</span> <span class="nav-text">一、单线程？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器其实是多线程的"><span class="nav-number">1.2.1.</span> <span class="nav-text">浏览器其实是多线程的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所谓单线程？"><span class="nav-number">1.2.2.</span> <span class="nav-text">所谓单线程？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、同步和异步？"><span class="nav-number">1.3.</span> <span class="nav-text">二、同步和异步？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步"><span class="nav-number">1.3.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步"><span class="nav-number">1.3.2.</span> <span class="nav-text">异步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、异步过程？"><span class="nav-number">1.4.</span> <span class="nav-text">三、异步过程？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过程描述"><span class="nav-number">1.4.1.</span> <span class="nav-text">过程描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数形式"><span class="nav-number">1.4.2.</span> <span class="nav-text">函数形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要素"><span class="nav-number">1.4.3.</span> <span class="nav-text">要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.4.4.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、任务队列和事件循环"><span class="nav-number">1.5.</span> <span class="nav-text">四、任务队列和事件循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任务队列-Task-Queue"><span class="nav-number">1.5.1.</span> <span class="nav-text">任务队列(Task Queue)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环-Event-Loop"><span class="nav-number">1.5.2.</span> <span class="nav-text">事件循环(Event Loop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息"><span class="nav-number">1.5.3.</span> <span class="nav-text">消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图表示"><span class="nav-number">1.5.4.</span> <span class="nav-text">图表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、DOM事件"><span class="nav-number">1.6.</span> <span class="nav-text">五、DOM事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、定时器"><span class="nav-number">1.7.</span> <span class="nav-text">六、定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout"><span class="nav-number">1.7.1.</span> <span class="nav-text">setTimeout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setInterval"><span class="nav-number">1.7.2.</span> <span class="nav-text">setInterval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、生产者与消费者"><span class="nav-number">1.8.</span> <span class="nav-text">七、生产者与消费者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-worker"><span class="nav-number">1.9.</span> <span class="nav-text">web worker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、总结"><span class="nav-number">1.10.</span> <span class="nav-text">八、总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

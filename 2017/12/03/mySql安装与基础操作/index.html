@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="MySQL,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="MySQL的安装与基础操作一直想学习一些数据库方面东西，比较喜欢MySQL这款开源的关系型数据库。这里对安装和基础操作做一个简单介绍，方便以后查阅，也希望能帮到初学的读者 MySQL简介 MySQL是一个小型的关系型数据库管理系统，现属于Oracle公司  LNMP或LAMP或XAMPP是流行的互联网架构，其中M指的是MySQL 在Mac上安装MySQL 访问mysql.com并下载社区版，选择第">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL的安装与基础操作">
+<meta property="og:url" content="http://www.fanshunkai.com/2017/12/03/mySql安装与基础操作/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="MySQL的安装与基础操作一直想学习一些数据库方面东西，比较喜欢MySQL这款开源的关系型数据库。这里对安装和基础操作做一个简单介绍，方便以后查阅，也希望能帮到初学的读者 MySQL简介 MySQL是一个小型的关系型数据库管理系统，现属于Oracle公司  LNMP或LAMP或XAMPP是流行的互联网架构，其中M指的是MySQL 在Mac上安装MySQL 访问mysql.com并下载社区版，选择第">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/mysql.jpg">
+<meta property="og:updated_time" content="2019-05-31T09:36:19.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL的安装与基础操作">
+<meta name="twitter:description" content="MySQL的安装与基础操作一直想学习一些数据库方面东西，比较喜欢MySQL这款开源的关系型数据库。这里对安装和基础操作做一个简单介绍，方便以后查阅，也希望能帮到初学的读者 MySQL简介 MySQL是一个小型的关系型数据库管理系统，现属于Oracle公司  LNMP或LAMP或XAMPP是流行的互联网架构，其中M指的是MySQL 在Mac上安装MySQL 访问mysql.com并下载社区版，选择第">
+<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/mysql.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2017/12/03/mySql安装与基础操作/">
+
+
+
+
+
+  <title>MySQL的安装与基础操作 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/12/03/mySql安装与基础操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL的安装与基础操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-03T00:00:00+08:00">
+                2017-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MySQL的安装与基础操作"><a href="#MySQL的安装与基础操作" class="headerlink" title="MySQL的安装与基础操作"></a>MySQL的安装与基础操作</h1><p>一直想学习一些数据库方面东西，比较喜欢MySQL这款开源的关系型数据库。这里对安装和基础操作做一个简单介绍，方便以后查阅，也希望能帮到初学的读者</p>
+<h2 id="MySQL简介"><a href="#MySQL简介" class="headerlink" title="MySQL简介"></a>MySQL简介</h2><ul>
+<li><p>MySQL是一个小型的关系型数据库管理系统，现属于Oracle公司</p>
+</li>
+<li><p>LNMP或LAMP或XAMPP是流行的互联网架构，其中M指的是MySQL</p>
+<h2 id="在Mac上安装MySQL"><a href="#在Mac上安装MySQL" class="headerlink" title="在Mac上安装MySQL"></a>在Mac上安装MySQL</h2></li>
+<li><p>访问mysql.com并下载社区版，选择第一个就好了，下载后把下载的包文件拷贝到/usr/local目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp mysql-5.6.22-osx10.9-x86_64.tar.gz /usr/local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入/usr/local，并解压mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local</span><br><span class="line">$ tar zxvf mysql-5.6.22-osx10.9-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名MySQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv mysql-5.6.22-osx10.9-x86_64 mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入MySQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd mysql</span><br><span class="line">$ ls -al</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MySQL目录结构介绍</p>
+</li>
+</ul>
+<img src="/static/img/mysql.jpg" width="500">
+
+<table>
+<thead>
+<tr>
+<th align="left">目录</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bin</td>
+<td align="center">常用工具及管理工具</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="center">数据文件和日志文件</td>
+</tr>
+<tr>
+<td align="left">docs</td>
+<td align="center">帮助文档</td>
+</tr>
+<tr>
+<td align="left">include</td>
+<td align="center">mysql依赖的头文件和库函数</td>
+</tr>
+<tr>
+<td align="left">lib</td>
+<td align="center">mysql依赖的头文件和库函数</td>
+</tr>
+<tr>
+<td align="left">man</td>
+<td align="center">帮助文档</td>
+</tr>
+<tr>
+<td align="left">scripts</td>
+<td align="center">mysql的脚本文件，初始化脚本也在这里</td>
+</tr>
+<tr>
+<td align="left">share</td>
+<td align="center">错误文件和信息</td>
+</tr>
+</tbody></table>
+<ul>
+<li>初始化MySQL</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./scripts/mysql_install_db</span><br><span class="line">$ ./bin/mysqld</span><br></pre></td></tr></table></figure>
+
+<p>mysql已经启动了</p>
+<ul>
+<li>链接MySQL<br>新打开一个终端窗口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>使用root用户登录 -u username -p passwd<br>输入密码进入mysql界面</p>
+<ul>
+<li>MySQL常用命令<br>所有命令必须以”;”结尾</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//查看所有数据库</span><br><span class="line">mysql&gt; show databases;</span><br><span class="line"></span><br><span class="line">//进入test数据库</span><br><span class="line">mysql&gt; use test;</span><br><span class="line"></span><br><span class="line">//查看test下所有的表</span><br><span class="line">mysql&gt; show tables;</span><br><span class="line"></span><br><span class="line">//退出MySQL操作界面</span><br><span class="line">mysql&gt; quit;</span><br><span class="line">mysql&gt; exit;</span><br><span class="line">mysql&gt; \q;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关闭MySQL<br>通过杀死进程关闭<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps -ef |grep mysql</span><br><span class="line">$ kill $pid</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>推荐xampp</p>
+<h2 id="windows上安装mysql"><a href="#windows上安装mysql" class="headerlink" title="windows上安装mysql"></a>windows上安装mysql</h2><ul>
+<li>同mac，下载社区版</li>
+<li>双击MySQL的msi文件，全部下一步安装</li>
+<li>设置root密码，和随系统启动</li>
+<li>目录结构与mac相似</li>
+<li>cmd进入bin目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>]
+输入密码，进入mysql的管理界面，同mac，暴力关闭可以用任务管理器杀死进程</p>
+<h2 id="ubuntu上安装MySQL"><a href="#ubuntu上安装MySQL" class="headerlink" title="ubuntu上安装MySQL"></a>ubuntu上安装MySQL</h2><ul>
+<li>apt-get简介<ul>
+<li>Advanced Packaging Tools</li>
+<li>软件包管理器，能下载二进制的软件包</li>
+</ul>
+</li>
+<li>apt-get [选项] 命令</li>
+<li>选项说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">update</td>
+<td align="center">获取软件包列表</td>
+</tr>
+<tr>
+<td align="left">install</td>
+<td align="center">安装软件包</td>
+</tr>
+<tr>
+<td align="left">remove</td>
+<td align="center">移除软件包</td>
+</tr>
+<tr>
+<td align="left">autoremove</td>
+<td align="center">移除不使用的软件包</td>
+</tr>
+<tr>
+<td align="left">purge</td>
+<td align="center">移除软件包和配置文件</td>
+</tr>
+<tr>
+<td align="left">upgrade</td>
+<td align="center">升级指定的软件包</td>
+</tr>
+<tr>
+<td align="left">source</td>
+<td align="center">下载指定包的源码</td>
+</tr>
+<tr>
+<td align="left">check</td>
+<td align="center">检测依赖是否有损坏</td>
+</tr>
+</tbody></table>
+<ul>
+<li>安装MySQL<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>根据提示输入root用户密码</p>
+<ul>
+<li>查看MySQL是否已经启动<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps -ef|grep mysqld</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果出现mysqld，说明MySQL已经启动</p>
+<ul>
+<li>访问MySQL数据库<br>访问，查看同mac</li>
+<li>移除MySQL<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get autoremove --purge mysql-server</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/03/mySqlVisiteSetting/" rel="next" title="MySQL访问设置">
+                <i class="fa fa-chevron-left"></i> MySQL访问设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/08/yahooRegulations/" rel="prev" title="Yahoo军规">
+                Yahoo军规 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL的安装与基础操作"><span class="nav-number">1.</span> <span class="nav-text">MySQL的安装与基础操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL简介"><span class="nav-number">1.1.</span> <span class="nav-text">MySQL简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Mac上安装MySQL"><span class="nav-number">1.2.</span> <span class="nav-text">在Mac上安装MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows上安装mysql"><span class="nav-number">1.3.</span> <span class="nav-text">windows上安装mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu上安装MySQL"><span class="nav-number">1.4.</span> <span class="nav-text">ubuntu上安装MySQL</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

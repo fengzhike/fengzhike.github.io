@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="前端,持续集成,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="前端的持续集成什么是持续集成（Continuous Integration） 通过平台串联各个环节，实现和沉淀工作自动化的方法 线上代码和代码仓库不同步，影响迭代和团队协作 静态资源发布依赖人工，浪费开发人力 缺少自动化测试，产品质量得不到保障 文案简单修改上线，需要技术介入  持续集成流程   统一代码仓库通过分支管理合并主干SVN 自动化构建工具，编译、部署、测试、监控、本机开发上线环境。 F">
+<meta name="keywords" content="前端,持续集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端持续集成">
+<meta property="og:url" content="http://www.fanshunkai.com/2017/11/24/front-end-chixujicheng/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="前端的持续集成什么是持续集成（Continuous Integration） 通过平台串联各个环节，实现和沉淀工作自动化的方法 线上代码和代码仓库不同步，影响迭代和团队协作 静态资源发布依赖人工，浪费开发人力 缺少自动化测试，产品质量得不到保障 文案简单修改上线，需要技术介入  持续集成流程   统一代码仓库通过分支管理合并主干SVN 自动化构建工具，编译、部署、测试、监控、本机开发上线环境。 F">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/jicheng1.jpg">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/jicheng2.jpg">
+<meta property="og:updated_time" content="2019-05-31T09:36:19.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端持续集成">
+<meta name="twitter:description" content="前端的持续集成什么是持续集成（Continuous Integration） 通过平台串联各个环节，实现和沉淀工作自动化的方法 线上代码和代码仓库不同步，影响迭代和团队协作 静态资源发布依赖人工，浪费开发人力 缺少自动化测试，产品质量得不到保障 文案简单修改上线，需要技术介入  持续集成流程   统一代码仓库通过分支管理合并主干SVN 自动化构建工具，编译、部署、测试、监控、本机开发上线环境。 F">
+<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/jicheng1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2017/11/24/front-end-chixujicheng/">
+
+
+
+
+
+  <title>前端持续集成 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/11/24/front-end-chixujicheng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端持续集成</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-24T00:00:00+08:00">
+                2017-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前端的持续集成"><a href="#前端的持续集成" class="headerlink" title="前端的持续集成"></a>前端的持续集成</h1><h2 id="什么是持续集成（Continuous-Integration）"><a href="#什么是持续集成（Continuous-Integration）" class="headerlink" title="什么是持续集成（Continuous Integration）"></a>什么是持续集成（Continuous Integration）</h2><ul>
+<li>通过平台串联各个环节，实现和沉淀工作自动化的方法</li>
+<li>线上代码和代码仓库不同步，影响迭代和团队协作</li>
+<li>静态资源发布依赖人工，浪费开发人力</li>
+<li>缺少自动化测试，产品质量得不到保障</li>
+<li>文案简单修改上线，需要技术介入</li>
+</ul>
+<h2 id="持续集成流程"><a href="#持续集成流程" class="headerlink" title="持续集成流程"></a>持续集成流程</h2><img src="/static/img/jicheng1.jpg" width="500" alt>
+
+<ol>
+<li>统一代码仓库通过分支管理合并主干SVN</li>
+<li>自动化构建工具，编译、部署、测试、监控、本机开发上线环境。<br> FIS3/webpack/jdists/pachage.json/chai/supertest/mocha/selenuim-webdruver</li>
+<li>持续集成平台。Jenkins、Travis CI</li>
+<li>部署工具。rsync  shelljs yargs</li>
+<li>运营同学有权限操作运营页面，保存即可上线</li>
+</ol>
+<h2 id="多分支开发"><a href="#多分支开发" class="headerlink" title="多分支开发"></a>多分支开发</h2><ul>
+<li>以svn为例，下面是svn开发阶段图示</li>
+</ul>
+<img src="/static/img/jicheng2.jpg" width="300" alt>
+
+<ul>
+<li>代码合成步骤<ol>
+<li>svn checkout svn 地址 –suername 用户名</li>
+<li>svn branch 分支名</li>
+<li>svn merge 主干svn地址 分支svn地址</li>
+<li>Beyond Compare -&gt; svn resolved</li>
+<li>svn copy 主干svn地址 /tags/2017</li>
+</ol>
+</li>
+</ul>
+<h2 id="前端工程化-front-end-engineering"><a href="#前端工程化-front-end-engineering" class="headerlink" title="前端工程化 front-end engineering"></a>前端工程化 front-end engineering</h2><ul>
+<li>自动化编译<br>  foo.es &lt;– foo.scss &lt;– foo.png<ol>
+<li>读入foo.es的文件内容，编译成js内容</li>
+<li>分析js内容，找到资源定位标记’foo.scss’</li>
+<li>对foo.scss进行编译<ul>
+<li>读入foo.scss文件内容，编译成css内容</li>
+<li>分析css内容，找到资源定位标记’url(foo.png)’</li>
+<li>对foo.png进行编译<ul>
+<li>读入foo.png的内容</li>
+<li>图片压缩</li>
+<li>返回图片内容</li>
+</ul>
+</li>
+<li>根据foo.png的最终内容计算md5戳，替换url(foo.png)为url(/static/img/foo_2af0b.png)</li>
+<li>替换完毕所有资源定位标记，对css内容进行压缩</li>
+<li>返回css内容</li>
+</ul>
+</li>
+<li>根据foo。css最终内容计算MD5戳，替换为’foo.scss’为’/static/scss/foo_base39.css’</li>
+<li>替换完毕所有资源定位标记，对js内容进行压缩</li>
+<li>返回js内容</li>
+<li>根据最终的js内容计算md5戳，得到foo.coofee的资源为’/static/script/foo_3fc20.js’</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>前端模块化</p>
+<ol>
+<li><p>前端模块化肩负模块管理，资源家在两项重要功能，这两项功能与工具、性能、业务、部署等工程环节都有着非常紧密的联系。因此，模块化框架的设计应该最高优先级考虑工程需要</p>
+</li>
+<li><p>CommonJS API定义了很多普遍应用程序使用的api。终极目标是提供一个类似python ruby和java标准库</p>
+</li>
+<li><p>MCD和AMD都是CommonJS的一种规范的实现，RequireJS和Seajs是对应的实践</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// AMD</span><br><span class="line">define([&apos;dep1&apos;,&apos;dep2&apos;],function(dep1,dep2)&#123;</span><br><span class="line">	//内部只能使用指定的模块</span><br><span class="line">	return function()&#123;&#125;;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">// CMD</span><br><span class="line">define(function(require,exports,module)&#123;</span><br><span class="line">	// 此处可以引入需要加载的模块</span><br><span class="line"></span><br><span class="line">	var xx = require (&apos;xx&apos;)</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优缺点</p>
+<ul>
+<li><p>CMD 依赖是就近声明。但是因为是异步模块，加载器需要提前加载这些模块，所以模块真正使用需要提取里面所有的依赖</p>
+</li>
+<li><p>不能直接压缩，require局部变量无法加载资源</p>
+</li>
+<li><p>CMD路径不能进行字符串运算</p>
+</li>
+<li><p>AMD一来是提前声明。依赖梧桐果静态分析，加载器和自动化工具都可以很直接的获取到依赖</p>
+</li>
+<li><p>AMD依赖提前声明在代码书写上不是那么友好</p>
+</li>
+<li><p>AMD模块内部与NODEJS的Modules有一定的差异</p>
+</li>
+<li><p>requirejs和seajs在加载上都有缺陷，模块的恶意来要等到模块加载完成后，通过静态分析（seajs）或者deps参数（requirejs）来获取，为合并请求和按需加载带来了实现上的矛盾—-&gt;要么放弃按需加载，把所有js合成一个文件；要么放弃请求合并，请求独立模块，满足按需加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">require([&apos;page/index&apos;,&apos;page/detail&apos;],function(index,detail)&#123;</span><br><span class="line">	switch(location.hash)&#123;</span><br><span class="line">		case &quot;#index&quot;:</span><br><span class="line">			index();</span><br><span class="line">			.....</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以纯前方式实现模块化框架不能同时满足按需加载，请求合并和依赖管理三个需求</p>
+</li>
+</ul>
+</li>
+<li><p>webpcak<br>为什么选择webpack</p>
+<ul>
+<li>webpack执行Commonjs标准，解决了以来配置和请求流量</li>
+<li>对webpack来讲万物都可以是模块，所有的问价都被合并到js中，最终在浏览器</li>
+<li>兼容AMD和CMD</li>
+<li>js模块化不仅仅是为了提高代码复用性，更是为了让资源文件更合理地进行缓存</li>
+</ul>
+</li>
+<li><p>其它</p>
+<ul>
+<li>spm3 辅助seajs打包节省网络流量</li>
+<li>fis3根据分析好的文件包，利用hook插件定位资源</li>
+<li>webpack在开发阶段打包，利用插件分析提取。Fileloader &amp;&amp; extract-text-webpack-plugin</li>
+<li>配置publicpath分发到CDN</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>定位静态资源</p>
+<ol>
+<li>配置长时间的本地缓存–节省快带，提高性能</li>
+<li>采用内容摘要作为缓存更新一句–精确的缓存机制</li>
+<li>静态资源CDN部署–优化网络请求</li>
+<li>更新资源发布路径实现费覆盖式发布–平滑升级</li>
+</ol>
+</li>
+<li><p>前端开发组件化</p>
+</li>
+<li><p>自动化部署测试配合版本库</p>
+</li>
+<li><p>自动化性能优化</p>
+</li>
+</ul>
+<h2 id="前端开发组件化"><a href="#前端开发组件化" class="headerlink" title="前端开发组件化"></a>前端开发组件化</h2><ol>
+<li>每一个前端模块都是一个小项目，配合mock.js可以惊醒本地开发测试，根据package.json管理依赖模块，经过webpack的环境配置统一惊醒本地环境，上线环境的编译过程</li>
+<li>由page组装widget，由widget组装web Component（X-Tag）</li>
+</ol>
+<h2 id="Web-Component"><a href="#Web-Component" class="headerlink" title="Web Component"></a>Web Component</h2><ol>
+<li><p>Custom Elements</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ButtonHelloElement extends HTMLButtonElement &#123;</span><br><span class="line">	constructor() &#123;</span><br><span class="line">		super()</span><br><span class="line">		this.addEventListener(&apos;click&apos;, () =&gt; &#123;</span><br><span class="line">			alert(&apos;hello world&apos;)</span><br><span class="line">		&#125;)</span><br><span class="line">    	 &#125;</span><br><span class="line">&#125;</span><br><span class="line">customElements.define(&apos;button-hello&apos;, ButtonHelloElement, &#123; extends: &apos;button&apos; &#125;)</span><br><span class="line"></span><br><span class="line"> &lt;button is=&quot;button-hello&quot;&gt;hello world&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML Imports<br> HTML Imports 是一种在 HTMLs 中引用以及复用其他的 HTML 文档的方式。这个 Import 很漂亮，可以简单理解为我们 常见的模板中的 include 之类的作用。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;import&quot; href=“/components/header.html&quot;&gt; const link = document.querySelector(&apos;link[rel=import]&apos;) const header = link.import;</span><br><span class="line">const pulse = header.querySelector(‘div.logo&apos;);</span><br><span class="line">const d = document.currentScript.owerDocument</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML Templates<br> 用过 handlebars 的人都知道有这么一个东西:</p>
+ <script id="template" type="text/x-handlebars-template">
+ </script>那么 HTML Templates 便是把这个东西官方标准化，
+<p> 提供了一个 template 标签来存放以后需要但是暂时不渲染<br> 的 HTML 代码。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id=&quot;template&quot;&gt;&lt;p&gt;Smile!&lt;/p&gt;&lt;/template&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">	let num = 3;</span><br><span class="line">	const fragment = document.getElementById(&apos;template&apos;).content.cloneNode(true);</span><br><span class="line">	while (num-- &gt; 1) &#123;</span><br><span class="line">		fragment.firstChild.before(fragment.firstChild.cloneNode(true));</span><br><span class="line">		 fragment.firstChild.textContent += fragment.lastChild.textContent;</span><br><span class="line">	&#125;</span><br><span class="line">	document.body.appendChild(fragment);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Shadow DOM<br> Shadow DOM 最本质的需求是需要一个隔离组件代码作用域的东 西，例如我组件代码的 CSS 不能影响其他组件之类的，而 iframe 又太重并且可能有各种奇怪问题。旨在提供一种更好地 组织页面元素的方式，来为日趋复杂的页面应用提供强大支持， 避免代码间的相互影响。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const div = document.getElementById(&apos;id&apos;)</span><br><span class="line">const shadowRoot = div.createShadowRoot()</span><br><span class="line">const span = document.createElement(&apos;span&apos;)</span><br><span class="line">span.textContent = &apos;hello world&apos; shadowRoot.appendChild(span)</span><br><span class="line">&lt;x-foo&gt;</span><br><span class="line">	&lt;&quot;shadow tree&quot;&gt;</span><br><span class="line">		&lt;div&gt;</span><br><span class="line">			&lt;span id=&quot;not-top&quot;&gt;...&lt;/span&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;span id=&quot;top&quot;&gt;...&lt;/span&gt; &lt;/&gt;</span><br><span class="line">&lt;/x-foo&gt;</span><br></pre></td></tr></table></figure>
+
+<p> x-foo::shadow &gt;span 可以匹配到#top元素<br> x-foo/deep/span 可以匹配到#not-top和#top元素<br> :host(.foo)匹配<x-foo>元素</x-foo></p>
+</li>
+</ol>
+<h2 id="自动化部署"><a href="#自动化部署" class="headerlink" title="自动化部署"></a>自动化部署</h2><ul>
+<li>工具<br>   Jenkins Travis CI</li>
+<li>内容<ul>
+<li>自动化运营平台</li>
+<li>自动化雪碧图</li>
+<li>自动化离线打包</li>
+<li>自动化控制缓存级别</li>
+<li>自动化处理inline</li>
+<li>自动化根据网速分发版本资源</li>
+<li>自动化运维平台</li>
+</ul>
+</li>
+</ul>
+<h2 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h2><ol>
+<li>持续集成</li>
+<li>持续集成流程图搞清楚</li>
+<li>svn/git 处理分支</li>
+<li>shell.js  js写shell脚本</li>
+<li>web components 可以理性选择项目中用什么库</li>
+<li>webpack rollup gulp 。。。语法规则</li>
+<li>jenkins travis ci</li>
+<li>代码开发阶段 以保存 浏览器自动刷新  一提交 自动化测试并部署到测试机<br>css next</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/持续集成/" rel="tag"># 持续集成</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/01/HowToUseMarkDown/" rel="next" title="如何使用Markdown">
+                <i class="fa fa-chevron-left"></i> 如何使用Markdown
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/25/fucntionalprogramming/" rel="prev" title="函数式编程入门">
+                函数式编程入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端的持续集成"><span class="nav-number">1.</span> <span class="nav-text">前端的持续集成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是持续集成（Continuous-Integration）"><span class="nav-number">1.1.</span> <span class="nav-text">什么是持续集成（Continuous Integration）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持续集成流程"><span class="nav-number">1.2.</span> <span class="nav-text">持续集成流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多分支开发"><span class="nav-number">1.3.</span> <span class="nav-text">多分支开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端工程化-front-end-engineering"><span class="nav-number">1.4.</span> <span class="nav-text">前端工程化 front-end engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端开发组件化"><span class="nav-number">1.5.</span> <span class="nav-text">前端开发组件化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Component"><span class="nav-number">1.6.</span> <span class="nav-text">Web Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化部署"><span class="nav-number">1.7.</span> <span class="nav-text">自动化部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持续集成"><span class="nav-number">1.8.</span> <span class="nav-text">持续集成</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="数据结构,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="数据结构简介数据对计算机、互联网来说，是无比重要，优秀的数据结构有利于优化存储和检索。作为互联网从业者，数据是打交道的主要对象。 数据结构的概念 广义说法：数据结构 = 数据存储 + 算法 狭义说法：数据结构 = 数据的存储 数据结构类似于建筑工程中的建筑图纸，表示了数据元素的排列方式，好的数据结构设计思想在软件开发中的重要性不言而喻。 程序员的内功心法之一 有利于有效地管理数据对象 有利于优化性">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见数据结构">
+<meta property="og:url" content="http://www.fanshunkai.com/2018/01/24/data-structure/index.html">
+<meta property="og:site_name" content="Shun-Kai">
+<meta property="og:description" content="数据结构简介数据对计算机、互联网来说，是无比重要，优秀的数据结构有利于优化存储和检索。作为互联网从业者，数据是打交道的主要对象。 数据结构的概念 广义说法：数据结构 = 数据存储 + 算法 狭义说法：数据结构 = 数据的存储 数据结构类似于建筑工程中的建筑图纸，表示了数据元素的排列方式，好的数据结构设计思想在软件开发中的重要性不言而喻。 程序员的内功心法之一 有利于有效地管理数据对象 有利于优化性">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/img/data-structure.png">
+<meta property="og:image" content="http://www.fanshunkai.com/img/stack.jpeg">
+<meta property="og:image" content="http://www.fanshunkai.com/img/queue.jpeg">
+<meta property="og:image" content="http://www.fanshunkai.com/img/tree-each.jpeg">
+<meta property="og:image" content="http://www.fanshunkai.com/img/tree.png">
+<meta property="og:image" content="http://www.fanshunkai.com/img/maps.jpg">
+<meta property="og:updated_time" content="2019-05-31T09:12:35.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见数据结构">
+<meta name="twitter:description" content="数据结构简介数据对计算机、互联网来说，是无比重要，优秀的数据结构有利于优化存储和检索。作为互联网从业者，数据是打交道的主要对象。 数据结构的概念 广义说法：数据结构 = 数据存储 + 算法 狭义说法：数据结构 = 数据的存储 数据结构类似于建筑工程中的建筑图纸，表示了数据元素的排列方式，好的数据结构设计思想在软件开发中的重要性不言而喻。 程序员的内功心法之一 有利于有效地管理数据对象 有利于优化性">
+<meta name="twitter:image" content="http://www.fanshunkai.com/img/data-structure.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2018/01/24/data-structure/">
+
+
+
+
+
+  <title>常见数据结构 | Shun-Kai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shun-Kai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2018/01/24/data-structure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shun-Kai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常见数据结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-24T00:00:00+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构和算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据结构简介"><a href="#数据结构简介" class="headerlink" title="数据结构简介"></a>数据结构简介</h1><p>数据对计算机、互联网来说，是无比重要，优秀的数据结构有利于优化存储和检索。作为互联网从业者，数据是打交道的主要对象。</p>
+<h2 id="数据结构的概念"><a href="#数据结构的概念" class="headerlink" title="数据结构的概念"></a>数据结构的概念</h2><ul>
+<li>广义说法：数据结构 = 数据存储 + 算法</li>
+<li>狭义说法：数据结构 = 数据的存储</li>
+<li>数据结构类似于建筑工程中的建筑图纸，表示了数据元素的排列方式，好的数据结构设计思想在软件开发中的重要性不言而喻。<ul>
+<li>程序员的内功心法之一</li>
+<li>有利于有效地管理数据对象</li>
+<li>有利于优化性能问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据的基本概念"><a href="#数据的基本概念" class="headerlink" title="数据的基本概念"></a>数据的基本概念</h2><ul>
+<li><strong>数据</strong>: 本文讲的数据是计算机里面存储的数据</li>
+<li><strong>数据对象</strong>: 很多数据元素组成的，能表达一个相对完整意义的，相对独立的数据存在。比如一个文件，一个音乐等</li>
+<li><strong>数据项</strong>: 数据最小的单位，比如一个整型，一个字符串等</li>
+<li><strong>数据结构</strong>: 数据项—&gt;数据元素—-&gt;数据对象–&gt;数据。组成的一个整体</li>
+</ul>
+<h2 id="基本数据结构及衍生结构"><a href="#基本数据结构及衍生结构" class="headerlink" title="基本数据结构及衍生结构"></a>基本数据结构及衍生结构</h2><p>数据结构分类如下如下图(👇)所示</p>
+<img src="/img/data-structure.png" alt>
+
+<h3 id="集合："><a href="#集合：" class="headerlink" title="集合："></a><strong>集合</strong>：</h3><ul>
+<li>集合中的数据成员是无序的</li>
+<li>每个数据成员不能重复，仅且出现一次</li>
+</ul>
+<h3 id="线性表："><a href="#线性表：" class="headerlink" title="线性表："></a><strong>线性表</strong>：</h3><p>线性表是用来储特定的某一类型的元素的数据结构，数据元素之间是一对一关系，一个接一个排列。线性表的物理结构是顺序表、链表等类型</p>
+<ul>
+<li><strong>顺序表</strong><ul>
+<li>是线性表的顺序储存结构</li>
+<li>将线性表中的数据元素按照线性顺序存储到指定位置开始的、一块连续的存储空间中</li>
+<li>第一个元素没有<strong><em>前驱</em></strong>，最后一个元素没有<strong><em>后继</em></strong></li>
+</ul>
+</li>
+<li><strong>链表</strong>：一个数据分多个内存块存储，链表结构分为值域和指针域<ul>
+<li>单链表：指针域处于元素尾部，指向下一个元素地址，最后一个元素的指针域为NULL，代表结尾</li>
+<li>双向链表：拥有前后两个方向的链表，元素前后都有一个指针域，前指针域指向前驱元素地址，后指针域指向后继元素地址，第一个元素的前指针域和最后一个元素的后指针域为NULL，可以从任一个内存块开始查找，可双向查找，比单链表多一个前驱指针占用的内存</li>
+<li>循环链表： 循环的链表，它的遍历可以循环起来，可以是单向的，也可以是双向的。单向循环链表的尾指针指向的节点next域并不是NULL，而是首元素，也就是head-&gt;next，当遍历进行至链表末尾时，指针后移不会出现NULL，而是移至链表首位，形成循环</li>
+</ul>
+</li>
+<li><strong>串</strong>：它是一系列结点组成的一个线性表，每一个结点存储一个字符。</li>
+</ul>
+<h3 id="线性表衍生结构"><a href="#线性表衍生结构" class="headerlink" title="线性表衍生结构"></a><strong>线性表衍生结构</strong></h3><ul>
+<li><p><strong>栈</strong>：在顺序表基础上衍生的，操作受限的线性表</p>
+<ul>
+<li><p>有两个操作方式：pop、push</p>
+</li>
+<li><p>pop只能操作<strong><em>栈顶</em></strong>元素，push进来的新元素必须处于<strong><em>栈顶</em></strong>位置，<strong><em>栈底</em></strong>元素不许操作</p>
+</li>
+<li><p>LIFO(Last In First Out)，后进先出</p>
+<img src="/img/stack.jpeg" width="300" alt>
+</li>
+<li><p>用途：解决括号匹配查找、浏览器的后退或编辑器的undo功能等</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>队列</strong>：同样属于操作受限的线性表</p>
+<ul>
+<li><p><strong><em>队尾</em></strong>和<strong><em>队首</em></strong>均可操作</p>
+</li>
+<li><p>必须在<strong><em>队尾</em></strong>入队，<strong><em>队首</em></strong>出队</p>
+</li>
+<li><p>特殊情况可插队（解决排序vip问题）</p>
+</li>
+<li><p>FIFO(First In First Out)，先入先出</p>
+<img src="/img/queue.jpeg" width="300" alt>
+</li>
+<li><p>用途：消息队列、视频弹幕；维护打印机任务等</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>树是由若干个有限节点组成的一个具有层次关系的数据元素的集合</p>
+<ul>
+<li>特点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* 数学基础： 图论</span><br><span class="line">* 一棵树中每两个点之间有且只有一条路</span><br><span class="line">* 一棵树有N个点，则有N-1条边</span><br><span class="line">* 边：父子元素的连线叫边</span><br><span class="line">* 非父子节点之间的连线叫路径</span><br><span class="line">* 每个节点只有一个父节点（根节点没有父节点）</span><br><span class="line">* 没有子节点的节点叫叶子节点</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>树的遍历：按照某种规则，不重复地访问某种树的所有节点</p>
+<ul>
+<li><p>先序遍历（深度优先）</p>
+</li>
+<li><p>中序遍历（深度优先）</p>
+</li>
+<li><p>后序遍历（深度优先）</p>
+</li>
+<li><p>层序遍历（广度优先）</p>
+<img src="/img/tree-each.jpeg" width="600" alt>
+</li>
+</ul>
+</li>
+<li><p>树的种类</p>
+<ul>
+<li><p>空树：空集合也是树，称空树，没有节点</p>
+</li>
+<li><p>无序树：树中任意节点之间没有顺序关系，成为无序树，也称自由树</p>
+</li>
+<li><p>有序树：任意节点之间的子节点有顺序关系（矢量）</p>
+</li>
+<li><p>二叉树：每个节点最多含有两个子树</p>
+</li>
+<li><p>完全二叉树：除了最后一层，其他各层节点数都达到最大</p>
+</li>
+<li><p>满二叉树：每一层上的节点都是最大节点数</p>
+</li>
+<li><p>霍夫曼树：带权路径最短，也叫最有二叉树</p>
+<img src="/img/tree.png" width="300" alt>
+
+<p>上图中，C有三个字节点，<strong><em>度(degree)</em></strong>为3，H有两个子节点，<strong><em>度(degree)</em></strong>为2，叶子节点的<strong><em>度(degree)</em></strong> 为0，此树<strong><em>深(depth)</em></strong> 为4(从根节点0,1,2,3,4)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><p>图是由<strong><em>顶点集合</em></strong> 与定点间关系(边)所构成的一种数据结构。图分为有向图和无向图。</p>
+<img src="/img/maps.jpg" width="400" alt>
+
+<p>上图（a）为无向图，(b)为有向图</p>
+<ul>
+<li>基本概念<ol>
+<li>图上两点之间路径不唯一。</li>
+<li>对于图上任意两点都可以连通的图叫做连通图。</li>
+<li>图的边是可以带权值的，一般代表路径长度。</li>
+<li>图顶点的度：对于无向图来说，顶点的度就是其直接相邻的点的个数；对于有向图来说，顶点的度分为入度和出度，分别代表可直接到达的点的数量和可直接到达它的点的数量。如上图b中最右边的点的出度为2，入度为 1。</li>
+<li>按照边的数量多少分为稀疏图和稠密图，应用中要根据图的稠密程度来使用不同的算法解决问题。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/24/domain-gitpage/" rel="next" title="将网域名解析到自己的github pages">
+                <i class="fa fa-chevron-left"></i> 将网域名解析到自己的github pages
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/01/sort/" rel="prev" title="常见数据结构">
+                常见数据结构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构简介"><span class="nav-number">1.</span> <span class="nav-text">数据结构简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的概念"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据的基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">数据的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据结构及衍生结构"><span class="nav-number">1.3.</span> <span class="nav-text">基本数据结构及衍生结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合："><span class="nav-number">1.3.1.</span> <span class="nav-text">集合：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表："><span class="nav-number">1.3.2.</span> <span class="nav-text">线性表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表衍生结构"><span class="nav-number">1.3.3.</span> <span class="nav-text">线性表衍生结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树"><span class="nav-number">1.3.4.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图"><span class="nav-number">1.3.5.</span> <span class="nav-text">图</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
