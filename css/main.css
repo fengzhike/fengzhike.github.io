@@ -1221,6 +1221,16 @@ pre .javascript .function {
   font-weight: bold;
   line-height: 1;
 }
+.post-body .post-body-text {
+  transition: 0.5s;
+}
+.post-body .post-body-text:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+}
 .post-sticky-flag {
   display: inline-block;
   font-size: 16px;
@@ -1807,7 +1817,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #95ff86;
+  background: #7aecba;
 }
 .links-of-blogroll {
   font-size: 13px;
