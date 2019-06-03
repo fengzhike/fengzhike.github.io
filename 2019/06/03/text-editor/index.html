@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ch">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="rich-text-editor,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="考察点 开源协议 框架依赖 组件库大小 开发维护及社区状态 基本功能及插件功能 浏览器兼容性 现有的问题 demo地址  开源协议介绍6种开源协议比较如下 编辑器列表 TinyMce(付费) Medium Editor Draft.js Froala（付费） Ckeditor Quill summernote ueditor  TinyMce开源协议LGPL 2.1 license允许商业化，但不">
+<meta name="keywords" content="rich-text-editor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="富文本编辑器调研">
+<meta property="og:url" content="http://www.fanshunkai.com/2019/06/03/text-editor/index.html">
+<meta property="og:site_name" content="ShunKai">
+<meta property="og:description" content="考察点 开源协议 框架依赖 组件库大小 开发维护及社区状态 基本功能及插件功能 浏览器兼容性 现有的问题 demo地址  开源协议介绍6种开源协议比较如下 编辑器列表 TinyMce(付费) Medium Editor Draft.js Froala（付费） Ckeditor Quill summernote ueditor  TinyMce开源协议LGPL 2.1 license允许商业化，但不">
+<meta property="og:locale" content="ch">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdWWL0M1FY.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdeGLOQ1mo.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdIPRSeeXX.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdhpQLirva.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdisfzZiRp.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md9N6AIJvf.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdximiu9i7.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md2QjaSyX8.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdzd2CzZDK.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdjpAjWDAw.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdhiecsYOA.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdZlV8kGdC.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdlw1Ps3D2.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdJegkBcPu.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdFZJU2qrZ.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdtoiPdnzs.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdyYI77C27.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md6aixulPM.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md9yQAvAcy.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdWBAR1wRh.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md2QgHAtm2.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md749mqiy3.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md3Wuh3ldT.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mda6ZFZwOp.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdERn8hhrM.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.md1xNGIUER.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdJ6piEpYQ.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdpETjP9Gp.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdo1aSUPNW.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdQrfWhioi.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdnavZ1xS2.png">
+<meta property="og:image" content="http://www.fanshunkai.com/static/img/test/41.mdgrQfNWDq.png">
+<meta property="og:updated_time" content="2019-06-03T03:54:55.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="富文本编辑器调研">
+<meta name="twitter:description" content="考察点 开源协议 框架依赖 组件库大小 开发维护及社区状态 基本功能及插件功能 浏览器兼容性 现有的问题 demo地址  开源协议介绍6种开源协议比较如下 编辑器列表 TinyMce(付费) Medium Editor Draft.js Froala（付费） Ckeditor Quill summernote ueditor  TinyMce开源协议LGPL 2.1 license允许商业化，但不">
+<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/test/41.mdWWL0M1FY.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.fanshunkai.com/2019/06/03/text-editor/">
+
+
+
+
+
+  <title>富文本编辑器调研 | ShunKai</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ch">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShunKai</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">竹杖芒鞋轻胜马，谁怕，一蓑烟雨任平生！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/06/03/text-editor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shun-Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShunKai">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">富文本编辑器调研</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-03T00:00:00+08:00">
+                2019-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/常用工具/" itemprop="url" rel="index">
+                    <span itemprop="name">常用工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+      
+      
+      
+       <h1 id="考察点"><a href="#考察点" class="headerlink" title="考察点"></a>考察点</h1><ul>
+<li>开源协议</li>
+<li>框架依赖</li>
+<li>组件库大小</li>
+<li>开发维护及社区状态</li>
+<li>基本功能及插件功能</li>
+<li>浏览器兼容性</li>
+<li>现有的问题</li>
+<li>demo地址</li>
+</ul>
+<h1 id="开源协议介绍"><a href="#开源协议介绍" class="headerlink" title="开源协议介绍"></a>开源协议介绍</h1><p>6种开源协议比较如下<br><img src="/static/img/test/41.mdWWL0M1FY.png" alt></p>
+<h1 id="编辑器列表"><a href="#编辑器列表" class="headerlink" title="编辑器列表"></a>编辑器列表</h1><ul>
+<li>TinyMce(付费)</li>
+<li>Medium Editor</li>
+<li>Draft.js</li>
+<li>Froala（付费）</li>
+<li>Ckeditor</li>
+<li>Quill</li>
+<li>summernote</li>
+<li>ueditor</li>
+</ul>
+<h2 id="TinyMce"><a href="#TinyMce" class="headerlink" title="TinyMce"></a>TinyMce</h2><h3 id="开源协议"><a href="#开源协议" class="headerlink" title="开源协议"></a>开源协议</h3><p>LGPL 2.1 license<br>允许商业化，但不允许闭源</p>
+<h3 id="框架依赖"><a href="#框架依赖" class="headerlink" title="框架依赖"></a>框架依赖</h3><p>使用方式，引入库，初始化即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">tinymce.init(&#123;</span><br><span class="line">  selector: <span class="string">'textarea'</span>,</span><br><span class="line">  height: <span class="number">500</span>,</span><br><span class="line">  theme: <span class="string">'modern'</span>,</span><br><span class="line">  plugins: <span class="string">'123'</span>,</span><br><span class="line">  toolbar1: <span class="string">'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat'</span>,</span><br><span class="line">  image_advtab: <span class="literal">true</span>,</span><br><span class="line">  templates: [</span><br><span class="line">    &#123; <span class="attr">title</span>: <span class="string">'Test template 1'</span>, <span class="attr">content</span>: <span class="string">'Test 1'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">title</span>: <span class="string">'Test template 2'</span>, <span class="attr">content</span>: <span class="string">'Test 2'</span> &#125;</span><br><span class="line">  ],</span><br><span class="line">  content_css: [</span><br><span class="line">    <span class="string">'//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'</span>,</span><br><span class="line">    <span class="string">'//www.tinymce.com/css/codepen.min.css'</span></span><br><span class="line">  ]</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="组件库大小"><a href="#组件库大小" class="headerlink" title="组件库大小"></a>组件库大小</h3><p>js：418k<br><a href="https://cloud.tinymce.com/dev/tinymce.min.js?apiKey=qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc" target="_blank" rel="noopener">js地址</a></p>
+<h3 id="开发维护及社区状态"><a href="#开发维护及社区状态" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.mdeGLOQ1mo.png" alt></td>
+</tr>
+<tr>
+<td>代码提交频率</td>
+<td><img src="/static/img/test/41.mdIPRSeeXX.png" alt></td>
+</tr>
+<tr>
+<td>issue修复比例</td>
+<td><img src="/static/img/test/41.mdhpQLirva.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能"><a href="#基本功能及插件功能" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><ul>
+<li>基本功能：加粗、斜体、下划线、链接、有序无序列表、插入图片、插入链接、undo、redo<br>插件：</li>
+<li>Pro版本：$33/M (office张贴、链接检查、@功能)</li>
+<li>Developer版本：$10/M</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能(付费版)</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>emoji</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>行内toolbar</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>区块拖拽</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>chrome+</li>
+<li>Firefox+</li>
+<li>Edge+</li>
+<li>IE6+</li>
+<li>safari+<br><a href="http://archive.tinymce.com/wiki.php/TinyMCE3x:Browser_compatiblity" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h3 id="demo地址"><a href="#demo地址" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="https://codepen.io/tinymce/pen/NGegZK" target="_blank" rel="noopener">codepen demo</a></p>
+<p><a href="https://s.codepen.io/boomerang/iFrameKey-ed91ba2f-a7e4-d779-4bfd-12e26215b438/index.html" target="_blank" rel="noopener">demo</a></p>
+<p><a href="https://www.tinymce.com/" target="_blank" rel="noopener">官网</a></p>
+<h2 id="Medium-Editor"><a href="#Medium-Editor" class="headerlink" title="Medium Editor"></a>Medium Editor</h2><h3 id="开源协议-1"><a href="#开源协议-1" class="headerlink" title="开源协议"></a>开源协议</h3><p>开源</p>
+<h3 id="框架依赖-1"><a href="#框架依赖-1" class="headerlink" title="框架依赖"></a>框架依赖</h3><p>引入js、css</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/medium-editor/dist/css/medium-editor.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/medium-editor/dist/js/medium-editor.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"editable"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> editor = <span class="keyword">new</span> MediumEditor(<span class="string">'.editable'</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件库大小-1"><a href="#组件库大小-1" class="headerlink" title="组件库大小"></a>组件库大小</h3><p>js:338k css:7.6k<br><a href="https://yabwe.github.io/medium-editor/bower_components/medium-editor/dist/css/medium-editor.css" target="_blank" rel="noopener">css</a><br><a href="https://yabwe.github.io/medium-editor/bower_components/medium-editor/dist/js/medium-editor.js?t=123" target="_blank" rel="noopener">js</a></p>
+<h3 id="开发维护及社区状态-1"><a href="#开发维护及社区状态-1" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.mdisfzZiRp.png" alt></td>
+</tr>
+<tr>
+<td>代码提交频率</td>
+<td><img src="/static/img/test/41.md9N6AIJvf.png" alt></td>
+</tr>
+<tr>
+<td>issue修复比例</td>
+<td><img src="/static/img/test/41.mdximiu9i7.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-1"><a href="#基本功能及插件功能-1" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><p>通过选中出现<br>基本功能：<br>加粗、斜体、下划线、链接、h1-h6、#功能<br>插件功能:<br>图片上传、表格、markdown、自动表格、@、#、自定义toolbar</p>
+<table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>emoji</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>行内toolbar</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>区块拖拽</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性-1"><a href="#浏览器兼容性-1" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>chrome+</li>
+<li>Firefox+</li>
+<li>Edge latest</li>
+<li>IE9+</li>
+<li>safari 8+</li>
+</ul>
+<p><a href="https://github.com/yabwe/medium-editor" target="_blank" rel="noopener">参考</a></p>
+<h3 id="demo地址-1"><a href="#demo地址-1" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="https://yabwe.github.io/medium-editor/demo.html" target="_blank" rel="noopener">demo</a></p>
+<p><a href="http://yabwe.github.io/medium-editor/" target="_blank" rel="noopener">官网</a></p>
+<h2 id="Draft-js"><a href="#Draft-js" class="headerlink" title="Draft.js"></a>Draft.js</h2><h3 id="开源协议-2"><a href="#开源协议-2" class="headerlink" title="开源协议"></a>开源协议</h3><p>BSD License 最开放的协议</p>
+<h3 id="框架依赖-2"><a href="#框架依赖-2" class="headerlink" title="框架依赖"></a>框架依赖</h3><p>React</p>
+<h3 id="组件库大小-2"><a href="#组件库大小-2" class="headerlink" title="组件库大小"></a>组件库大小</h3><p>js：481kb<br><a href="https://draftjs.org/lib/Draft.js" target="_blank" rel="noopener">js</a></p>
+<h3 id="开发维护及社区状态-2"><a href="#开发维护及社区状态-2" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><p><a href="https://medium.com/@nikgraf/announcing-draftjs-plugins-2-0-8c25f2a4df55" target="_blank" rel="noopener">最近发布plugin2.0</a></p>
+<table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.md2QjaSyX8.png" alt></td>
+</tr>
+<tr>
+<td>代码提交频率</td>
+<td><img src="/static/img/test/41.mdzd2CzZDK.png" alt></td>
+</tr>
+<tr>
+<td>issue解决比率</td>
+<td><img src="/static/img/test/41.mdjpAjWDAw.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-2"><a href="#基本功能及插件功能-2" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><p>官方插件比较少，只有简单的@、Emoji、Image、Video、Sticker、#、行内操作栏、侧边操作栏、固定操作栏、undo、计数、链接、对齐、drag、resize插件<br><a href="https://github.com/draft-js-plugins/draft-js-plugins" target="_blank" rel="noopener">社区插件</a>较多</p>
+<p>社区很强大，插件很丰富 <a href="https://www.draft-js-plugins.com/plugin" target="_blank" rel="noopener">插件</a></p>
+<table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>插件支持(弱)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>emoji</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>行内toolbar</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>区块拖拽</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>插件支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性-2"><a href="#浏览器兼容性-2" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><p>手机端基本功能能用<br>正在向手机端支持靠近，但是没有官方公布支持手机</p>
+<ul>
+<li>chrome+</li>
+<li>Firefox+</li>
+<li>Edge latest+</li>
+<li>IE9+</li>
+<li>safari latest+</li>
+<li>ios safari not fully supported</li>
+<li>chrome for android</li>
+</ul>
+<h3 id="现有的问题"><a href="#现有的问题" class="headerlink" title="现有的问题"></a>现有的问题</h3><ul>
+<li>状态更新有延迟</li>
+<li>用户自定义的osx键绑定</li>
+<li>浏览器插件，例如语法检查器可能会改变默认的样式，这会导致状态不同步</li>
+<li>IME 和IE11 bug</li>
+<li>现有的一些高优bug</li>
+</ul>
+<p>完整版本参考：<br><a href="https://github.com/facebook/draft-js/blob/master/docs/Advanced-Topics-Issues-and-Pitfalls.md" target="_blank" rel="noopener">https://github.com/facebook/draft-js/blob/master/docs/Advanced-Topics-Issues-and-Pitfalls.md</a></p>
+<h3 id="demo地址-2"><a href="#demo地址-2" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="https://github.com/nikgraf/awesome-draft-js" target="_blank" rel="noopener">demo</a></p>
+<p><a href="https://www.draft-js-plugins.com/plugin/image" target="_blank" rel="noopener">image</a></p>
+<h2 id="Froala"><a href="#Froala" class="headerlink" title="Froala"></a>Froala</h2><h3 id="开源协议-3"><a href="#开源协议-3" class="headerlink" title="开源协议"></a>开源协议</h3><p>非开源、需购买</p>
+<h3 id="框架依赖-3"><a href="#框架依赖-3" class="headerlink" title="框架依赖"></a>框架依赖</h3><p><a href="https://www.npmjs.com/package/vue-froala-wysiwyg" target="_blank" rel="noopener">vue版本插件</a></p>
+<h3 id="组件库大小-3"><a href="#组件库大小-3" class="headerlink" title="组件库大小"></a>组件库大小</h3><p>基本js:185kb<br>还有一堆插件<br><a href="https://github.com/froala/wysiwyg-editor/blob/master/js/froala_editor.min.js" target="_blank" rel="noopener">js</a></p>
+<h3 id="开发维护及社区状态-3"><a href="#开发维护及社区状态-3" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.mdhiecsYOA.png" alt></td>
+</tr>
+<tr>
+<td>代码更新频率</td>
+<td><img src="/static/img/test/41.mdZlV8kGdC.png" alt></td>
+</tr>
+<tr>
+<td>issue解决比率</td>
+<td><img src="/static/img/test/41.mdlw1Ps3D2.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-3"><a href="#基本功能及插件功能-3" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><p><a href="https://www.froala.com/wysiwyg-editor/docs/plugins" target="_blank" rel="noopener">插件地址</a></p>
+<table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>emoji</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>行内toolbar</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>8</td>
+<td>区块拖拽</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性-3"><a href="#浏览器兼容性-3" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>Chrome</li>
+<li>Edge</li>
+<li>Firefox</li>
+<li>Safari</li>
+<li>Opera</li>
+<li>Internet Explorer 10+</li>
+<li>Safari iOS</li>
+<li>Chrome, Firefox and Default Browser Android</li>
+</ul>
+<h3 id="现有的问题-1"><a href="#现有的问题-1" class="headerlink" title="现有的问题"></a>现有的问题</h3><ul>
+<li>删除卡</li>
+<li>连续输入响应慢</li>
+<li>失焦</li>
+</ul>
+<h3 id="demo地址-3"><a href="#demo地址-3" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="https://www.froala.com/wysiwyg-editor" target="_blank" rel="noopener">demo</a></p>
+<h2 id="Ckeditor-4-0和5-0"><a href="#Ckeditor-4-0和5-0" class="headerlink" title="Ckeditor 4.0和5.0"></a>Ckeditor 4.0和5.0</h2><h3 id="开源协议-4"><a href="#开源协议-4" class="headerlink" title="开源协议"></a>开源协议</h3><p>MIT license</p>
+<h3 id="框架依赖-4"><a href="#框架依赖-4" class="headerlink" title="框架依赖"></a>框架依赖</h3><p>可直接使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CKEDITOR.editorConfig = <span class="function"><span class="keyword">function</span>(<span class="params"> config </span>) </span>&#123;</span><br><span class="line">    config.language = <span class="string">'es'</span>;</span><br><span class="line">    config.uiColor = <span class="string">'#F7B42C'</span>;</span><br><span class="line">    config.height = <span class="number">300</span>;</span><br><span class="line">    config.toolbarCanCollapse = <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="组件库大小-4"><a href="#组件库大小-4" class="headerlink" title="组件库大小"></a>组件库大小</h3><p>js大小：549kb<br><a href="http://nightly.ckeditor.com/17-11-13-07-04/standard/samples/" target="_blank" rel="noopener">js</a></p>
+<h3 id="开发维护及社区状态-4"><a href="#开发维护及社区状态-4" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.mdJegkBcPu.png" alt></td>
+</tr>
+<tr>
+<td>代码提交频率</td>
+<td><img src="/static/img/test/41.mdFZJU2qrZ.png" alt></td>
+</tr>
+<tr>
+<td>issue解决比率</td>
+<td><img src="/static/img/test/41.mdtoiPdnzs.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-4"><a href="#基本功能及插件功能-4" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><p>基本功能：</p>
+<table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>支持，图片没有自动上传</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性-4"><a href="#浏览器兼容性-4" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><p><a href="https://github.com/ckeditor/ckeditor5-design/wiki/Browser-Compatibility" target="_blank" rel="noopener">详细参考</a></p>
+<ul>
+<li>chrome window/mac/linux最新版</li>
+<li>Firefox window/mac/linux最新版</li>
+<li>Edge window 最新版</li>
+<li>IE11+</li>
+<li>safari mac最新版</li>
+<li>最新版ios safari</li>
+<li>最新版android chrome</li>
+<li>最新版windows surface IE</li>
+</ul>
+<h3 id="demo地址-4"><a href="#demo地址-4" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="http://nightly.ckeditor.com/17-11-13-07-04/standard/samples/" target="_blank" rel="noopener">demo</a></p>
+<h2 id="Quill"><a href="#Quill" class="headerlink" title="Quill"></a>Quill</h2><h3 id="开源协议-5"><a href="#开源协议-5" class="headerlink" title="开源协议"></a>开源协议</h3><p>BSD 3-clause</p>
+<h3 id="框架依赖-5"><a href="#框架依赖-5" class="headerlink" title="框架依赖"></a>框架依赖</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Include the Quill library --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.quilljs.com/1.0.0/quill.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Initialize Quill editor --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> editor = <span class="keyword">new</span> Quill(<span class="string">'#editor'</span>, &#123;</span></span><br><span class="line"><span class="javascript">    modules: &#123; <span class="attr">toolbar</span>: <span class="string">'#toolbar'</span> &#125;,</span></span><br><span class="line"><span class="javascript">    theme: <span class="string">'snow'</span></span></span><br><span class="line">  &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件库大小-5"><a href="#组件库大小-5" class="headerlink" title="组件库大小"></a>组件库大小</h3><p><a href="https://cdn.quilljs.com/1.0.0/quill.js" target="_blank" rel="noopener">js</a>:401kb</p>
+<h3 id="开发维护及社区状态-5"><a href="#开发维护及社区状态-5" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.mdyYI77C27.png" alt></td>
+</tr>
+<tr>
+<td>提交频率</td>
+<td><img src="/static/img/test/41.md6aixulPM.png" alt></td>
+</tr>
+<tr>
+<td>issue解决比率</td>
+<td><img src="/static/img/test/41.md9yQAvAcy.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-5"><a href="#基本功能及插件功能-5" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>图片不显示</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>字体支持、颜色不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性-5"><a href="#浏览器兼容性-5" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>android 5.1/6.0</li>
+<li>FF 44+</li>
+<li>chrome 47 +</li>
+<li>IE 11+</li>
+<li>iphone 10.10</li>
+<li>IE Edge</li>
+<li>Safari 10.11</li>
+</ul>
+<h3 id="demo地址-5"><a href="#demo地址-5" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="https://quilljs.com/" target="_blank" rel="noopener">demo</a></p>
+<h2 id="summernote"><a href="#summernote" class="headerlink" title="summernote"></a>summernote</h2><h3 id="开源协议-6"><a href="#开源协议-6" class="headerlink" title="开源协议"></a>开源协议</h3><p>MIT License</p>
+<h3 id="框架依赖-6"><a href="#框架依赖-6" class="headerlink" title="框架依赖"></a>框架依赖</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- include libraries(jQuery, bootstrap) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- include summernote css/js--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"summernote.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"summernote.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  $(<span class="string">'#summernote'</span>).summernote();</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件库大小-6"><a href="#组件库大小-6" class="headerlink" title="组件库大小"></a>组件库大小</h3><p><a href="https://summernote.org/bower_components/summernote/dist/summernote.js" target="_blank" rel="noopener">js</a> : 232kb</p>
+<h3 id="开发维护及社区状态-6"><a href="#开发维护及社区状态-6" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.mdWBAR1wRh.png" alt></td>
+</tr>
+<tr>
+<td>提交频率</td>
+<td><img src="/static/img/test/41.md2QgHAtm2.png" alt></td>
+</tr>
+<tr>
+<td>issue解决比率</td>
+<td><img src="/static/img/test/41.md749mqiy3.png" alt></td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-6"><a href="#基本功能及插件功能-6" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>支持,图片无法粘贴</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h3 id="浏览器兼容性-6"><a href="#浏览器兼容性-6" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><ul>
+<li>FF 56+</li>
+<li>chrome 62+</li>
+<li>IE 9+</li>
+<li>Edge 15</li>
+<li>Safari 8+</li>
+</ul>
+<h3 id="demo地址-6"><a href="#demo地址-6" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="https://summernote.org/" target="_blank" rel="noopener">demo</a></p>
+<h2 id="Ueditor"><a href="#Ueditor" class="headerlink" title="Ueditor"></a>Ueditor</h2><h3 id="开源协议-7"><a href="#开源协议-7" class="headerlink" title="开源协议"></a>开源协议</h3><p>MIT license</p>
+<h3 id="开发维护及社区状态-7"><a href="#开发维护及社区状态-7" class="headerlink" title="开发维护及社区状态"></a>开发维护及社区状态</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>图片</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>star</td>
+<td><img src="/static/img/test/41.md3Wuh3ldT.png" alt></td>
+</tr>
+<tr>
+<td>提交频率</td>
+<td><img src="/static/img/test/41.mda6ZFZwOp.png" alt></td>
+</tr>
+<tr>
+<td>issue解决比率</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h3 id="基本功能及插件功能-7"><a href="#基本功能及插件功能-7" class="headerlink" title="基本功能及插件功能"></a>基本功能及插件功能</h3><table>
+<thead>
+<tr>
+<th>重要性</th>
+<th>功能</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>加粗、斜体、删除、有序、无序列表、redo/undo、H1-H6、下划线、引用、对齐方式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入删除链接/链接操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴链接</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入图片/图片操作(左右对齐、删除、大小)</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>图片粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>插入表格/表格操作</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>10</td>
+<td>表格粘贴</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>自动列表</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>粘贴word</td>
+<td>支持，图片没有自动上传</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mention#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hashtag#</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>6</td>
+<td>快捷键</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊字符</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>全屏</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>3</td>
+<td>源码编辑</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字体、颜色</td>
+<td>字体支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>placeholder</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>多实例</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>插入时间</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>–</td>
+<td>批注</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>### 浏览器兼容性</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>- FF</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>- chrome</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>- IE 8+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>- Edge</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>- Safari</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="demo地址-7"><a href="#demo地址-7" class="headerlink" title="demo地址"></a>demo地址</h3><p><a href="http://ueditor.baidu.com/website/onlinedemo.html" target="_blank" rel="noopener">demo</a></p>
+<h2 id="自己造一个editor"><a href="#自己造一个editor" class="headerlink" title="自己造一个editor"></a>自己造一个editor</h2><p><a href="file:///Users/liuhui/Desktop/mylab/my-text-editor/src/simple.html" target="_blank" rel="noopener">本地demo</a><br><a href="http://eux.baidu.com/blog/2017/11/%E5%88%A9%E7%94%A8-javascript-%E5%AE%9E%E7%8E%B0%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8" target="_blank" rel="noopener">hi话题功能造编辑器经验</a><br>通过contenteditable、execCommand<br><a href="https://medium.com/content-uneditable/contenteditable-the-good-the-bad-and-the-ugly-261a38555e9c" target="_blank" rel="noopener">问题列表</a><br>问题的冰山一角：</p>
+<ul>
+<li>如果加粗想要用strong替换b<ul>
+<li>使用observers，当修改后将html规范化后放入，这种情况要考虑选区的保存、还有undo操作</li>
+</ul>
+</li>
+<li>回车创建一个新的行，而不是上一次的默认样式<ul>
+<li>重新实现execCommand（算法不难，但是浏览器表现都不一样，例如FF有多个选区，实现undo操作）</li>
+</ul>
+</li>
+</ul>
+<p>实际可能：</p>
+<ul>
+<li>delay 几个月</li>
+<li>不兼容其他浏览器，有些bug可能是浏览器8年的老bug</li>
+<li>有太多的情况需要考虑到</li>
+<li>需要支持enter键，同时出来地狱般的粘贴</li>
+<li>需要处理（Blink/Webkit）回退键、删除键</li>
+<li>图片支持开发</li>
+<li>selection 具有方向性</li>
+<li>处理selection系统</li>
+<li>处理打字、键盘事件、插入特点字符到编辑器</li>
+<li>处理上下左右导航时的光标</li>
+</ul>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><table>
+<thead>
+<tr>
+<th>name</th>
+<th>总结</th>
+<th>细节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TinyMce</td>
+<td>功能比较强大，要花钱 IE6+</td>
+<td><img src="/static/img/test/41.mdERn8hhrM.png" alt></td>
+</tr>
+<tr>
+<td>Medium Editor</td>
+<td>功能太过简单，需要花大量时间扩展 IE9+</td>
+<td><img src="/static/img/test/41.md1xNGIUER.png" alt></td>
+</tr>
+<tr>
+<td>Draft.js</td>
+<td>2016年React推出,社区很丰富，插件很多，还支持手机端，但是基于React, IE11+，支持手机端</td>
+<td><img src="/static/img/test/41.mdJ6piEpYQ.png" alt></td>
+</tr>
+<tr>
+<td>Froala</td>
+<td>不开源，要花钱，IE10+ ，支持手机端</td>
+<td><img src="/static/img/test/41.mdpETjP9Gp.png" alt></td>
+</tr>
+<tr>
+<td>Ckeditor</td>
+<td>功能算开源中比较强大的，star比较少，IE11+，支持手机端</td>
+<td><img src="/static/img/test/41.mdo1aSUPNW.png" alt></td>
+</tr>
+<tr>
+<td>Quill</td>
+<td>star多，功能在开源中还算可以的，IE11+,支持手机端</td>
+<td><img src="/static/img/test/41.mdQrfWhioi.png" alt></td>
+</tr>
+<tr>
+<td>summernote</td>
+<td>功能算开源中比较多的，比Quill多点，IE9+,star比Quill少些</td>
+<td><img src="/static/img/test/41.mdnavZ1xS2.png" alt></td>
+</tr>
+<tr>
+<td>ueditor</td>
+<td>功能比较强大，bug不少，浏览器兼容性不错</td>
+<td><img src="/static/img/test/41.mdgrQfNWDq.png" alt></td>
+</tr>
+</tbody></table>
+<ul>
+<li>如果现成框架为reactjs，用draftjs，社区比较强大</li>
+<li>如果现成框架为vue，建议用Quill、summernote、Ckeditor，如果需要支持到IE9+，那么只有summernote和medium Editor是官方支持的</li>
+<li>如果是需要支持手机端：可以用draftjs、Quill</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rich-text-editor/" rel="tag"># rich-text-editor</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/23/atom/" rel="next" title="Atom闪退问题解决办法">
+                <i class="fa fa-chevron-left"></i> Atom闪退问题解决办法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/static/avatar.jpeg" alt="Shun-Kai">
+          <p class="site-author-name" itemprop="name">Shun-Kai</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术文档、随笔日志</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#考察点"><span class="nav-number">1.</span> <span class="nav-text">考察点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开源协议介绍"><span class="nav-number">2.</span> <span class="nav-text">开源协议介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑器列表"><span class="nav-number">3.</span> <span class="nav-text">编辑器列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TinyMce"><span class="nav-number">3.1.</span> <span class="nav-text">TinyMce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议"><span class="nav-number">3.1.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖"><span class="nav-number">3.1.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小"><span class="nav-number">3.1.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态"><span class="nav-number">3.1.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能"><span class="nav-number">3.1.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">3.1.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址"><span class="nav-number">3.1.7.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Medium-Editor"><span class="nav-number">3.2.</span> <span class="nav-text">Medium Editor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-1"><span class="nav-number">3.2.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性-1"><span class="nav-number">3.2.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-1"><span class="nav-number">3.2.7.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Draft-js"><span class="nav-number">3.3.</span> <span class="nav-text">Draft.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-2"><span class="nav-number">3.3.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-2"><span class="nav-number">3.3.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性-2"><span class="nav-number">3.3.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现有的问题"><span class="nav-number">3.3.7.</span> <span class="nav-text">现有的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-2"><span class="nav-number">3.3.8.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Froala"><span class="nav-number">3.4.</span> <span class="nav-text">Froala</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小-3"><span class="nav-number">3.4.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-3"><span class="nav-number">3.4.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-3"><span class="nav-number">3.4.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性-3"><span class="nav-number">3.4.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现有的问题-1"><span class="nav-number">3.4.7.</span> <span class="nav-text">现有的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-3"><span class="nav-number">3.4.8.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ckeditor-4-0和5-0"><span class="nav-number">3.5.</span> <span class="nav-text">Ckeditor 4.0和5.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小-4"><span class="nav-number">3.5.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-4"><span class="nav-number">3.5.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-4"><span class="nav-number">3.5.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性-4"><span class="nav-number">3.5.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-4"><span class="nav-number">3.5.7.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quill"><span class="nav-number">3.6.</span> <span class="nav-text">Quill</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小-5"><span class="nav-number">3.6.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-5"><span class="nav-number">3.6.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-5"><span class="nav-number">3.6.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性-5"><span class="nav-number">3.6.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-5"><span class="nav-number">3.6.7.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summernote"><span class="nav-number">3.7.</span> <span class="nav-text">summernote</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-6"><span class="nav-number">3.7.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架依赖-6"><span class="nav-number">3.7.2.</span> <span class="nav-text">框架依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件库大小-6"><span class="nav-number">3.7.3.</span> <span class="nav-text">组件库大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-6"><span class="nav-number">3.7.4.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-6"><span class="nav-number">3.7.5.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性-6"><span class="nav-number">3.7.6.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-6"><span class="nav-number">3.7.7.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ueditor"><span class="nav-number">3.8.</span> <span class="nav-text">Ueditor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开源协议-7"><span class="nav-number">3.8.1.</span> <span class="nav-text">开源协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发维护及社区状态-7"><span class="nav-number">3.8.2.</span> <span class="nav-text">开发维护及社区状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本功能及插件功能-7"><span class="nav-number">3.8.3.</span> <span class="nav-text">基本功能及插件功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址-7"><span class="nav-number">3.8.4.</span> <span class="nav-text">demo地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己造一个editor"><span class="nav-number">3.9.</span> <span class="nav-text">自己造一个editor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shun-Kai</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
