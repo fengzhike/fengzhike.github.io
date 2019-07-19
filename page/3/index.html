@@ -735,7 +735,7 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/10/27/ubuntu-apache2/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/10/27/git-respository/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -754,7 +754,7 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/27/ubuntu-apache2/" itemprop="url">ubuntu中安装apache2</a></h1>
+                <a class="post-title-link" href="/2017/10/27/git-respository/" itemprop="url">在服务端搭建一个git仓库</a></h1>
         
 
         <div class="post-meta">
@@ -789,8 +789,8 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -827,28 +827,15 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
         
           
           <div class="post-body-text">
-            ubuntu apache2配置一、安装Apache2
-1.Ctrl+Alt+T打开终端，使用apt-get下载
-  1$ sudo apt-get install apache2
-
-  当停顿提示时输 y
-
-2.安装完成，重启Apache服务
-  1$ sudo /etc/init.d/apache2 restart
-
-
-
-二、配置Apache2
-1.进入目录/etc/apache2
-  1$ cd /etc/apache2
-
-2.编辑apache2.conf
-  1$ sudo vim ap
+            如何在服务端搭建一个git仓库自己搭过几次，每次都是各种度娘，这次有需求，发现又有些地方卡住了，索性记录下来，方便下次查阅以Ubuntu为例，介绍搭建步骤
+服务端
+创建一个git用户
+ 1234$ sudo useradd -m git //-m 在username的主目录$ sudo passwd git //为该账户添加密码$ usermod -a -G sudo git //添加该账户到sudo群组，允许该用户安装软件，-a ：添加  -G 一个或多个群组$ sudo chsh -s /b
           ...
           </div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/27/ubuntu-apache2/#more" rel="contents">
+            <a class="btn" href="/2017/10/27/git-respository/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1047,7 +1034,7 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/10/27/git-respository/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/10/27/ubuntu-apache2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -1066,7 +1053,7 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/27/git-respository/" itemprop="url">在服务端搭建一个git仓库</a></h1>
+                <a class="post-title-link" href="/2017/10/27/ubuntu-apache2/" itemprop="url">ubuntu中安装apache2</a></h1>
         
 
         <div class="post-meta">
@@ -1101,8 +1088,8 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -1139,15 +1126,28 @@ jasmine 是一款基于js的BDD(行为驱动开发的)测试库，在Karma
         
           
           <div class="post-body-text">
-            如何在服务端搭建一个git仓库自己搭过几次，每次都是各种度娘，这次有需求，发现又有些地方卡住了，索性记录下来，方便下次查阅以Ubuntu为例，介绍搭建步骤
-服务端
-创建一个git用户
- 1234$ sudo useradd -m git //-m 在username的主目录$ sudo passwd git //为该账户添加密码$ usermod -a -G sudo git //添加该账户到sudo群组，允许该用户安装软件，-a ：添加  -G 一个或多个群组$ sudo chsh -s /b
+            ubuntu apache2配置一、安装Apache2
+1.Ctrl+Alt+T打开终端，使用apt-get下载
+  1$ sudo apt-get install apache2
+
+  当停顿提示时输 y
+
+2.安装完成，重启Apache服务
+  1$ sudo /etc/init.d/apache2 restart
+
+
+
+二、配置Apache2
+1.进入目录/etc/apache2
+  1$ cd /etc/apache2
+
+2.编辑apache2.conf
+  1$ sudo vim ap
           ...
           </div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/27/git-respository/#more" rel="contents">
+            <a class="btn" href="/2017/10/27/ubuntu-apache2/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1648,7 +1648,7 @@ ECMAScript和javascript关系1996年11月，JavaScript 的创造者 Netscape 公
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2016/07/23/sublime-markdown/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2016/07/23/sublime-run-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -1667,7 +1667,7 @@ ECMAScript和javascript关系1996年11月，JavaScript 的创造者 Netscape 公
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/07/23/sublime-markdown/" itemprop="url">sublime内预览markdown</a></h1>
+                <a class="post-title-link" href="/2016/07/23/sublime-run-js/" itemprop="url">sublime内运行js</a></h1>
         
 
         <div class="post-meta">
@@ -1740,14 +1740,14 @@ ECMAScript和javascript关系1996年11月，JavaScript 的创造者 Netscape 公
         
           
           <div class="post-body-text">
-            sublime内预览markdown安装markdown preview插件ctrl+shift+p-&gt;install package-&gt;markdown preview
-在markdown文件中运行插件ctrl+shift+p-&gt;markdown preview:preview in brower
-
-          
+            sublime 内运行javascript添加build system
+在sublime text中依次打开Tools -&gt; Build System -&gt; New Build System… 粘贴以下代码后保存(如Node.sublime-build), 然后把Build System设成Automatic
+  1234&#123;    "cmd": ["node", "--use-strict", "--harmony", "$file"],    "selector": "s
+          ...
           </div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/07/23/sublime-markdown/#more" rel="contents">
+            <a class="btn" href="/2016/07/23/sublime-run-js/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
