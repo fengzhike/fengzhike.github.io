@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="mongodb,">
+  <meta name="keywords" content="mongodb,mongose,egg-mongose,">
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="MongoDB如何实现自增idMongoDB作为nosql中最热门的数据库，越来越多的人选择它，但是在事务上有着先天不足。例如用户id，用又臭又长的objectId又不方便，为了实现类似于MySQL的自增ID，可以建一个集合承担发号表的工作。 SchemaSchema可以设计成这个样子 1234567891011121314// model/ids.jsmodule.exports = app =">
-<meta name="keywords" content="mongodb">
+<meta name="description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
+<meta name="keywords" content="mongodb,mongose,egg-mongose">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb如何实现自增id.md">
-<meta property="og:url" content="http://www.fanshunkai.com/2019/09/11/mongodb如何实现自增id-md/index.html">
+<meta property="og:title" content="MongoDB实现自增ID">
+<meta property="og:url" content="http://www.fanshunkai.com/2019/08/06/mongo/index.html">
 <meta property="og:site_name" content="ShunKai">
-<meta property="og:description" content="MongoDB如何实现自增idMongoDB作为nosql中最热门的数据库，越来越多的人选择它，但是在事务上有着先天不足。例如用户id，用又臭又长的objectId又不方便，为了实现类似于MySQL的自增ID，可以建一个集合承担发号表的工作。 SchemaSchema可以设计成这个样子 1234567891011121314// model/ids.jsmodule.exports = app =">
+<meta property="og:description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
 <meta property="og:locale" content="ch">
-<meta property="og:updated_time" content="2019-09-12T07:06:03.378Z">
+<meta property="og:updated_time" content="2019-09-12T07:16:00.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb如何实现自增id.md">
-<meta name="twitter:description" content="MongoDB如何实现自增idMongoDB作为nosql中最热门的数据库，越来越多的人选择它，但是在事务上有着先天不足。例如用户id，用又臭又长的objectId又不方便，为了实现类似于MySQL的自增ID，可以建一个集合承担发号表的工作。 SchemaSchema可以设计成这个样子 1234567891011121314// model/ids.jsmodule.exports = app =">
+<meta name="twitter:title" content="MongoDB实现自增ID">
+<meta name="twitter:description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.fanshunkai.com/2019/09/11/mongodb如何实现自增id-md/">
+  <link rel="canonical" href="http://www.fanshunkai.com/2019/08/06/mongo/">
 
 
 
 
 
-  <title>mongodb如何实现自增id.md | ShunKai</title>
+  <title>MongoDB实现自增ID | ShunKai</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/09/11/mongodb如何实现自增id-md/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/08/06/mongo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mongodb如何实现自增id.md</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB实现自增ID</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-11T17:38:44+08:00">
-                2019-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-06T17:41:09+08:00">
+                2019-08-06
               </time>
             
 
@@ -325,18 +325,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mongodb/" itemprop="url" rel="index">
-                    <span itemprop="name">mongodb</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mongodb/数据库/" itemprop="url" rel="index">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
                     <span itemprop="name">数据库</span>
                   </a>
                 </span>
@@ -371,14 +360,15 @@
       
       
       
-       <h1 id="MongoDB如何实现自增id"><a href="#MongoDB如何实现自增id" class="headerlink" title="MongoDB如何实现自增id"></a>MongoDB如何实现自增id</h1><p>MongoDB作为nosql中最热门的数据库，越来越多的人选择它，但是在事务上有着先天不足。例如用户id，用又臭又长的objectId又不方便，为了实现类似于MySQL的自增ID，可以建一个集合承担发号表的工作。</p>
-<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>Schema可以设计成这个样子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// model/ids.js</span><br><span class="line">module.exports = app =&gt; &#123;</span><br><span class="line">    const mongoose = app.mongoose;</span><br><span class="line">    const Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line">    const IdsSchema = new Schema(&#123;</span><br><span class="line">        name: &#123; type: String &#125;,</span><br><span class="line">        id: &#123; type: Number &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    IdsSchema.index(&#123; name: 1 &#125;);</span><br><span class="line"></span><br><span class="line">    return mongoose.model(&apos;Ids&apos;, IdsSchema);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+       <p>MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。</p>
+<p>本文以egg-mongose为例，以findOneAndUpdate实现自增id；</p>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>设计ids的Schema，用于发号<br>// model/ids.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.exports = app =&gt; &#123;</span><br><span class="line">    const mongoose = app.mongoose;</span><br><span class="line">    const Schema = mongoose.Schema;</span><br><span class="line">  </span><br><span class="line">    const IdsSchema = new Schema(&#123;</span><br><span class="line">        name: &#123; type: String &#125;,</span><br><span class="line">        id: &#123; type: Number &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    IdsSchema.index(&#123; name: 1 &#125;);</span><br><span class="line">  </span><br><span class="line">    return mongoose.model(&apos;Ids&apos;, IdsSchema);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>以用户集合举例，注册时这可以这样实现自增userId</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// service/users.js</span><br><span class="line">async newAndSave(name, password, email, type, active) &#123;</span><br><span class="line">    const idItem = await this.ctx.model.Ids.findOneAndUpdate(</span><br><span class="line">      &#123; name: &apos;user&apos; &#125;,</span><br><span class="line">      &#123; $inc: &#123; id: 1 &#125; &#125;,</span><br><span class="line">      &#123; upsert: true, new: true &#125;</span><br><span class="line">    ).exec();</span><br><span class="line">    const user = new this.ctx.model.User();</span><br><span class="line">    user.name = name;</span><br><span class="line">    user.id = idItem.id; // 自增id</span><br><span class="line">    user.password = password;</span><br><span class="line">    user.email = email;</span><br><span class="line">    user.type = type;</span><br><span class="line"></span><br><span class="line">    return user.save();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>保存document时，查询IdsSchema，没有document创建新的，有的话自增返回自增后的document。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* findOneAndUpdate($1, $2, $3):</span><br><span class="line">* params: </span><br><span class="line">* $1: query</span><br><span class="line">* $2: $inc 自增</span><br><span class="line">* $3: options: upsert--找不到时创建新的document; new--返回运算后的新值</span><br><span class="line">*/</span><br><span class="line">const idItem = await this.ctx.model.Ids.findOneAndUpdate(&#123;&apos;name&apos;: &apos;user&apos;&#125;, &#123;$inc:&#123;&apos;id&apos;:1&#125;&#125;, &#123;upsert:true, new: true&#125;).exec()</span><br><span class="line">let user.id = idItem.id;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>用MongoDB的$inc实现自增，findOneAndUpdate同步自增id表。<br>这样就完成了用户表自增ID的实现。</p>
+<p>如此，便完成了一个自增id的实现。</p>
 
       
     </div>
@@ -397,6 +387,10 @@
         <div class="post-tags">
           
             <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+            <a href="/tags/mongose/" rel="tag"># mongose</a>
+          
+            <a href="/tags/egg-mongose/" rel="tag"># egg-mongose</a>
           
         </div>
       
@@ -541,7 +535,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -552,7 +546,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -587,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB如何实现自增id"><span class="nav-number">1.</span> <span class="nav-text">MongoDB如何实现自增id</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Schema"><span class="nav-number">1.1.</span> <span class="nav-text">Schema</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Schema"><span class="nav-number">1.</span> <span class="nav-text">Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li></ol></div>
             
 
           </div>

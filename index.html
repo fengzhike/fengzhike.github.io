@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/09/11/mongodb如何实现自增id-md/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/08/06/mongo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/11/mongodb如何实现自增id-md/" itemprop="url">mongodb如何实现自增id.md</a></h1>
+                <a class="post-title-link" href="/2019/08/06/mongo/" itemprop="url">MongoDB实现自增ID</a></h1>
         
 
         <div class="post-meta">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-11T17:38:44+08:00">
-                2019-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-06T17:41:09+08:00">
+                2019-08-06
               </time>
             
 
@@ -327,18 +327,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mongodb/" itemprop="url" rel="index">
-                    <span itemprop="name">mongodb</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mongodb/数据库/" itemprop="url" rel="index">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
                     <span itemprop="name">数据库</span>
                   </a>
                 </span>
@@ -376,14 +365,15 @@
         
           
           <div class="post-body-text">
-            MongoDB如何实现自增idMongoDB作为nosql中最热门的数据库，越来越多的人选择它，但是在事务上有着先天不足。例如用户id，用又臭又长的objectId又不方便，为了实现类似于MySQL的自增ID，可以建一个集合承担发号表的工作。
-SchemaSchema可以设计成这个样子
-1234567891011121314// model/ids.jsmodule.exports = app =&gt; &#123;    const mongoose = app.mongoose;    c
+            MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。
+本文以egg-mongose为例，以findOneAndUpdate实现自增id；
+Schema设计ids的Schema，用于发号// model/ids.js
+1234567
           ...
           </div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/11/mongodb如何实现自增id-md/#more" rel="contents">
+            <a class="btn" href="/2019/08/06/mongo/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1894,7 +1884,7 @@ NN算法 （BP=Back propagation）后向传播正算一次+倒算一次 为一�
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1905,7 +1895,7 @@ NN算法 （BP=Back propagation）后向传播正算一次+倒算一次 为一�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
