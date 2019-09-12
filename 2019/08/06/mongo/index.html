@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShunKai">
 <meta property="og:description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
 <meta property="og:locale" content="ch">
-<meta property="og:updated_time" content="2019-09-12T07:16:00.111Z">
+<meta property="og:updated_time" content="2019-09-12T07:51:44.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB实现自增ID">
 <meta name="twitter:description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
@@ -362,11 +362,11 @@
       
        <p>MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。</p>
 <p>本文以egg-mongose为例，以findOneAndUpdate实现自增id；</p>
-<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>设计ids的Schema，用于发号<br>// model/ids.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.exports = app =&gt; &#123;</span><br><span class="line">    const mongoose = app.mongoose;</span><br><span class="line">    const Schema = mongoose.Schema;</span><br><span class="line">  </span><br><span class="line">    const IdsSchema = new Schema(&#123;</span><br><span class="line">        name: &#123; type: String &#125;,</span><br><span class="line">        id: &#123; type: Number &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    IdsSchema.index(&#123; name: 1 &#125;);</span><br><span class="line">  </span><br><span class="line">    return mongoose.model(&apos;Ids&apos;, IdsSchema);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>设计ids的Schema，用于发号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// model/ids.js</span><br><span class="line">module.exports = app =&gt; &#123;</span><br><span class="line">    const mongoose = app.mongoose;</span><br><span class="line">    const Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line">    const IdsSchema = new Schema(&#123;</span><br><span class="line">        name: &#123; type: String &#125;,</span><br><span class="line">        id: &#123; type: Number &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    IdsSchema.index(&#123; name: 1 &#125;);</span><br><span class="line"></span><br><span class="line">    return mongoose.model(&apos;Ids&apos;, IdsSchema);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>保存document时，查询IdsSchema，没有document创建新的，有的话自增返回自增后的document。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* findOneAndUpdate($1, $2, $3):</span><br><span class="line">* params: </span><br><span class="line">* $1: query</span><br><span class="line">* $2: $inc 自增</span><br><span class="line">* $3: options: upsert--找不到时创建新的document; new--返回运算后的新值</span><br><span class="line">*/</span><br><span class="line">const idItem = await this.ctx.model.Ids.findOneAndUpdate(&#123;&apos;name&apos;: &apos;user&apos;&#125;, &#123;$inc:&#123;&apos;id&apos;:1&#125;&#125;, &#123;upsert:true, new: true&#125;).exec()</span><br><span class="line">let user.id = idItem.id;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* findOneAndUpdate($1, $2, $3):</span><br><span class="line">* params:</span><br><span class="line">* $1: query</span><br><span class="line">* $2: $inc 自增</span><br><span class="line">* $3: options: upsert--找不到时创建新的document; new--返回运算后的新值</span><br><span class="line">*/</span><br><span class="line">const idItem = await this.ctx.model.Ids.findOneAndUpdate(&#123;&apos;name&apos;: &apos;user&apos;&#125;, &#123;$inc:&#123;&apos;id&apos;:1&#125;&#125;, &#123;upsert:true, new: true&#125;).exec()</span><br><span class="line">let user.id = idItem.id;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>如此，便完成了一个自增id的实现。</p>
 
@@ -412,6 +412,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/12/mongodb的引用和联查/" rel="prev" title="MongoDB的引用和联查">
+                MongoDB的引用和联查 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -524,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -535,7 +539,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="前端,自动化测试,">
+  <meta name="keywords" content="mongodb,mongose,">
 
 
 
@@ -94,20 +94,18 @@
 
 
 
-<meta name="description" content="karma &amp;amp; jasmine PhantomJSKarma 是一个基于Node.js的JavaScript测试执行过程管理工具（Test Runner）。该工具可用于测试所有主流Web浏览器，也可集成到CI（Continuous integration）工具，也可和其他代码编辑器一起使用。这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过console">
-<meta name="keywords" content="前端,自动化测试">
+<meta name="description" content="MongoDB的引用和联查MongoDB中可以通过引用和联查实现一对多、多对多的应用场景。比如常见的关注和粉丝功能，一个人关注目标是有限的，但是粉丝是不确定的，粉丝量过大的用户，如果在用户集合里面存一个数组是很影响性能和体验的。 通过分析，我们可以在user的集合设置关注属性，通过过滤关注属性来查询某个用户的粉丝 关注实现在UserSchema中添加flowing属性 12345678910111">
+<meta name="keywords" content="mongodb,mongose">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端测试工具介绍">
-<meta property="og:url" content="http://www.fanshunkai.com/2017/10/30/karma-phantom/index.html">
+<meta property="og:title" content="MongoDB的引用和联查">
+<meta property="og:url" content="http://www.fanshunkai.com/2019/09/12/mongodb的引用和联查/index.html">
 <meta property="og:site_name" content="ShunKai">
-<meta property="og:description" content="karma &amp;amp; jasmine PhantomJSKarma 是一个基于Node.js的JavaScript测试执行过程管理工具（Test Runner）。该工具可用于测试所有主流Web浏览器，也可集成到CI（Continuous integration）工具，也可和其他代码编辑器一起使用。这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过console">
+<meta property="og:description" content="MongoDB的引用和联查MongoDB中可以通过引用和联查实现一对多、多对多的应用场景。比如常见的关注和粉丝功能，一个人关注目标是有限的，但是粉丝是不确定的，粉丝量过大的用户，如果在用户集合里面存一个数组是很影响性能和体验的。 通过分析，我们可以在user的集合设置关注属性，通过过滤关注属性来查询某个用户的粉丝 关注实现在UserSchema中添加flowing属性 12345678910111">
 <meta property="og:locale" content="ch">
-<meta property="og:image" content="http://www.fanshunkai.com/static/img/karma.jpeg">
-<meta property="og:updated_time" content="2019-05-31T09:36:18.795Z">
+<meta property="og:updated_time" content="2019-09-12T09:44:03.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端测试工具介绍">
-<meta name="twitter:description" content="karma &amp;amp; jasmine PhantomJSKarma 是一个基于Node.js的JavaScript测试执行过程管理工具（Test Runner）。该工具可用于测试所有主流Web浏览器，也可集成到CI（Continuous integration）工具，也可和其他代码编辑器一起使用。这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过console">
-<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/karma.jpeg">
+<meta name="twitter:title" content="MongoDB的引用和联查">
+<meta name="twitter:description" content="MongoDB的引用和联查MongoDB中可以通过引用和联查实现一对多、多对多的应用场景。比如常见的关注和粉丝功能，一个人关注目标是有限的，但是粉丝是不确定的，粉丝量过大的用户，如果在用户集合里面存一个数组是很影响性能和体验的。 通过分析，我们可以在user的集合设置关注属性，通过过滤关注属性来查询某个用户的粉丝 关注实现在UserSchema中添加flowing属性 12345678910111">
 
 
 
@@ -136,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.fanshunkai.com/2017/10/30/karma-phantom/">
+  <link rel="canonical" href="http://www.fanshunkai.com/2019/09/12/mongodb的引用和联查/">
 
 
 
 
 
-  <title>前端测试工具介绍 | ShunKai</title>
+  <title>MongoDB的引用和联查 | ShunKai</title>
   
 
 
@@ -275,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2017/10/30/karma-phantom/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/09/12/mongodb的引用和联查/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -292,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端测试工具介绍</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB的引用和联查</h1>
         
 
         <div class="post-meta">
@@ -304,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T00:00:00+08:00">
-                2017-10-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T15:34:53+08:00">
+                2019-09-12
               </time>
             
 
@@ -327,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -362,20 +360,21 @@
       
       
       
-       <h1 id="karma-amp-jasmine-PhantomJS"><a href="#karma-amp-jasmine-PhantomJS" class="headerlink" title="karma &amp; jasmine PhantomJS"></a>karma &amp; jasmine PhantomJS</h1><p><strong>Karma</strong> 是一个基于Node.js的JavaScript测试执行过程管理工具（Test Runner）。该工具可用于测试所有主流Web浏览器，也可集成到CI（Continuous integration）工具，也可和其他代码编辑器一起使用。这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过console.log显示测试结果。</p>
-<p><strong>jasmine</strong> 是一款基于js的BDD(行为驱动开发的)测试库，在Karma上运行Jasmine可完成Javascript的自动化测试、生成覆盖率报告</p>
-<p><strong>PhantomJS</strong> 是无头浏览器</p>
-<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g karma</span><br><span class="line">$ npm install -g jasmine-core</span><br><span class="line">$ npm install -g karma-jasmine</span><br></pre></td></tr></table></figure>
+       <h1 id="MongoDB的引用和联查"><a href="#MongoDB的引用和联查" class="headerlink" title="MongoDB的引用和联查"></a>MongoDB的引用和联查</h1><p>MongoDB中可以通过引用和联查实现一对多、多对多的应用场景。比如常见的关注和粉丝功能，一个人关注目标是有限的，但是粉丝是不确定的，粉丝量过大的用户，如果在用户集合里面存一个数组是很影响性能和体验的。</p>
+<p>通过分析，我们可以在user的集合设置关注属性，通过过滤关注属性来查询某个用户的粉丝</p>
+<h2 id="关注实现"><a href="#关注实现" class="headerlink" title="关注实现"></a>关注实现</h2><p>在UserSchema中添加flowing属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// models/users.js</span><br><span class="line"></span><br><span class="line">const userSchema = new Schema(&#123;</span><br><span class="line">    name: &#123; type: String, required: true &#125;,</span><br><span class="line">    password: &#123; type: String, required: true, select: false &#125;,</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    following: &#123;</span><br><span class="line">      type: [&#123; type: String, ref: &apos;User&apos; &#125;],</span><br><span class="line">      select: false,</span><br><span class="line">      &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="二、初始化"><a href="#二、初始化" class="headerlink" title="二、初始化"></a>二、初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karma init</span><br></pre></td></tr></table></figure>
+<p>下面可以在控制器中获取某用户的关注列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// controllers/users.js</span><br><span class="line"></span><br><span class="line">async listFollowing(ctx)&#123;</span><br><span class="line">    const user = await User.findById(ctx.params.id).select(&apos;+following&apos;).populate(&apos;following&apos;);</span><br><span class="line">    if (!user) &#123; ctx.throw(404, &apos;用户不存在&apos;); &#125;</span><br><span class="line">    ctx.body = user.following;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>测试库选 jasmine yes或no的选no，浏览器选phantomJs</p>
-<h2 id="三、配置karma-conf-js"><a href="#三、配置karma-conf-js" class="headerlink" title="三、配置karma.conf.js"></a>三、配置karma.conf.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function(config) &#123;</span><br><span class="line">  config.set(&#123;</span><br><span class="line"></span><br><span class="line">    // base path that will be used to resolve all patterns (eg. files, exclude)</span><br><span class="line">    basePath: &apos;&apos;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // frameworks to use</span><br><span class="line">    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter</span><br><span class="line">    frameworks: [&apos;jasmine&apos;],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // list of files / patterns to load in the browser</span><br><span class="line">    files: [</span><br><span class="line">        &apos;./src/**/*.js&apos;, //待测试文件</span><br><span class="line">        &apos;./test/**/*.spec.js&apos;  //测试文件</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // list of files to exclude</span><br><span class="line">    exclude: [</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // preprocess matching files before serving them to the browser</span><br><span class="line">    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor</span><br><span class="line">    preprocessors: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // test results reporter to use</span><br><span class="line">    // possible values: &apos;dots&apos;, &apos;progress&apos;</span><br><span class="line">    // available reporters: https://npmjs.org/browse/keyword/karma-reporter</span><br><span class="line">    reporters: [&apos;progress&apos;],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // web server port</span><br><span class="line">    port: 9876,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // enable / disable colors in the output (reporters and logs)</span><br><span class="line">    colors: true,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // level of logging</span><br><span class="line">    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span><br><span class="line">    logLevel: config.LOG_INFO,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // enable / disable watching file and executing tests whenever any file changes</span><br><span class="line">    autoWatch: false,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // start these browsers</span><br><span class="line">    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span><br><span class="line">    browsers: [&apos;PhantomJS&apos;],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // Continuous Integration mode</span><br><span class="line">    // if true, Karma captures browsers, runs the tests and exits</span><br><span class="line">    singleRun: true, //允许单独运行</span><br><span class="line"></span><br><span class="line">    // Concurrency level</span><br><span class="line">    // how many browser should be started simultaneous</span><br><span class="line">    concurrency: Infinity</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Schema中的ref实现了表的引用，此例中的following属性关联User集合，在使用过程中，populate通过ref实现了对其指定的User表的联查。</p>
+<h2 id="粉丝实现"><a href="#粉丝实现" class="headerlink" title="粉丝实现"></a>粉丝实现</h2><p>下面聊聊粉丝的设计：</p>
+<p>由于粉丝不是某个用户主动操作，总数有非常大的可能性，设成User的一个属性在超大数据时就不合适了。换个思路，user里面关注该用户的即为粉丝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// controllers/users.js</span><br><span class="line"></span><br><span class="line">async listFollowers(ctx) &#123;</span><br><span class="line">    const users = await User.find(&#123; following: ctx.params.id &#125;);</span><br><span class="line">    ctx.body = users;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="四、启动"><a href="#四、启动" class="headerlink" title="四、启动"></a>四、启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ karma start</span><br></pre></td></tr></table></figure>
-
-<p>看到下面的效果，测试成功</p>
-<img src="/static/img/karma.jpeg" width="500">
+<p>思路一变，豁然开朗</p>
+<p>c</p>
 
       
     </div>
@@ -393,9 +392,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
           
-            <a href="/tags/自动化测试/" rel="tag"># 自动化测试</a>
+            <a href="/tags/mongose/" rel="tag"># mongose</a>
           
         </div>
       
@@ -408,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/30/karma-system-gulp/" rel="next" title="基于karma的自动化测试ES6工程">
-                <i class="fa fa-chevron-left"></i> 基于karma的自动化测试ES6工程
+              <a href="/2019/08/06/mongo/" rel="next" title="MongoDB实现自增ID">
+                <i class="fa fa-chevron-left"></i> MongoDB实现自增ID
               </a>
             
           </div>
@@ -417,10 +416,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/31/backstop/" rel="prev" title="backstop前端自动化样式回归测试">
-                backstop前端自动化样式回归测试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#karma-amp-jasmine-PhantomJS"><span class="nav-number">1.</span> <span class="nav-text">karma &amp; jasmine PhantomJS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、初始化"><span class="nav-number">1.2.</span> <span class="nav-text">二、初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、配置karma-conf-js"><span class="nav-number">1.3.</span> <span class="nav-text">三、配置karma.conf.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、启动"><span class="nav-number">1.4.</span> <span class="nav-text">四、启动</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB的引用和联查"><span class="nav-number">1.</span> <span class="nav-text">MongoDB的引用和联查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关注实现"><span class="nav-number">1.1.</span> <span class="nav-text">关注实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粉丝实现"><span class="nav-number">1.2.</span> <span class="nav-text">粉丝实现</span></a></li></ol></li></ol></div>
             
 
           </div>
