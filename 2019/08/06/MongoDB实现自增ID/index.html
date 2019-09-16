@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="前端,css,">
+  <meta name="keywords" content="mongodb,mongose,egg-mongose,">
 
 
 
@@ -94,20 +94,18 @@
 
 
 
-<meta name="description" content="Stacking Context,层叠上下文—-你可能不知道的z-index和transform 一、概念1.1 Stacking Context 层叠上下文MDN中对 Stacking Context的描述  Stacking context is the three-dimensional conceptualization of HTMLelements along an imaginary">
-<meta name="keywords" content="前端,css">
+<meta name="description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
+<meta name="keywords" content="mongodb,mongose,egg-mongose">
 <meta property="og:type" content="article">
-<meta property="og:title" content="层叠上下文">
-<meta property="og:url" content="http://www.fanshunkai.com/2018/04/26/stacking-context/index.html">
+<meta property="og:title" content="MongoDB实现自增ID">
+<meta property="og:url" content="http://www.fanshunkai.com/2019/08/06/MongoDB实现自增ID/index.html">
 <meta property="og:site_name" content="ShunKai">
-<meta property="og:description" content="Stacking Context,层叠上下文—-你可能不知道的z-index和transform 一、概念1.1 Stacking Context 层叠上下文MDN中对 Stacking Context的描述  Stacking context is the three-dimensional conceptualization of HTMLelements along an imaginary">
+<meta property="og:description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
 <meta property="og:locale" content="ch">
-<meta property="og:image" content="http://www.fanshunkai.com/static/img/stacking-order.png">
-<meta property="og:updated_time" content="2019-05-31T11:17:33.622Z">
+<meta property="og:updated_time" content="2019-09-16T14:31:55.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="层叠上下文">
-<meta name="twitter:description" content="Stacking Context,层叠上下文—-你可能不知道的z-index和transform 一、概念1.1 Stacking Context 层叠上下文MDN中对 Stacking Context的描述  Stacking context is the three-dimensional conceptualization of HTMLelements along an imaginary">
-<meta name="twitter:image" content="http://www.fanshunkai.com/static/img/stacking-order.png">
+<meta name="twitter:title" content="MongoDB实现自增ID">
+<meta name="twitter:description" content="MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。 本文以egg-mongose为例，以findOneAndUpdate实现自增">
 
 
 
@@ -136,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.fanshunkai.com/2018/04/26/stacking-context/">
+  <link rel="canonical" href="http://www.fanshunkai.com/2019/08/06/MongoDB实现自增ID/">
 
 
 
 
 
-  <title>层叠上下文 | ShunKai</title>
+  <title>MongoDB实现自增ID | ShunKai</title>
   
 
 
@@ -275,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2018/04/26/stacking-context/">
+    <link itemprop="mainEntityOfPage" href="http://www.fanshunkai.com/2019/08/06/MongoDB实现自增ID/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shun-Kai">
@@ -292,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">层叠上下文</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB实现自增ID</h1>
         
 
         <div class="post-meta">
@@ -304,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-26T00:00:00+08:00">
-                2018-04-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-06T17:41:09+08:00">
+                2019-08-06
               </time>
             
 
@@ -327,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -362,61 +360,15 @@
       
       
       
-       <h1 id="Stacking-Context-层叠上下文"><a href="#Stacking-Context-层叠上下文" class="headerlink" title="Stacking Context,层叠上下文"></a>Stacking Context,层叠上下文</h1><p>—-你可能不知道的z-index和transform</p>
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h3 id="1-1-Stacking-Context-层叠上下文"><a href="#1-1-Stacking-Context-层叠上下文" class="headerlink" title="1.1 Stacking Context 层叠上下文"></a>1.1 Stacking Context 层叠上下文</h3><p>MDN中对 Stacking Context的描述</p>
-<blockquote>
-<p>Stacking context is the three-dimensional conceptualization of HTML<br>elements along an imaginary z-axis relative to the user who is assumed<br>to be facing the viewport or the webpage.HTML elements occupy this<br>space in priority order based on element attributes.</p>
-</blockquote>
-<p>层叠上下文是HTML元素的三维概念，这些HTML元素在一条假想的相对于面向（电脑屏幕的）视窗或者网页的用户的 z 轴上延伸，HTML 元素依据其自身属性按照优先级顺序占用层叠上下文的空间。<br>z轴即用户与屏幕间看不见的垂直线。</p>
-<h3 id="1-2-Stacking-Level-层叠水平"><a href="#1-2-Stacking-Level-层叠水平" class="headerlink" title="1.2 Stacking Level 层叠水平"></a>1.2 Stacking Level 层叠水平</h3><p>层叠水平决定了同一个层叠上下文中元素在Z轴上的显示顺序</p>
-<h3 id="1-3-Stacking-Order"><a href="#1-3-Stacking-Order" class="headerlink" title="1.3 Stacking Order"></a>1.3 Stacking Order</h3><p>w3c官方规定了7层层叠水平,如下图所示</p>
-<img src="/static/img/stacking-order.png" alt>
+       <p>MongoDB是基于分布式文件存储的数据库，在NoSQL中排名第一，是最流行的NoSQL，有高性能、轻量级、易于扩展的特性，运用范围广。我们知道，mongodb有自己的ObjectId，没有类似于MySQL中的自增能力，当我们需要自增字段时，比如userid，ObjectId过长不方便使用，此时我们需要自定义自增长id。</p>
+<p>本文以egg-mongose为例，以findOneAndUpdate实现自增id；</p>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>设计ids的Schema，用于发号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// model/ids.js</span><br><span class="line">module.exports = app =&gt; &#123;</span><br><span class="line">    const mongoose = app.mongoose;</span><br><span class="line">    const Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line">    const IdsSchema = new Schema(&#123;</span><br><span class="line">        name: &#123; type: String &#125;,</span><br><span class="line">        id: &#123; type: Number &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    IdsSchema.index(&#123; name: 1 &#125;);</span><br><span class="line"></span><br><span class="line">    return mongoose.model(&apos;Ids&apos;, IdsSchema);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>形成层叠上下文环境的元素的背景与边框</li>
-<li>拥有负 z-index 的子堆叠上下文元素 （负的越高越堆叠层级越低）</li>
-<li>正常流式布局，非 inline-block，无 position 定位（static除外）的子元素</li>
-<li>无 position 定位（static除外）的 float 浮动元素</li>
-<li>拥有 z-index:0 的子堆叠上下文元素</li>
-<li>拥有正 z-index: 的子堆叠上下文元素（正的越低越堆叠层级越低）</li>
-</ul>
-<h2 id="二、触发层叠上下文"><a href="#二、触发层叠上下文" class="headerlink" title="二、触发层叠上下文"></a>二、触发层叠上下文</h2><p>根据，MDN上的描述，一下方法会触发元素的层叠上下文</p>
-<ul>
-<li>根元素 (HTML)</li>
-<li>z-index 值不为 “auto”的 绝对/相对定位</li>
-<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex。（需满足两个条件才能触发：1是父级需要是display:flex或者display:inline-flex水平，2是子元素的z-index不是auto，必须是数值。则这个子元素为层叠上下文元素）</li>
-<li>opacity 属性值小于 1 的元素（参考 the specification for opacity）</li>
-<li>transform 属性值不为 “none”的元素</li>
-<li>mix-blend-mode 属性值不为 “normal”的元素</li>
-<li>filter值不为“none”的元素</li>
-<li>perspective值不为“none”的元素</li>
-<li>isolation 属性被设置为 “isolate”的元素</li>
-<li>position: 不为static</li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>所以为什么定位元素会层叠在普通元素的上面？其根本原因就在于，元素一旦成为定位元素，其z-index就会自动生效，此时其z-index就是默认的auto，也就是0级别，根据上面的层叠顺序表，就会覆盖inline或block或float元素。</p>
-<p><strong>层叠上下文可以嵌套，内部层叠上下文及其所有子元素均受制于外部的层叠上下文。</strong></p>
-<h3 id="比较两元素的上下关系"><a href="#比较两元素的上下关系" class="headerlink" title="比较两元素的上下关系"></a>比较两元素的上下关系</h3><ul>
-<li>在同一个层叠上下文中，则根据7阶层叠水平比较。若两元素在同一层叠水平，则后来居上即在DOM流中处于后面的元素会覆盖前面的元素。</li>
-<li>在不同的层叠上下文中，则直接比较父元素的层叠水平：<ul>
-<li>若父元素的z-index不同，则z-index数值越大，越在上面。</li>
-<li>若父元素的z-index相同，则在DOM流中处于后面的元素会覆盖前面的元素。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>比较时，先看两个元素是不是在同一个父元素之下，若不是，则一层层往上找，直到找到其祖先元素在同一级时停止。然后，再依次往下寻找各自的子元素，找到第一个是层叠上下文元素的子元素后进行比较。</p>
-</blockquote>
-<blockquote>
-<p>子元素的 z-index 值只在父级层叠上下文中有意义。即父元素的 z-index 低于父元素另一个同级元素，子元素 z-index再高也没用。</p>
-</blockquote>
-<h2 id="当transform遇上了z-index"><a href="#当transform遇上了z-index" class="headerlink" title="当transform遇上了z-index"></a>当transform遇上了z-index</h2><p>从上面知道，当transform不为none的时候，会触发元素的层叠上下文，正常情况下，按照z-index作比较就好了，但是如果开启了3d空间的transform，比如，translate3d，scale3d，rotate3d等，元素可能在z轴方向上发生变化，位移的变化要大于层级的变化，造成z-index失效的效果（safari）</p>
-<p><strong>当transform的3d在safari下使z-index失效怎么解决</strong>，<a href="https://www.cnblogs.com/reaf/p/5788781.html" target="_blank" rel="noopener">@张鑫旭老师</a>有篇文章给出了答案</p>
-<ul>
-<li>父级，任意父级，非body级别，设置overflow:hidden可恢复和其他浏览器一样的渲染</li>
-<li>以毒攻毒。也可以使用3D transform变换</li>
-</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>保存document时，查询IdsSchema，没有document创建新的，有的话自增返回自增后的document。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* findOneAndUpdate($1, $2, $3):</span><br><span class="line">* params:</span><br><span class="line">* $1: query</span><br><span class="line">* $2: $inc 自增</span><br><span class="line">* $3: options: upsert--找不到时创建新的document; new--返回运算后的新值</span><br><span class="line">*/</span><br><span class="line">const idItem = await this.ctx.model.Ids.findOneAndUpdate(&#123;&apos;name&apos;: &apos;user&apos;&#125;, &#123;$inc:&#123;&apos;id&apos;:1&#125;&#125;, &#123;upsert:true, new: true&#125;).exec()</span><br><span class="line">let user.id = idItem.id;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>如此，便完成了一个自增id的实现。</p>
 
       
     </div>
@@ -434,9 +386,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
           
-            <a href="/tags/css/" rel="tag"># css</a>
+            <a href="/tags/mongose/" rel="tag"># mongose</a>
+          
+            <a href="/tags/egg-mongose/" rel="tag"># egg-mongose</a>
           
         </div>
       
@@ -449,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/08/inhert/" rel="next" title="js继承">
-                <i class="fa fa-chevron-left"></i> js继承
+              <a href="/2019/06/04/mac允许任何源/" rel="next" title="mac允许任何源">
+                <i class="fa fa-chevron-left"></i> mac允许任何源
               </a>
             
           </div>
@@ -459,8 +413,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/23/atom/" rel="prev" title="Atom闪退问题解决办法">
-                Atom闪退问题解决办法 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/12/mongodb的引用和联查/" rel="prev" title="MongoDB的引用和联查">
+                MongoDB的引用和联查 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -631,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stacking-Context-层叠上下文"><span class="nav-number">1.</span> <span class="nav-text">Stacking Context,层叠上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、概念"><span class="nav-number">1.1.</span> <span class="nav-text">一、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Stacking-Context-层叠上下文"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Stacking Context 层叠上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Stacking-Level-层叠水平"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Stacking Level 层叠水平</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Stacking-Order"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Stacking Order</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、触发层叠上下文"><span class="nav-number">1.2.</span> <span class="nav-text">二、触发层叠上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比较两元素的上下关系"><span class="nav-number">1.3.1.</span> <span class="nav-text">比较两元素的上下关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当transform遇上了z-index"><span class="nav-number">1.4.</span> <span class="nav-text">当transform遇上了z-index</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Schema"><span class="nav-number">1.</span> <span class="nav-text">Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li></ol></div>
             
 
           </div>
